@@ -1,0 +1,259 @@
+.cooperative_profile_container{
+    height: 122vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    overflow: auto;
+    font-family: 'Poppins', 'Quicksand';
+    font-size: 14px;
+    overflow: auto;
+    
+}
+.cooparative_profile_left_menu{
+    height: inherit;
+    width: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+
+.profile_farm_fusion_icon,
+.profile_dashboard,
+.profile_home_icon,
+.profile_insurance_icon,
+.profile_loan_icon,
+.profile_store_icon,
+.profile_agronomy_icon{
+    position: absolute;
+    top: 2%;
+    left: 35%;
+    height: 3vh;
+    width: 30%;
+    cursor: pointer;
+}
+
+.profile_farm_fusion_icon{
+    left: 25%;
+    height: 5.1vh;
+    width: 50%;
+}
+.profile_dashboard{
+    top: 13%;
+}
+
+.profile_home_icon{
+    top: 23%;
+}
+
+.profile_loan_icon{
+    top: 33%;
+}
+
+.profile_insurance_icon{
+    top: 43%;
+}
+
+.profile_store_icon{
+    top: 53%;
+}
+
+.profile_agronomy_icon{
+    top: 63%;
+}
+
+/*```````````````````````````````Top Section``````````````````````````````````````````  */
+.top_profile_sec{
+    height: 60px;
+    width: 90%;
+    position: absolute;
+    top: 0%;
+    left: 6%;
+    /* background-color: rgb(60, 127, 185); */
+    border-bottom: .4px solid rgb(235, 235, 235);
+}
+
+.profile_search input[type="search"]{
+    height: 30px;
+    width: 30%;
+    min-width: 25%;
+    position: absolute;
+    top: 22%;
+    right: 14%;
+    /* background-color: #286d34; */
+    outline: none;
+    border:1px solid #76c5dc;
+    border-radius: 20px;
+    font-size: 15px;
+    font-family: "Poppins", "Quicksand";
+    padding: 1%;
+
+}
+.top_title{
+    height: 7vh;
+    width: 40%;
+    font-size: 22px;
+    font-family: Poppins;
+    /* background-color: lawngreen; */
+    color: #286d34;
+    padding-top: 1%;
+    font-weight: 700;
+    margin-left: .5%;
+}
+.Cooperative_profile_image{
+    height:40px;
+    width: 40px;
+    border-radius:50%;
+    position: absolute;
+    top: 14%;
+    right:0%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.Cooperative_notification_icon{
+    border-radius:50%;
+    position: absolute;
+    top: 20%;
+    right:4.5%;
+    cursor: pointer;
+   
+    /* background-color: rgb(231, 231, 231); */
+}
+.Cooperative_message_icon{
+    position: absolute;
+    top: 21%;
+    right:9%;
+    cursor: pointer;
+
+}
+
+/* `````````````````````Change Profile Section``````````````````````````` */
+.change_profile_image_section{
+    position: absolute;
+    height: 145px;
+    width: 150px;
+    top: 10%;
+    left: 6.5%;
+    background-color: #286d34;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.change_profile_btn{
+    position: absolute;
+    height: 35px;
+    width: 150px;
+    top: 32%;
+    left: 6.5%;
+    background-color: #50ee9f;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    outline: none;
+    font-family: "Poppins", "Quicksand";
+}
+/* ````````````````````````Input Sections````````````````````````````````` */
+.cooperative_name label,
+.cooperative_email label,
+.cooperative_number label,
+.cooperative_registration_status label,
+.cooperative_county label,
+.cooperative_type label,
+.cooperative_sub_county label,
+.cooperative_ward label,
+.cooperative_core_activities label,
+
+.cooperative_chairperson_name label,
+.cooperative_secretary_name label,
+.cooperative_bank_name label,
+.cooperative_paybill_name label,
+.cooperative_chairperson_number label,
+.cooperative_secretary_number label,
+.cooperative_bank_number label,
+.cooperative_paybill_number label{
+    color: #616161;
+    font-size: 13px;
+    font-family: "Poppins";
+    line-height: 17px;
+}
+
+#cooperative_name_text_box,#cooperative_email_text_box,
+#cooperative_number_text_box,#cooperative_registration_status_text_box{
+    margin-top: 1%;
+    margin-bottom: 3%;
+  /* height: 65px;   */
+}
+
+.input_section_1,.input_section_2,
+.input_section_3,.input_section_4{
+    position: absolute;
+    top: 10%;
+    left: 21%;
+    height: 145px;
+    width: 36%;
+    /* background-color: #286d34; */
+}
+.input_section_2{
+    left: 60%;
+}
+
+.input_section_3,.input_section_4{
+    position: absolute;
+    top:38%;
+    left: 6.5%;
+    height: 145px;
+    width: 50.5%;
+    /* background-color: #286d34; */
+}
+.input_section_4{
+    width: 36%;
+    left: 60%;
+}
+.input_section_5{
+    position: absolute;
+    top:60%;
+    left: 6.5%;
+    height: 73px;
+    width: 89.5%;
+    /* background-color: #286d34; */
+}
+
+.input_section_6{
+    position: absolute;
+    top:72%;
+    left: 6.5%;
+    height: 290px;
+    width: 50.5%;
+    /* background-color: #286d34; */
+    padding-top: .5%;
+}
+.input_section_7{
+    position: absolute;
+    top:72%;
+    width: 36%;
+    left: 60%;
+    height: 290px;
+    padding-top: .5%;
+    /* background-color: #286d34; */
+}
+.cooperative_profile_container input[type="text"],
+.cooperative_profile_container input[type="number"],
+.cooperative_profile_container input[type="email"]
+{
+    height: 50px;
+    width: 100%;
+    padding: 0px 8px;
+    border: 1px solid #76c5dc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #030303;
+    font-size: 16px;
+    font-family: "Poppins";
+    line-height: 21px;
+    outline: none;
+
+
+}

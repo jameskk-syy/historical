@@ -1,0 +1,625 @@
+.body{
+    min-width: 100%;
+    overflow: auto;
+}
+.profile_container{
+    height: 100vh;
+    width: 100%;
+    /* background-color: aqua; */
+    position: relative;
+}
+.profile_title{
+    position: absolute;
+    top: 2%;
+    left: 6%;
+    color: #286d34;
+    font-size: 30px;
+    font-family: "Poppins";
+    font-weight: 700;
+    line-height: 31px;
+}
+.profile_search{
+    position: absolute;
+    top: 2%;
+    right: 10%;
+    width: 35%;
+    height: 5vh;
+    /* background-color: blueviolet; */
+}
+.farm_ham{
+    color: #286d34;
+    visibility: hidden;
+    z-index: 1;
+
+}
+
+.farm_menu_section{
+    position: absolute;
+    top: 8%;
+    left: -100%;
+    height: 36%;
+    width: 200px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    background-color: #ffffff;
+    font-size: 15px;
+    font-family: "Poppins";
+    font-weight: 500;
+    padding: .5%;
+    padding-left: 1%;
+    z-index: 1;
+    text-align: start;
+    overflow: hidden;
+    transition: 0.5s;
+    /* visibility: hidden; */
+    
+
+}
+.Home,.mess,.notify,.dash
+,.sell,.loans,.insure,.agro{
+    height: 10%;
+    margin-bottom: 6%;
+    padding-bottom: 15%;
+    cursor: pointer;
+    color:rgb(116, 112, 112);
+    /* background-color: #6bc1e9; */
+}
+.Home{
+    width: 70%;
+}
+.close_farm_side_menu{
+    position: absolute;
+    top: 3%;
+    right: 4%;
+}
+
+.Home:hover,.mess:hover,.notify:hover,.dash:hover
+,.sell:hover,.loans:hover,.insure:hover,.agro:hover{
+    border-bottom:1px solid blue ;
+}
+
+.profile_search input[type="search"]{
+    height: 5vh;
+    width: 100%;
+    padding-left: 5%;
+    border: 1px solid #76c5dc;
+    box-sizing: border-box;
+    border-radius: 61px;
+    background-color: #ffffff;
+    color: #030303;
+    font-size: 16px;
+    font-family: "Poppins";
+    line-height: 21px;
+    text-align: start;
+    text-transform: lowercase;
+    outline: none;
+}
+.profile_line{
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    height: 1px;
+    width: 91%;
+    background-color: aqua;
+    opacity: 20%;
+}
+
+.mini_profile_image{
+    height:5vh;
+    width: 2.5%;
+    border-radius:50%;
+    position: absolute;
+    top: 2%;
+    right:3%;
+    overflow: hidden;
+}
+.notification_icon{
+    height:5vh;
+    width: 2.5%;
+    border-radius:50%;
+    position: absolute;
+    top: 2%;
+    right:6.5%;
+    overflow: hidden;
+    /* background-color: rgb(231, 231, 231); */
+}
+.profile_image{
+    height:23vh;
+    width: 12%;
+    border-radius:50%;
+    position: absolute;
+    top: 9%;
+    left:6%;
+    overflow: hidden;
+    /* background-color: rgb(231, 231, 231); */
+}
+.change_image{
+    height: 40px;
+    width: 12%;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    background-color: #57eb98;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "Poppins";
+    font-weight: 500;
+    outline: none;
+    position: absolute;
+    top: 33%;
+    left: 6%;
+}
+.profile_section_1,.profile_section_2{
+    position: absolute;
+    top: 10%;
+    left: 21%;
+    height: auto;
+    width: 37%;
+    /* background-color: #286d34; */
+}
+
+
+
+.profile_household label,
+.profile_role label,
+.profile_name label,
+.profile_email label,
+.profile_phone_number label,
+.profile_Nationl_id_number label{
+    color: #616161;
+    font-size: 13px;
+    font-family: "Poppins";
+    line-height: 17px;
+}
+
+.profile_section_1 input[type="text"],
+.profile_section_1 input[type="number"],
+.profile_section_1 input[type="email"]{
+    height: 40px;
+    width: 100%;
+    padding: 0px 8px;
+    border: 1px solid #76c5dc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #030303;
+    font-size: 16px;
+    font-family: "Poppins";
+    line-height: 21px;
+    outline: none;
+    margin-bottom: 2%;
+
+}
+
+.profile_section_2{
+    left: 60%;
+}
+.profile_section_2 input[type="text"],
+.profile_section_2 input[type="number"],
+.profile_section_2 input[type="email"]{
+    height: 40px;
+    width: 100%;
+    padding: 0px 8px;
+    border: 1px solid #76c5dc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #030303;
+    font-size: 16px;
+    font-family: "Poppins";
+    line-height: 21px;
+    outline: none;
+    margin-bottom: 2%;
+
+}
+
+.profile_section_3{
+    position: absolute;
+    height: 40vh;
+    width: 37%;
+    top: 41%;
+    left: 21%;
+    /* background-color: chocolate; */
+
+}
+
+.profile_county label,
+.profile_cooperate label,
+.profile_village label,
+.profile_land_size label,
+.profile_primary_chain label{
+    color: #616161;
+    font-size: 13px;
+    font-family: "Poppins";
+    line-height: 17px;
+}
+
+.profile_section_3 input[type="text"],
+.profile_section_3 input[type="number"],
+.profile_section_3 input[type="email"]{
+    height: 40px;
+    width: 100%;
+    padding: 0px 8px;
+    border: 1px solid #76c5dc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #030303;
+    font-size: 16px;
+    font-family: "Poppins";
+    line-height: 21px;
+    outline: none;
+    margin-bottom: 2%;
+
+}
+
+
+
+
+
+
+
+.profile_section_4{
+    position: absolute;
+    height: 52vh;
+    width: 37%;
+    top: 41%;
+    left: 60%;
+    /* background-color: rgb(31, 168, 116); */
+}
+
+.profile_section_4 input[type="text"],
+.profile_section_4 input[type="number"],
+.profile_section_4 input[type="email"]{
+    height: 40px;
+    width: 100%;
+    padding: 0px 8px;
+    border: 1px solid #76c5dc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #030303;
+    font-size: 16px;
+    font-family: "Poppins";
+    line-height: 21px;
+    outline: none;
+    margin-bottom: 2%;
+
+}
+
+.profile_sub_county label,
+.profile_church label,
+.profile_ward label,
+.profile_economic_activity label,
+.profile_secondary_chain label{
+    color: #616161;
+    font-size: 13px;
+    font-family: "Poppins";
+    line-height: 17px;
+}
+
+
+
+
+
+
+.profile_menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 55.5px;
+    background-color: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.16);
+}
+
+.profile_farm_fusion_icon,
+.profile_dashboard,
+.profile_home_icon,
+.profile_insurance_icon,
+.profile_loan_icon,
+.profile_store_icon,
+.profile_agronomy_icon{
+    position: absolute;
+    top: 2%;
+    left: 35%;
+    height: 3vh;
+    width: 30%;
+    cursor: pointer;
+}
+
+.profile_farm_fusion_icon{
+    left: 25%;
+    height: 5vh;
+    width: 50%;
+}
+.profile_dashboard{
+    top: 13%;
+}
+
+.profile_home_icon{
+    top: 23%;
+}
+
+.profile_loan_icon{
+    top: 33%;
+}
+
+.profile_insurance_icon{
+    top: 43%;
+}
+
+.profile_store_icon{
+    top: 53%;
+}
+
+.profile_agronomy_icon{
+    top: 63%;
+}
+
+
+
+  /* `````````````````````````````````````````````````````````````````````````````````````````````````````````````` */
+  /* ````````````````````````````````````Farmer Profile Media scales``````````````````````````````````````````````````````````` */
+  @media screen and (max-width: 1000px) {
+    .notification_icon{
+        visibility: hidden;
+    }.mini_profile_image{
+        height: 40px;
+        width: 40px;
+    }
+    .farm_menu{
+        visibility: visible;
+        position: absolute;
+        top: 2%;
+        left: 3%;
+        color: #286d34;
+    }
+    .profile_image{
+        height:135px;
+        width: 135px;
+        border-radius:0%;
+        position: absolute;
+        top: 11%;
+        left:3%;
+    }
+    .change_image{
+      font-size: 11px;
+      font-weight: 400;
+      left: 3%;
+      height:32px;
+      width: 135px;
+    }
+    .profile_menu{
+        visibility: collapse;
+    }
+    .profile_title{
+        left: 7.5%;
+    }
+     
+    .profile_line{
+        left: 3%;
+    }
+    .profile_section_3{
+        width: 55%;
+        left: 3%;
+    
+    
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .profile_title{
+        left: 10%;
+        font-size: 26px;
+    }
+    .profile_section_1{
+        position: absolute;
+        top: 10%;
+        left: 31%;
+        height: auto;
+        width: 66%;
+        /* background-color: #286d34; */
+    }
+    .profile_section_2{
+        left: 3%;
+        /* background-color: blueviolet; */
+        top: 41%;
+        width: 94%;
+    }
+    .profile_section_3{
+        position: absolute;
+        height: 40vh;
+        width: 94%;
+        top: 73%;
+        left: 3%;
+        /* background-color: chocolate; */
+    
+    }.profile_section_4{
+        position: absolute;
+        height: 52vh;
+        width: 93%;
+        top: 126%;
+        left: 3%;
+        /* background-color: rgb(31, 168, 116); */
+    }.mini_profile_image{
+        height: 40px;
+        width: 40px;
+    }.profile_search{
+        position: absolute;
+        top: 2%;
+        right: 13%;
+        width: 35%;
+        height: 4vh;
+        /* background-color: blueviolet; */
+    }.profile_search input[type="search"]{
+        
+        border: none;
+        border-bottom: 1px solid #dc76ba;
+        border-radius: 0;
+        
+    }
+    
+}
+
+
+@media screen and (max-width: 500px) {
+    .profile_section_1{
+        position: absolute;
+        top: 10%;
+        left: 41%;
+        height: auto;
+        width: 56%;
+        /* background-color: #286d34; */
+    }
+    .profile_household label,
+    .profile_role label,
+    .profile_name label,
+    .profile_email label,
+    .profile_phone_number label,
+    .profile_Nationl_id_number label,
+    .profile_sub_county label,
+    .profile_church label,
+    .profile_ward label,
+    .profile_economic_activity label,
+    .profile_secondary_chain label,
+    .profile_county label,
+    .profile_cooperate label,
+    .profile_village label,
+    .profile_land_size label,
+    .profile_primary_chain label{
+ 
+        font-size: 11px;
+        font-family: "Poppins";
+        line-height: 17px;
+    }
+    .profile_title{
+        left: 12%;
+        font-size: 22px;
+    }
+    .profile_search{
+        position: absolute;
+        top: 2%;
+        right: 14%;
+        width: 27%;
+        height: 4vh;
+        /* background-color: blueviolet; */
+    }
+
+   
+}
+
+@media screen and (max-width: 370px) {
+    .profile_section_1{
+    
+        left: 51%;
+        height: auto;
+        width: 46%;
+        /* background-color: #286d34; */
+    }.profile_search input[type="search"]{
+        
+       visibility: hidden;
+       
+    } .profile_title{
+        left: 15%;
+        font-size: 18px;
+    }
+   
+}
+
+@media screen and (max-width: 300px) {
+    .profile_image{
+        visibility: collapse;
+    }
+    .change_image{
+        visibility: collapse;
+    }
+    .profile_menu{
+        visibility: collapse;
+    }
+    .profile_section_1{
+        left: 3%;
+        width: 94%;
+    
+    
+    }.profile_title{
+        visibility: hidden;
+    }
+    .profile_household label,
+    .profile_role label,
+    .profile_name label,
+    .profile_email label,
+    .profile_phone_number label,
+    .profile_Nationl_id_number label,
+    .profile_sub_county label,
+    .profile_church label,
+    .profile_ward label,
+    .profile_economic_activity label,
+    .profile_secondary_chain label,
+    .profile_county label,
+    .profile_cooperate label,
+    .profile_village label,
+    .profile_land_size label,
+    .profile_primary_chain label{
+ 
+        font-size: 8px;
+        font-family: "Poppins";
+        line-height: 17px;
+    }
+    
+}
+
+@media screen and (max-width: 200px) {
+   .profile_household label,
+    .profile_role label,
+    .profile_name label,
+    .profile_email label,
+    .profile_phone_number label,
+    .profile_Nationl_id_number label,
+    .profile_sub_county label,
+    .profile_church label,
+    .profile_ward label,
+    .profile_economic_activity label,
+    .profile_secondary_chain label,
+    .profile_county label,
+    .profile_cooperate label,
+    .profile_village label,
+    .profile_land_size label,
+    .profile_primary_chain label{
+ 
+        font-size: 6px;
+    
+    }
+    
+}
+
+@media screen and (max-width: 150px) {
+    .profile_household label,
+     .profile_role label,
+     .profile_name label,
+     .profile_email label,
+     .profile_phone_number label,
+     .profile_Nationl_id_number label,
+     .profile_sub_county label,
+     .profile_church label,
+     .profile_ward label,
+     .profile_economic_activity label,
+     .profile_secondary_chain label,
+     .profile_county label,
+     .profile_cooperate label,
+     .profile_village label,
+     .profile_land_size label,
+     .profile_primary_chain label{
+  
+         font-size: 4px;
+     
+     }
+     
+ }
+ @media screen and (max-width: 100px) {
+
+     *{
+        visibility: hidden;
+     }
+ }
