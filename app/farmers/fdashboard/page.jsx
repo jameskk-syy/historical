@@ -20,7 +20,7 @@ import Link from "next/link";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { MdSunny } from "react-icons/md";
 import { Doughnut } from "react-chartjs-2";
-import Axios from "axios";
+import axios from "axios";
 import DataTable from "react-data-table-component";
 import { getCurrency } from "../api";
 
@@ -196,34 +196,88 @@ function FDashboard() {
     ];
   
 
+    // Transactions
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [registrationNumber, setRegistrationNumber] = useState();
+    const [amount, setAmount] = useState();
+    const [datas, setData] = useState([]);
+    const [filter, setFilter] = useState([]);
+    const [search, setSearch] = useState("");
+
+    const tableHeaderStyle = {
+      headCells: {
+        style: {
+          backgroundColor: "white",
+          fontWeight: "bold",
+          fontSize: "14px",
+        },
+      },
+    };
+    const columnsTransacion = [
+      {
+        name: "Transaction Date",
+        selector: (row) => row.date_deposited,
+      },
+      {
+        name: "Transaction Status",
+        selector: (row) => row.status,
+      },
+      {
+        name: "Transaction Code",
+        selector: (row) => row?.['Transaction Code'],
+      },
+      {
+        name: "Amount",
+        selector: (row) => row.amount,
+      },
+    ];
+
+    useEffect(() => {
+      async function fetchData() {
+        const userPhone = localStorage.getItem("userPhone");
+        try {
+          const response = await axios.post(
+            "https://us-central1-farmfuzion.cloudfunctions.net/get_savings",
+            {
+              message: {
+                phoneNumber: userPhone,
+              },
+            }
+          );
+          // console.log("Savings Response",response.data.data)
+          const responseDataArray = Object.values(response.data);
+          setData(Object.values(responseDataArray[1]));
+          setFilter(Object.values(responseDataArray[1]));
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+      fetchData();
+    }, []);
+  
+    useEffect(() => {
+      const filteredData = datas.filter((item) => {
+        if (!item) return false;
+        const { date_deposited, status, amount } = item;
+        return (
+          (date_deposited &&
+            date_deposited.toLowerCase().includes(search.toLowerCase())) ||
+          (status && status.toLowerCase().includes(search.toLowerCase())) ||
+          (amount &&
+            amount.toString().toLowerCase().includes(search.toLowerCase()))
+        );
+      });
+      setFilter(filteredData);
+    }, [search, datas]);
+    console.log(data[1]);
+
   return (
     <div className="flex flex-col  min-h-screen">
       <SideNav
         isSidebarExpanded={isSidebarExpanded}
         toggleSidebar={toggleSidebar}
       />
-      {/* <div className={`flex flex-col  sm:flex-row  mx-5 text-textcolor font-abc gap-8 transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"} sm:ml-3   mt-2 h-96`}
-      >
-        <div className="flex flex-col rounded-md shadow-md md:w-1/2 w-full">
-          <h1 className="text-2xl font-abc text-card3  p-1">Exchange Rates</h1>
-          <DataTable
-            columns={columns}
-            data={data}
-            responsive
-          />
-        </div>
-        <div className="food-prices rounded-md shadow-md md:w-1/2 w-full">
-          <h1 className="text-2xl text-card3 font-abc p-1">Food Prices</h1>
-          <DataTable
-            columns={columnsP}
-            data={foodPrices}
-            // pagination
-            // highlightOnHover
-            // striped
-            responsive
-          />
-        </div>
-      </div> */}
+    
       <div
         className={`flex flex-col md:flex-row transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } sm:ml-3 mt-4 me-3`}
@@ -280,14 +334,7 @@ function FDashboard() {
           </div>
         </div>
         <div className="flex flex-col md:w-5/12 w-full">
-          <div className="flex flex-col text-textcolor font-abc m-3 p-3 items-center justify-between flex-grow shadow-md rounded-md h-96">
-          <h1 className="text-2xl font-abc text-card3  p-1">Exchange Rates</h1>
-          <DataTable
-            columns={columns}
-            data={data}
-            responsive
-          />
-        </div>
+         
   
           <div className="flex flex-col m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md">
           <h1 className="text-2xl text-card3 font-abc p-1">Food Prices</h1>
@@ -299,6 +346,20 @@ function FDashboard() {
             // striped
             responsive
           />
+        
+        </div>
+        <div className="flex flex-col m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md">
+          <h1 className="text-2xl font-abc text-card3  p-1">Transactions</h1>
+          <DataTable
+            customStyles={tableHeaderStyle}
+              columns={columnsTransacion}
+              data={filter}
+              pagination
+              paginationPerPage={3}
+              fixedHeader
+              selectableRowsHighlight
+              highlightOnHover
+            />
         </div>
         </div>
         {/* Weather Column */}
@@ -313,28 +374,28 @@ function FDashboard() {
           </div>
           <div className="flex flex-row w-full justify-between p-3 ">
             <GiWindsock className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Wind Speed</p>
+            <p className="font-abc  text-white">Wind Speed</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">3Km/h</p>
             </div>
           </div>
           <div className="flex flex-row w-full justify-between p-3 ">
             <GiRaining className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Rain Chance</p>
+            <p className="font-abc  text-white">Rain Chance</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">40%</p>
             </div>
           </div>
           <div className="flex flex-row w-full justify-between p-3 ">
             <Air className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Pressure</p>
+            <p className="font-abc  text-white">Pressure</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">720hpa</p>
             </div>
           </div>
           <div className="flex flex-row w-full justify-between p-3 border-b-2">
             <PiSunLight className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">UV Index</p>
+            <p className="font-abc  text-white">UV Index</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">2,3</p>
             </div>
@@ -342,50 +403,42 @@ function FDashboard() {
           <p className="font-abc text-4xl text-white justify-start">Forecast</p>
           <div className="flex flex-row w-full justify-between p-3">
             <TiWeatherPartlySunny className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Sunny</p>
+            <p className="font-abc  text-white">Sunny</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">{formattedDate}</p>
             </div>
           </div>
           <div className="flex flex-row w-full justify-between p-3">
             <GiRaining className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Rainy</p>
+            <p className="font-abc  text-white">Rainy</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">{formattedDate}</p>
             </div>
           </div>
           <div className="flex flex-row w-full justify-between p-3">
             <MdSunny className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Sunny</p>
+            <p className="font-abc  text-white">Sunny</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">{formattedDate}</p>
             </div>
           </div>
           <div className="flex flex-row w-full justify-between p-3 border-b-2">
             <TiWeatherPartlySunny className="text-white text-3xl" />
-            <p className="font-abc text-2xl text-white">Sunny</p>
+            <p className="font-abc  text-white">Sunny</p>
             <div className="flex flex-col">
               <p className="font-abc text-xl text-white">{formattedDate}</p>
             </div>
           </div>
-          <div className="flex flex-row w-full justify-between p-3">
-            <p className="font-abc text-2xl text-white">Sunrise and sunset</p>
-            <p className="font-abc text-2xl text-white">Location</p>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3 bg-card3">
-            <div className="flex flex-col">
-              <GiSunrise className="text-white text-4xl" />
-              <p className="font-abc text-xl text-white">{formattedTime}</p>
-            </div>
-            <p className="font-abc text-3xl text-white">2 hours ago</p>
-          </div>
-          <div className="flex flex-row w-full justify-between p-4 bg-card3">
-            <div className="flex flex-col">
-              <GiSunset className="text-white text-4xl" />
-              <p className="font-abc text-xl text-white">{formattedTime}</p>
-            </div>
-            <p className="font-abc text-3xl text-white">7 hours to come</p>
-          </div>
+          <div className="flex flex-col w-full justify-between p-3">
+          <h1 className="text-2xl font-abc text-white p-1">Exchange Rates</h1>
+          <div className="flex flex-col text-textcolor font-abc p-2 items-center justify-between flex-grow  rounded-md h-96">
+          <DataTable
+            columns={columns}
+            data={data}
+            responsive
+          />
+        </div>
+        </div>
         </div>
         
       </div>

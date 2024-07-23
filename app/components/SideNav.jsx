@@ -26,6 +26,7 @@ import Link from "next/link";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { MdAgriculture } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
 
 
 export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
@@ -282,9 +283,9 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                     </div>
                     <div
                       onClick={() => handleLogout()}
-                      className="flex  mb-1 justify-start items-center gap-4 pl-5 hover:bg-sidenav p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
+                      className="flex  mb-1 justify-start items-center gap-4 pl-5 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto  md:mt-40  lg:mt-40 "
                     >
-                      <LogoutOutlined  onClick={toggleSidebar} className="text-2xl  group-hover:text-white text-white  " />
+                      <BiLogOut  onClick={toggleSidebar} className="text-2xl  group-hover:text-white text-white" />
                       {isSidebarExpanded && (
                         <h3 className="text-base text-white  group-hover:text-white  font-semibold ">
                           Log out

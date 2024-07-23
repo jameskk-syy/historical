@@ -6,6 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
 import toast from "react-hot-toast";
 
 export default function Page() {
@@ -39,9 +40,87 @@ export default function Page() {
     }
     
   });
-   const handleSearch = (term) => {
-  //   alert(term)
-   }
+//  loan requests
+const columns = [
+  {
+    name: "Phone No.",
+    selector: (row) => row.phoneNumber,
+  },
+  {
+    name: "Loan type",
+    selector: (row) => row.loanCategory,
+  },
+  {
+    name: "Amount requested",
+    selector: (row) => row.desiredLoanAmount,
+  },
+  {
+    name: "Loan status",
+    selector: (row) => row.loanStatus,
+  },
+  {
+    name: "Bank Account Number",
+    selector: (row) => row.bankAccountNumber,  
+
+  },
+  {
+    name: "Mode of paymentr",
+    selector: (row) => row.modeOfPayment,
+
+  },
+  {
+  },
+];
+const [requestedLoans, setRequestedLoans] = useState([]);
+const [filter, setFilter] = useState([]);
+const [search, setSearch] = useState("");
+
+useEffect(() => {
+  const phoneNumber = window.localStorage.getItem("userPhone");
+  // console.log(phoneNumber);
+
+  axios.post(
+    "https://us-central1-farmfuzion.cloudfunctions.net/getrequestedloans",
+    {
+      phoneNumber: phoneNumber,
+    }
+  )
+    .then((response) => {
+      setRequestedLoans(response.data.loan_requests);
+      console.log("Loan Requests", response.data.loan_requests);
+
+    })
+    .catch((error) => {
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Error",
+      //   text: "There was an error fetching requested loans.",
+      // });
+      console.error("There was an error fetching requested loans:", error);
+    });
+}, []);
+
+useEffect(() => {
+  const result = requestedLoans.filter((item) => {
+    return (
+      item.phoneNumber.toLowerCase().includes(search.toLowerCase())
+    );
+  });
+  setFilter(result);
+}, [search, requestedLoans]);
+
+const tableHeaderStyle = {
+  headCells: {
+    style: {
+      backgroundColor: "#f3f4ff",
+      //   color: 'white',
+      fontWeight: "bold",
+      fontSize: "14px",
+    },
+  },
+};
+
+
   return (
     <div className="flex flex-col  min-h-screen md:h-[100%] overflow-x-hidden">
       <SideNav
@@ -112,49 +191,6 @@ export default function Page() {
           <p className="text-center font-abc">Loading...</p>
         )}
       </div>
-
-      {/* <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row flex-grow md:ml-64 sm:ml-3 mt-4 me-3'>
-                <div className='flex flex-col shadow rounded-md  m-4 p-4'>
-                    <div className='flex flex-row justify-between'>
-                        <h1 className='text-blue-600 font-abc font-semibold'>Post harvestLoan</h1>
-                        <CreditScore />
-                    </div>
-                    <div>
-                        <p className='text-gray-600'>Loan product designated to business involved in horticulture activities, such as cultivation, production, and marketing of fruits.</p>
-                    </div>
-                    <div className='flex flex-row justify-between mt-3'>
-                        <button className='bg-green-400 rounded-md m-1 p-1 px-4 text-white'>Get Loan</button>
-                        <h1 className='text-red-500'>Benefits</h1>
-                    </div>
-                </div>
-
-                <div className='flex flex-col shadow rounded-md  m-4 p-4'>
-                    <div className='flex flex-row justify-between'>
-                        <h1 className='text-blue-600 font-abc font-semibold'>Expansion Loan</h1>
-                        <CreditScore />
-                    </div>
-                    <div>
-                        <p className='text-gray-600'>Loan product designated to business involved in horticulture activities, such as cultivation, production, and marketing of fruits.</p>
-                    </div>
-                    <div className='flex flex-row justify-between mt-3'>
-                        <button className='bg-green-400 rounded-md m-1 p-1 px-4 text-white'>Get Loan</button>
-                        <h1 className='text-red-500'>Benefits</h1>
-                    </div>
-                </div>
-                <div className='flex flex-col shadow rounded-md  m-4 p-4'>
-                    <div className='flex flex-row justify-between'>
-                        <h1 className='text-blue-600 font-abc font-semibold'>Consumer Loan</h1>
-                        <CreditScore />
-                    </div>
-                    <div>
-                        <p className='text-gray-600'>Loan product designated to business involved in horticulture activities, such as cultivation, production, and marketing of fruits.</p>
-                    </div>
-                    <div className='flex flex-row justify-between mt-3'>
-                        <button className='bg-green-400 rounded-md m-1 p-1 px-4 text-white'>Get Loan</button>
-                        <h1 className='text-red-500'>Benefits</h1>
-                    </div>
-                </div>
-            </div> */}
       <div
         className={`flex flex-col w-full md:w-full mt-10 px-5 sm:flex-row  md:flex-row lg:flex-row flex-grow transition-all duration-200 ease-out  ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } sm:ml-3 mt-4 me-10`}
@@ -195,14 +231,25 @@ export default function Page() {
         </div>
       </div>
       <div
-        className={`flex px-5 flex-col sm:flex-row md:flex-row lg:flex-row flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-          } sm:ml-3 mt-4 me-3 `}
+        className={`flex flex-col w-full ms-10 me-4 sm:ms-4 sm:me-4 md:w-full mt-10 px-5 sm:flex-row  md:flex-row lg:flex-row flex-grow transition-all duration-200 ease-out  ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } sm:ml-3 mt-4 me-10`}
       >
-        <div className="flex flex-col w-full ms-10 me-4 sm:ms-4 sm:me-4">
-          <h1 class="text-textcolor font-abc  font-semibold text-xl">Loan FAQ</h1>
-          <Accordion />
+        <div className="flex flex-col w-full ">
+        <h1 className="text-green-700  font-abc mt-6 text-2xl">
+          Loan Requests
+        </h1>
+        <DataTable
+          customStyles={tableHeaderStyle}
+          columns={columns}
+          data={filter}
+          pagination
+          fixedHeader
+          selectableRowsHighlight
+          highlightOnHover
+          subHeader
+        />
         </div>
       </div>
-    </div>
+      </div>
   );
 }
