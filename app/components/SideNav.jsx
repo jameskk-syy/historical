@@ -283,7 +283,11 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                     </div>
                     <div
                       onClick={() => handleLogout()}
+<<<<<<< HEAD
                       className="flex  mb-1 justify-start items-center gap-4 pl-5 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto  md:mt-40  lg:mt-40 "
+=======
+                      className="flex mt-20  mb-1 justify-start items-center gap-4 pl-5 hover:bg-sidenav p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
+>>>>>>> f8d6037e8b8b70c5f8fd800a55ae8e52fa544e8f
                     >
                       <BiLogOut  onClick={toggleSidebar} className="text-2xl  group-hover:text-white text-white" />
                       {isSidebarExpanded && (

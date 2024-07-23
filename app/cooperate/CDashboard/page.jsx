@@ -6,7 +6,10 @@ import SB5 from "@/app/components/SB5";
 import BarCharts from "@/app/components/BarCharts";
 import { Group, GroupAddOutlined, GroupOutlined } from "@mui/icons-material";
 import Image from "next/image";
+import Axios from "axios";
 import Link from "next/link";
+import DataTable from "react-data-table-component";
+import * as XLSX from "xlsx"; // Import the xlsx library
 
 export default function Cooperative_Dashboard() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -18,6 +21,130 @@ export default function Cooperative_Dashboard() {
   useEffect(() => {
     setCooperativeName(window.localStorage.getItem("cooperativeName"));
   }, []);
+  const [farmers, setFarmers] = useState([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  
+  const columns = [
+    {
+      name: "Phone Number",
+      selector: (row) => row.phoneNumber,
+      sortable: true,
+    },
+    {
+      name: "ID Number",
+      selector: (row) => row.idNumber,
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.email,
+      sortable: true,
+    },
+    {
+      name: "Cooperative",
+      selector: (row) => row.cooperative,
+      sortable: true,
+    },
+    {
+      name: "Land Size",
+      selector: (row) => row.landSize,
+      sortable: true,
+    },
+    {
+      name: "Primary Value Chain",
+      selector: (row) => row.primaryValueChain,
+      sortable: true,
+    },
+    {
+      name: "Secondary Value Chain",
+      selector: (row) => row.secondaryValueChain,
+      sortable: true,
+    },
+    {
+      name: "County",
+      selector: (row) => row.county,
+      sortable: true,
+    },
+    {
+      name: "Sub County",
+      selector: (row) => row.subCounty,
+      sortable: true,
+    },
+  ];
+
+  useEffect(() => {
+    setLoading(true);
+    Axios.post(
+      "https://us-central1-farmfuzion.cloudfunctions.net/getallmembersbyrole",
+      {
+        role: "farmer",
+      }
+    )
+      .then((response) => {
+        console.log("Farmers", response.data);
+        setLoading(false);
+        const farmersData = response.data.members;
+        setFarmers(farmersData);
+      })
+      .catch((error) => {
+        console.error("Error fetching farmer data:", error);
+      });
+  }, []);
+
+  const filteredFarmers = farmers.filter(
+    (farmer) =>
+      farmer.phoneNumber.toLowerCase().includes(search.toLowerCase()) ||
+      farmer.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const downloadExcel = () => {
+    const headers = [
+      "Phone Number",
+      "ID Number",
+      "Email",
+      "Cooperative",
+      "Land Size",
+      "Primary Value Chain",
+      "Secondary Value Chain",
+      "County",
+      "Sub County",
+    ];
+
+    const worksheetData = [
+      headers,
+      ...filteredFarmers.map((row) => [
+        row.phoneNumber,
+        row.idNumber,
+        row.email,
+        row.cooperative,
+        row.landSize,
+        row.primaryValueChain,
+        row.secondaryValueChain,
+        row.county,
+        row.subCounty,
+      ]),
+    ];
+
+    const ws = XLSX.utils.aoa_to_sheet(worksheetData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Farmers");
+
+    // Generate buffer
+    XLSX.writeFile(wb, "Farmers.xlsx");
+  };
+
+  const tableHeaderStyle = {
+    headCells: {
+      style: {
+        backgroundColor: '#f3f4ff',
+        fontWeight: 'bold',
+        fontSize: '14px',
+        color: '#01565b',
+        fontFamily: 'abc'
+      }
+    }
+  };
   return (
     <>
       <SB5
@@ -74,8 +201,61 @@ export default function Cooperative_Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="w-full shadow mt-14" style={{ height: "550px" }}>
+            <div className="w-full shadow mt-14 h-96" >
               <BarCharts />
+              <div className="flex md:flex-row lg:flex-row mt-4 justify-between p-2 flex-col ">
+            <div></div>
+            <div className="">
+              <input
+                type="text"
+                placeholder="Search by Phone Number ..."
+                style={{
+                  padding: '10px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                  // marginBottom: '3px'
+                }}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <button
+                onClick={downloadExcel}
+                className="bg-card3 text-white py-3 rounded-md p-4 ml-6"
+              >
+                Download Farmers List
+              </button>
+            </div>
+          </div>
+          {loading ? (
+            <p className="text-xl text-center font-abc mt-24">Loading</p>
+          ) : (
+            <DataTable
+              customStyles={tableHeaderStyle}
+              columns={columns}
+              data={filteredFarmers}
+              pagination
+              paginationPerPage={3}
+              paginationRowsPerPageOptions={[3]}
+              highlightOnHover
+              fixedHeader
+              selectableRowsHighlight
+              subHeader
+              // subHeaderComponent={
+              //   // <input
+              //   //   type="text"
+              //   //   placeholder="Search by Phone Number ..."
+              //   //   style={{
+              //   //     padding: '10px',
+              //   //     borderRadius: '5px',
+              //   //     border: '1px solid #ccc',
+              //   //     marginBottom: '3px'
+              //   //   }}
+              //   //   value={search}
+              //   //   onChange={(e) => setSearch(e.target.value)}
+              //   // />
+              // }
+            />
+          )}
             </div>
           </div>
           <div className="shadow-md rounded-md lg:w-1/4 w-full bg-card">

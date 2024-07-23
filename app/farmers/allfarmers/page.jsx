@@ -147,7 +147,7 @@ export default function AllFarmers() {
         className={`flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } mt-4 me-3`}
       >
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-10">
           <div className="flex flex-row sm:flex-row w-full justify-between ms-4 me-4 ">
             {/* <div>
               <h1 className="text-card3 font-semibold text-3xl font-abc">
@@ -155,7 +155,7 @@ export default function AllFarmers() {
               </h1>
             </div> */}
           </div>
-          <h2 className="text-2xl mb-4 text-card3 font-abc ">
+          <h2 className="text-xl font-semibold mb-4 text-card3 font-abc ">
             All Farmers
           </h2>
           <div className="flex md:flex-row lg:flex-row justify-between p-2 flex-col ">

@@ -534,7 +534,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                     </div>
                     <div
                       onClick={handleLogout}
-                      className="flex mb-4 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
+                      className="flex mb-4 mt-20 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
                     >
                       <RiLogoutCircleLine className="text-xl text-white group-hover:text-white transition-transform transform hover:scale-125" />
                       {isSidebarExpanded && (
