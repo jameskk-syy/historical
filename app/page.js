@@ -1,5 +1,5 @@
 "use client";
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -126,14 +126,12 @@ export default function Home() {
     }
   };
 
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState("");
 
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     setYear(currentYear);
   }, []);
-
-  
 
   return (
     <div className="min-h-screen h-screen overflow-hidden">
@@ -153,14 +151,16 @@ export default function Home() {
           }}
         >
           <CircularProgress className="mr-10" />
-          <p className="font-abc">Please wait,while system is logging you in...</p>
+          <p className="font-abc">
+            Please wait,while system is logging you in...
+          </p>
         </Box>
       )}
       <div className="w-full flex md:flex-row lg:flex-row flex-col h-full">
         <div className="flex flex-col md:w-full items-center lg:w-5/12 w-full h-full overflow-hidden">
           <div className="flex flex-col items-center  w-full lg:w-10/12 md:px-20 md:py-10 lg:py-10 lg:px-20 py-2 px-4">
             <div className="w-full flex mt-8 flex-col">
-            <p className="mb-4 text-lg text-card3 font-abc">coming soon to</p>
+              <p className="mb-4 text-lg text-card3 font-abc">coming soon to</p>
               <div className="flex flex-row justify-between">
                 <div className="flex flex-row py-3 px-5 items-center rounded-md border border-gray-300">
                   <Image
@@ -170,7 +170,9 @@ export default function Home() {
                     alt="Farm fuzion"
                     className="object-contain"
                   />
-                  <p className="ml-3 text-card3 font-abc font-bold">Google Play</p>
+                  <p className="ml-3 text-card3 font-abc font-bold">
+                    Google Play
+                  </p>
                 </div>
                 <div className="flex flex-row py-3 px-5 items-center rounded-md border border-gray-300">
                   <Image
@@ -180,12 +182,14 @@ export default function Home() {
                     alt="Farm fuzion"
                     className="object-contain"
                   />
-                  <p className="ml-3 text-card3 font-abc font-bold">Apple Store</p>
+                  <p className="ml-3 text-card3 font-abc font-bold">
+                    Apple Store
+                  </p>
                 </div>
               </div>
             </div>
             <div className="w-full mt-14">
-               <p className="text-card3 text-2xl font-abc font-bold">Sign In</p>
+              <p className="text-card3 text-2xl font-abc font-bold">Sign In</p>
             </div>
             <form className="w-full mt-10" onSubmit={handleLogin}>
               <div
@@ -227,7 +231,8 @@ export default function Home() {
                   className="border border-blue-100  focus:outline-none focus:ring-0 focus:border-0"
                 />
                 <span className="ml-3 text-sm font-abc text-gray-700">
-                  I agree to the terms and conditions
+                  By logging in, I agree to the privacy policy, terms, and
+                  conditions.
                 </span>
               </div>
               <div className="w-full mt-5">
@@ -251,7 +256,10 @@ export default function Home() {
                 </Link>
               </div>
               <div className="w-full flex items-center flex-col mt-8">
-                <p className="text-card3">&copy; <span>{year}</span> All rights reserved. <u>msimbo.io</u></p>
+                <p className="text-card3">
+                  &copy; <span>{year}</span> All rights reserved.{" "}
+                  <u>msimbo.io</u>
+                </p>
               </div>
             </form>
           </div>
