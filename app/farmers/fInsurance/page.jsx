@@ -482,7 +482,7 @@ export default function farmer_insurance_Page() {
         {/* ``````````````````````````````insurance Section 4``````````````````````````````````````````````````````````` */}
         {/* ```````````````````````````````````````````````````````````````````````````````````````````````````````````` */}
         {/* ````````````````````````````````````````````````````````````````````````````````````````````````````````````` */}
-        <div className="flex justify-start mt-1 h-6 w-full relative   mt-2 gap-x-6 p-1 mx_w:flex-col mx_w:gap-y-2 mx_w:h-8  ">
+        <div className="flex justify-start h-6 w-full relative   mt-2 gap-x-6 p-1 mx_w:flex-col mx_w:gap-y-2 mx_w:h-8  ">
           <label
             className=" text-green-600  xs:text-text_mini  mx_w:text-mid very_s:text-vs"
             style={{
@@ -493,7 +493,7 @@ export default function farmer_insurance_Page() {
             Insurance FAQs
           </label>
         </div>
-        <div className="flex flex-col mt-0 h-64 w-full relative   mt-0 gap-x-6 p-1 mx_w:flex-col mx_w:gap-y-2 mx_w:h-60  ">
+        <div className="flex flex-col  h-64 w-full relative   mt-0 gap-x-6 p-1 mx_w:flex-col mx_w:gap-y-2 mx_w:h-60  ">
           <InsuranceFAQ />
         </div>
       </div>

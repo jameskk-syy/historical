@@ -40,14 +40,6 @@ export default function LoanRequests() {
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
 
-  // const [phoneNumber, setPhoneNumber] = useState("");
-
-  // useEffect(() => {
-  //   const savedPhoneNumber = window.localStorage.getItem("userPhone");
-  //   setPhoneNumber(savedPhoneNumber || "");
-  // }, []);
-
-
   useEffect(() => {
     const phoneNumber = window.localStorage.getItem("userPhone");
     // console.log(phoneNumber);
