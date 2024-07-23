@@ -282,7 +282,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                     </div>
                     <div
                       onClick={() => handleLogout()}
-                      className="flex  mb-1 justify-start items-center gap-4 pl-5 hover:bg-sidenav p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
+                      className="flex mt-20  mb-1 justify-start items-center gap-4 pl-5 hover:bg-sidenav p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
                     >
                       <LogoutOutlined  onClick={toggleSidebar} className="text-2xl  group-hover:text-white text-white  " />
                       {isSidebarExpanded && (
