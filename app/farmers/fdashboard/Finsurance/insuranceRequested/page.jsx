@@ -48,8 +48,8 @@ export default function Page() {
     },
   ];
   const [insuranceRequestedServices, setinsuranceRequestedServices] = useState([]);
-  const [filter, setFilter] = useState([]);
-  const [search, setSearch] = useState("");
+  const [filtered, setFiltered] = useState([]);
+  const [searched, setSearched] = useState("");
 
   // const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -81,11 +81,11 @@ export default function Page() {
   useEffect(() => {
     const result = insuranceRequestedServices.filter((item) => {
       return (
-        item.phoneNumber.toLowerCase().includes(search.toLowerCase())
+        item.phoneNumber.toLowerCase().includes(searched.toLowerCase())
       );
     });
-    setFilter(result);
-  }, [search, insuranceRequestedServices]);
+    setFiltered(result);
+  }, [searched, insuranceRequestedServices]);
 
   const tableHeaderStyle = {
     headCells: {
@@ -116,7 +116,7 @@ export default function Page() {
         <DataTable
           customStyles={tableHeaderStyle}
           columns={columns}
-          data={filter}
+          data={filtered}
           pagination
           fixedHeader
           selectableRowsHighlight

@@ -89,7 +89,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                   </div>
                   <div className="my-4 pb-4">
                     <div className="flex mb-1 justify-start items-center gap-4 pl-5 hover:bg-lavender  p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                      <DashboardOutlined className="text-2xl text-white  " />
+                      <DashboardOutlined   onClick={toggleSidebar} className="text-2xl text-white  " />
                       {isSidebarExpanded && (
                         <Link
                           href="/superadmin"
@@ -104,7 +104,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleDropdown}
                       >
-                        <CorporateFareOutlined className="text-2xl text-white  " />
+                        <CorporateFareOutlined   onClick={toggleSidebar} className="text-2xl text-white  " />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  ">
@@ -143,7 +143,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/corporate/allcorporates/"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -171,7 +171,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleLoanDropdown}
                       >
-                        <AccountBalance className="text-2xl text-white  group-hover:text-white " />
+                        <AccountBalance   onClick={toggleSidebar} className="text-2xl text-white  group-hover:text-white " />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -210,7 +210,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isloansOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/superadmin/companyaff"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -237,7 +237,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleAffDropdown}
                       >
-                        <Groups2 className="text-2xl text-white  group-hover:text-white " />
+                        <Groups2    onClick={toggleSidebar} className="text-2xl text-white  group-hover:text-white " />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -276,7 +276,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isaffiliateOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/superadmin/companyaff"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -298,7 +298,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleUserDropdown}
                       >
-                        <People className="text-2xl text-white  group-hover:text-white " />
+                        <People   onClick={toggleSidebar} className="text-2xl text-white  group-hover:text-white " />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -337,7 +337,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isUsersOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/farmers/allfarmers"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -359,7 +359,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleAgriDropdown}
                       >
-                        <MdAgriculture className="text-2xl text-white  group-hover:text-white " />
+                        <MdAgriculture   onClick={toggleSidebar} className="text-2xl text-white  group-hover:text-white " />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -398,7 +398,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isAgriOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/superadmin/companyaff"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -476,7 +476,10 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                   </div>
                   <div className="my-4 pb-4">
                     <div className="flex mb-1 justify-start items-center gap-4 pl-5 hover:bg-lavender  p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                      <DashboardOutlined className="text-2xl text-white  " />
+                      <DashboardOutlined
+                        onClick={toggleSidebar}
+                        className="text-2xl text-white  "
+                      />
                       {isSidebarExpanded && (
                         <Link
                           href="/superadmin"
@@ -491,7 +494,10 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleDropdown}
                       >
-                        <CorporateFareOutlined className="text-2xl text-white  " />
+                        <CorporateFareOutlined
+                          onClick={toggleSidebar}
+                          className="text-2xl text-white  "
+                        />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  ">
@@ -530,7 +536,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/corporate/allcorporates/"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -541,14 +547,14 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                             href="/corporate/register"
                             className="block text-sm text-white  hover:bg-lavender p-2"
                           >
-                            Add New Cooperative
+                            New Cooperative
                           </Link>
                           <Link
                             href="/corporate/register"
                             className="block text-sm text-white  hover:bg-lavender p-2"
                           >
                             {" "}
-                            Cooperative Savings
+                            Savings
                           </Link>
                         </div>
                       )}
@@ -558,7 +564,10 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleLoanDropdown}
                       >
-                        <AccountBalance className="text-2xl text-white  group-hover:text-white " />
+                        <AccountBalance
+                          onClick={toggleSidebar}
+                          className="text-2xl text-white  group-hover:text-white "
+                        />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -597,7 +606,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isloansOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href=""
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -620,40 +629,83 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                       )}
                     </div>
                     <div className="mb-1">
-                                            <div className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg" onClick={toggleAffDropdown}>
-                                                <Groups2 className="text-2xl text-white  group-hover:text-white " />
-                                                {isSidebarExpanded && (
-                                                    <div className="flex items-center">
-                                                        <h3 className="text-base text-white  group-hover:text-white ">Afilliates</h3>
-                                                        <span className="ml-1">
-                                                            {isaffiliateOpen ? (
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white  group-hover:text-white " viewBox="0 0 20 20" fill="currentColor">
-                                                                    <path fillRule="evenodd" d="M10 8a1 1 0 01.707-.293l3 3a1 1 0 01-1.414 1.414L10 9.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 8z" clipRule="evenodd" />
-                                                                </svg>
-
-                                                            ) : (
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white  group-hover:text-white " viewBox="0 0 20 20" fill="currentColor">
-                                                                    <path fillRule="evenodd" d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 111.414-1.414L10 10.586l2.293-2.293a1 1 0 111.414 1.414l-3 3A1 1 0 0110 12z" clipRule="evenodd" />
-                                                                </svg>
-                                                            )}
-                                                        </span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                            {isaffiliateOpen && isSidebarExpanded && (
-                                                <div className="pl-5 pt-2 pb-1">
-                                                    <Link href="/superadmin/companyaff" className="block text-sm text-white  hover:bg-lavender p-2">Company</Link>
-                                                    <Link href="/farmers/register" className="block text-sm text-white  hover:bg-lavender p-2">Add Farmers</Link>
-                                                    <Link href="/superadmin/individualAffiliate" className="block text-sm text-white  hover:bg-lavender p-2">Individual</Link>
-                                                </div>
-                                            )}
-                                        </div>
+                      <div
+                        className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
+                        onClick={toggleAffDropdown}
+                      >
+                        <Groups2
+                          onClick={toggleSidebar}
+                          className="text-2xl text-white  group-hover:text-white "
+                        />
+                        {isSidebarExpanded && (
+                          <div className="flex items-center">
+                            <h3 className="text-base text-white  group-hover:text-white ">
+                              Afilliates
+                            </h3>
+                            <span className="ml-1">
+                              {isaffiliateOpen ? (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5 text-white  group-hover:text-white "
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M10 8a1 1 0 01.707-.293l3 3a1 1 0 01-1.414 1.414L10 9.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 8z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              ) : (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5 text-white  group-hover:text-white "
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 111.414-1.414L10 10.586l2.293-2.293a1 1 0 111.414 1.414l-3 3A1 1 0 0110 12z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              )}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      {isaffiliateOpen && isSidebarExpanded && (
+                        <div className="pl-14 pt-2 pb-1">
+                          <Link
+                            href="/superadmin/companyaff"
+                            className="block text-sm text-white  hover:bg-lavender p-2"
+                          >
+                            Company
+                          </Link>
+                          <Link
+                            href="/farmers/register"
+                            className="block text-sm text-white  hover:bg-lavender p-2"
+                          >
+                            Add Farmers
+                          </Link>
+                          <Link
+                            href="/superadmin/individualAffiliate"
+                            className="block text-sm text-white  hover:bg-lavender p-2"
+                          >
+                            Individual
+                          </Link>
+                        </div>
+                      )}
+                    </div>
                     <div className="mb-1">
                       <div
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleUserDropdown}
                       >
-                        <People className="text-2xl text-white  group-hover:text-white " />
+                        <People
+                          onClick={toggleSidebar}
+                          className="text-2xl text-white  group-hover:text-white "
+                        />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -692,7 +744,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isUsersOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/farmers/allfarmers"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -714,7 +766,10 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         className="flex justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleAgriDropdown}
                       >
-                        <MdAgriculture className="text-2xl text-white  group-hover:text-white " />
+                        <MdAgriculture
+                          onClick={toggleSidebar}
+                          className="text-2xl text-white  group-hover:text-white "
+                        />
                         {isSidebarExpanded && (
                           <div className="flex items-center">
                             <h3 className="text-base text-white  group-hover:text-white ">
@@ -753,7 +808,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                         )}
                       </div>
                       {isAgriOpen && isSidebarExpanded && (
-                        <div className="pl-5 pt-2 pb-1">
+                        <div className="pl-14 pt-2 pb-1">
                           <Link
                             href="/superadmin/companyaff"
                             className="block text-sm text-white  hover:bg-lavender p-2"
@@ -785,7 +840,10 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                       </h1>
                     )}
                     <div className="flex mb-1 justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                      <Person className="text-2xl text-white  group-hover:text-white " />
+                      <Person
+                        onClick={toggleSidebar}
+                        className="text-2xl text-white  group-hover:text-white "
+                      />
                       {isSidebarExpanded && (
                         <Link
                           href="/superadmin/profile"
@@ -797,7 +855,7 @@ export default function SideNav({ isSidebarExpanded, toggleSidebar }) {
                     </div>
                     <div
                       onClick={handleLogout}
-                      className="flex mb-1 justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
+                      className="flex mb-0 mt-20 justify-start items-center gap-4 pl-5 hover:bg-lavender p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
                     >
                       <Logout className="text-2xl text-white  group-hover:text-white " />
                       {isSidebarExpanded && (

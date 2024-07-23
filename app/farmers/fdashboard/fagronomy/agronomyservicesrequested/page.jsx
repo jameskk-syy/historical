@@ -35,7 +35,7 @@ export default function Page() {
       //   )
     },
   ];
-  const [agronomyservices, setAgronomyServices] = useState([]);
+  const [agronomyservicesRequested, setAgronomyServicesRequested] = useState([]);
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -54,7 +54,7 @@ export default function Page() {
     Axios.get(
       `https://us-central1-farmfuzion.cloudfunctions.net/agronomy_requests?phoneNumber=${phoneNumber}`)
       .then((response) => {
-        setAgronomyServices(response.data.payload);
+        setAgronomyServicesRequested(response.data.payload);
         // console.log("Loan Requests", response.data.payload);
 
       })
@@ -69,13 +69,13 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    const result = agronomyservices.filter((item) => {
+    const result = agronomyservicesRequested.filter((item) => {
       return (
         item.phoneNumber.toLowerCase().includes(search.toLowerCase())
       );
     });
     setFilter(result);
-  }, [search, agronomyservices]);
+  }, [search, agronomyservicesRequested]);
 
   const tableHeaderStyle = {
     headCells: {
