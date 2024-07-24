@@ -176,7 +176,7 @@ export default function Savings() {
       }
     )
     .then((response) => {
-      console.log("Response Total Savings:", response.data);
+      // console.log("Response Total Savings:", response.data);
       setSavings(response.data.total_savings)
       setTotalSavings(response.data.total_savings_current_month)
       // console.log("Total Savings:", response.data.total_savings);
