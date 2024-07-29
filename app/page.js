@@ -107,7 +107,18 @@ export default function Home() {
             router.push("/farmers/fdashboard");
           } else if (userData.role === "cooperative") {
             router.push("/cooperate/CDashboard");
-          } else {
+          }
+          else if (userData.role === "treasurer") {
+            router.push("/cooperate/CDashboard");
+
+          }
+          else if (userData.role === "secretary") {
+            router.push("/cooperate/CDashboard");
+          }
+          else if (userData.role === "chairman") {
+            router.push("/cooperate/CDashboard");
+          }
+          else {
             router.push("/");
           }
 
