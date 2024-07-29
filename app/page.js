@@ -109,7 +109,6 @@ export default function Home() {
             router.push("/cooperate/CDashboard");
           }
           else if (userData.role === "treasurer") {
-<<<<<<< HEAD
             router.push("/corporate/staffDashboard");
           }
           else if (userData.role === "secretary") {
@@ -117,16 +116,6 @@ export default function Home() {
           }
           else if (userData.role === "chairman") {
             router.push("/corporate/staffDashboard");
-=======
-            router.push("/cooperate/CDashboard");
-
-          }
-          else if (userData.role === "secretary") {
-            router.push("/cooperate/CDashboard");
-          }
-          else if (userData.role === "chairman") {
-            router.push("/cooperate/CDashboard");
->>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
           }
           else {
             router.push("/");

@@ -68,7 +68,7 @@ export default function CreateLoan() {
   const [filtered, setFilter] = useState([]);
   const [search, setSearch] = useState("");
   const [showApproval, setApproval] = useState(false);
-  const [userRole,setUserRole] = useState("");
+  // const [userRoles,setUserRoles] = useState("");
   const [phoneNumber,setPhoneNumber] = useState("");
   const [uid,setUid] = useState("");
   const tableHeaderStyle = {
@@ -410,39 +410,22 @@ export default function CreateLoan() {
         toggleSidebar={toggleSidebar}
       />
       <div
-<<<<<<< HEAD
         className={`flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } mt-4 me-3`}
-=======
-        className={`transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-4 md:me-3`}
->>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
       >
         <div className="mt-2">
           <TopCoop />
         </div>
       </div>
       <div
-<<<<<<< HEAD
         className={`flex flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } mt-1 me-3 `}
-=======
-        className={`flex w-full md:pr-14  transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-1 md:me-3 `}
->>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
       >
         <div className="flex w-full flex-col pt-2">
           {/* Stepper Navigation */}
-<<<<<<< HEAD
 
           <div className="mb-3">
             <nav className="flex">
-=======
-          <div className="mb-3 hidden md:flex">
-            <nav className="flex ">
->>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
               <button
                 onClick={() => setActiveStep("loanstatements")}
                 className={`py-2 px-4 border-b-2 ${activeStep === "loanstatements" ? "border-sky-10" : "border-transparent"
