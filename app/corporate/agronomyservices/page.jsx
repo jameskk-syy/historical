@@ -629,7 +629,7 @@ export default function CreateLoan() {
                       <BarCharts />
                     </div>
                   </div>
-                  <div className="flex flex-col w-4/12 mr-14 mt-14">
+                  <div className="flex flex-col md:w-4/12 w-full md:mr-14 md:mt-14 mt-5">
                     <div className="shadow-md py-1 px-2 bg-card1">
                       <p className="font-bold text-gray-500 text-sm">
                         Equipment Utilization

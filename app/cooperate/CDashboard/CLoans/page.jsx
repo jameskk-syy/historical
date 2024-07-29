@@ -68,6 +68,9 @@ export default function CreateLoan() {
   const [filtered, setFilter] = useState([]);
   const [search, setSearch] = useState("");
   const [showApproval, setApproval] = useState(false);
+  const [userRole,setUserRole] = useState("");
+  const [phoneNumber,setPhoneNumber] = useState("");
+  const [uid,setUid] = useState("");
   const tableHeaderStyle = {
     headCells: {
       style: {
@@ -92,10 +95,11 @@ export default function CreateLoan() {
     },
   ];
   useEffect(() => {
-    setCooperativeId(localStorage.getItem("registrationNumber"));
+    setCooperativeId(window.localStorage.getItem("registrationNumber"));
+    setUserRole(window.localStorage.getItem("role"))
+    setPhoneNumber(window.localStorage.getItem("phoneNumber"))
     // console.log(localStorage.getItem("registrationNumber"));
   });
-
   const handleSubmit = async (e) => {
     setIsLoading(true);
 
@@ -260,6 +264,7 @@ export default function CreateLoan() {
     if (result.length > 0) {
       setActiveStep("existingLoans");
       setMemberInfo(result[0]);
+      setUid(result[0].uid);
     } else {
       alert("No details to view");
     }
@@ -388,11 +393,14 @@ export default function CreateLoan() {
   }, []);
 
   return (
-    <div className=" min-h-screen md:h-[100%]  sm:overflow-x-hidden">
+    <div className=" min-h-screen md:h-[100%] overflow-x-hidden">
       <LoanDecline show={showDecline} onClose={closeDeclineForm} />
       <LoanApproval
         show={showApproval}
         onClose={closeApproval}
+        role={userRole}
+        uid={uid}
+        phoneNumber={phoneNumber}
         amount={memberinfo.desiredLoanAmount}
       />
       <EligibilityTerm show={showEligibility} onClose={closeEligibilityForm} />
@@ -402,22 +410,39 @@ export default function CreateLoan() {
         toggleSidebar={toggleSidebar}
       />
       <div
+<<<<<<< HEAD
         className={`flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } mt-4 me-3`}
+=======
+        className={`transition-all duration-200 ease-out ${
+          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+        } mt-4 md:me-3`}
+>>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
       >
-        <div className="mt-2 xb:ml-5">
+        <div className="mt-2">
           <TopCoop />
         </div>
       </div>
       <div
+<<<<<<< HEAD
         className={`flex flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } mt-1 me-3 `}
+=======
+        className={`flex w-full md:pr-14  transition-all duration-200 ease-out ${
+          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+        } mt-1 md:me-3 `}
+>>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
       >
-        <div className="flex flex-grow  flex-col pt-2">
+        <div className="flex w-full flex-col pt-2">
           {/* Stepper Navigation */}
+<<<<<<< HEAD
 
           <div className="mb-3">
             <nav className="flex">
+=======
+          <div className="mb-3 hidden md:flex">
+            <nav className="flex ">
+>>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
               <button
                 onClick={() => setActiveStep("loanstatements")}
                 className={`py-2 px-4 border-b-2 ${activeStep === "loanstatements" ? "border-sky-10" : "border-transparent"
@@ -503,12 +528,12 @@ export default function CreateLoan() {
 
           {/* Create Loan Form */}
           {activeStep === "loanstatements" && (
-            <div className="mt-10 flex  w-full">
-              <div className="flex flex-row ml-10 w-full">
-                <div className="flex flex-col w-8/12 md:mr-5 lg:mr-5">
-                  <div className="flex flex-col">
-                    <div className="flex flex-row">
-                      <div className="shadow-lg w-1/4 rounded-md mr-2 bg-card1">
+            <div className="mt-10 flex w-full  px-2 md:px-0 flex-col ">
+              <div className="flex flex-col w-full md:flex-row md:ml-10">
+                <div className="flex flex-col w-full md:w-8/12 md:mr-5 lg:mr-5">
+                  <div className="flex w-full flex-col">
+                    <div className="flex flex-col w-full md:flex-row ">
+                      <div className="shadow-lg md:w-1/4 mb-4 md:mb-0 w-full rounded-md mr-2 bg-card1">
                         <div className="flex flex-row justify-between w-full py-1 px-3">
                           <p className="text-gray-500 text-sm font-bold font-abc">
                             Loan Created
@@ -526,7 +551,7 @@ export default function CreateLoan() {
                           </div>
                         </div>
                       </div>
-                      <div className="shadow-lg flex-grow rounded-md w-1/4 mr-2 bg-card2">
+                      <div className="shadow-lg  rounded-md md:w-1/4 mb-4 md:mb-0 w-full md:mr-2 bg-card2">
                         <div className="flex flex-row justify-between w-full py-1 px-3">
                           <p className="text-white text-sm font-bold font-abc">
                             Amount Disbursed
@@ -544,7 +569,7 @@ export default function CreateLoan() {
                           </div>
                         </div>
                       </div>
-                      <div className="shadow-lg flex-grow rounded-md w-1/4 mr-2 bg-card3">
+                      <div className="shadow-lg flex-grow rounded-md md:w-1/4 mb-4 md:mb-0 w-full md:mr-2 bg-card3">
                         <div className="flex flex-row justify-between w-full py-1 px-3">
                           <p className="text-white text-sm font-bold font-abc">
                             Amount Repaid
@@ -562,7 +587,7 @@ export default function CreateLoan() {
                           </div>
                         </div>
                       </div>
-                      <div className="shadow-lg flex-grow rounded-md w-1/4 mr-2 bg-card">
+                      <div className="shadow-lg flex-grow rounded-md md:w-1/4 mb-4 md:mb-0 w-full md:mr-2 bg-card">
                         <div className="flex flex-row justify-between w-full py-1 px-3">
                           <p className="text-gray-500 text-sm font-bold font-abc">
                             Loans Requested
@@ -589,7 +614,7 @@ export default function CreateLoan() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col w-4/12 mr-14">
+                <div className="flex flex-col w-full px-1 mt-5 md:mt-0 md:px-0 mb-10 md:mb-0 md:w-4/12 md:mr-14">
                   <div className="shadow-md py-1 px-2 bg-card">
                     <p className="font-bold text-gray-500 text-sm">
                       Loan Appovals

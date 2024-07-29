@@ -460,7 +460,7 @@ export default function Cproduct_page() {
 
           {/* Create Loan Form */}
           {activeStep === "addproducts" && (
-            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-3 flex-grow md:grid-cols-4 mr-10 gap-10 shadow-md bg-card ld:grid-cols-3">
+            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-2 flex-grow mx-2 mr-3 md:mx-2 md:mr-0 md:grid-cols-4 md:mr-1 gap-10 shadow-md bg-card ld:grid-cols-3">
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
                 <div className="mb-10">
                   <label className="block text-sm font-medium text-gray-700">
@@ -619,9 +619,9 @@ export default function Cproduct_page() {
           )}
           {activeStep === "existingproducts" && (
             <>
-              <div className="flex md:flex-row lg:flex-row justify-between p-2 flex-col ">
-                <div></div>
-                <div className="">
+              <div className="flex md:flex-row md:mx-2 md:mr-0 lg:flex-row justify-between p-2 flex-col ">
+                <div className="hidden md:flex"></div>
+                <div className=" flex flex-row">
                   <input
                     placeholder="Search by product name"
                     style={{
@@ -635,13 +635,13 @@ export default function Cproduct_page() {
                   />
                   <button
                     onClick={downloadCSV}
-                    className="bg-card3 text-white py-3 rounded-md p-4 ml-6"
+                    className="bg-card3 text-white text-xs py-3 rounded-md p-4 md:ml-6 ml-2"
                   >
                     Download Products List
                   </button>
                 </div>
               </div>
-              <div className=" transition-all duration-200 ease-out md:pr-2 lg:pr-2">
+              <div className=" transition-all duration-200 ease-out pl-2 md:pl-0 pr-4 md:pr-0 md:pr-2 lg:pr-2">
                 {isloading ? (
                   <p className="text-xl text-center text-gray-900">
                     Loading...
@@ -664,9 +664,15 @@ export default function Cproduct_page() {
               </div>
             </>
           )}
+<<<<<<< HEAD
           {/* {activeStep === "inventory" && <></>} */}
           {activeStep === "updateproduct" &&
             <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-3 flex-grow md:grid-cols-4 mr-10 gap-10 shadow-md bg-card ld:grid-cols-3">
+=======
+          {activeStep === "inventory" && <></>}
+          {activeStep === "updateproduct" && 
+              <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-2 mx-2 mr-3 md:mx-2 md:mr-0 flex-grow md:grid-cols-4 gap-10 shadow-md bg-card ld:grid-cols-3">
+>>>>>>> c9500436cd415e18568d4ffce30fd15718b6b996
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
                 <div className="mb-10">
 

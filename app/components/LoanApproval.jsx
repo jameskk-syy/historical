@@ -1,6 +1,77 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import { InfoOutlined } from "@mui/icons-material";
-const LoanApproval = ({ show, onClose,amount }) => {
+import axios from 'axios';
+import { format } from 'date-fns';
+import toast from "react-hot-toast";
+const LoanApproval = ({ show, onClose,amount,role,uid,phoneNumber, }) => {
+  const[username, setUsername] = useState("");
+  const now = new Date();
+  const formattedDate = format(now, 'MM/dd/yyyy');
+  const formattedTime = format(now, 'HH:mm:ss');
+
+  const handleApproval = async(e) =>{
+   e.preventDefault();
+   console.log("my phone number", phoneNumber,role,uid,username)
+   if(role == "secretary"){
+   try {
+    const response =  await axios.post(`https://us-central1-farmfuzion.cloudfunctions.net/loan_approvals?role=${role}&username=${username}`,{
+      uid,phoneNumber,username
+    });
+    console.log("response info", response.data)
+    if(response.data.statusCode == 200){
+     toast.success("loan approval was successful");
+    }else if(response.data.statusCode == 400){
+    toast.error("loan already approved")
+     
+    }
+    else{
+      toast.error("loan approval failed")
+    }
+   } catch (error) {
+    toast.error("loan approval failed")
+   }}
+   else if(role == "treasurer"){
+    try {
+      const response =  await axios.post(`https://us-central1-farmfuzion.cloudfunctions.net/loan_approvals?role=${role}&username=${username}`,{
+        uid
+      });
+      console.log("response info", response.data)
+      if(response.data.statusCode == 200){
+       toast.success("loan approval was successful");
+      }else if(response.data.statusCode == 400){
+        toast.error("loan already approved")
+         
+        }
+        else{
+          toast.error("loan approval failed")
+        }
+     } catch (error) {
+      toast.error("loan approval failed")
+     }
+   }
+   else if(role == "chairman"){
+    try {
+      const response =  await axios.post(`https://us-central1-farmfuzion.cloudfunctions.net/loan_approvals?role=${role}&username=${username}`,{
+        uid
+      });
+      console.log("response info", response.data)
+      if(response.data.statusCode == 200){
+       toast.success("loan approval was successful");
+       
+      }else if(response.data.statusCode == 400){
+        toast.error("loan already approved")
+         
+        }
+        else{
+          toast.error("loan approval failed")
+        }
+     } catch (error) {
+      toast.error("loan approval failed")
+     }
+   }
+
+  }
  if (!show) return null;
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
@@ -31,7 +102,8 @@ const LoanApproval = ({ show, onClose,amount }) => {
              <input
                     type="text"
                     className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                    // value={minimummonthlypayment}
+                    value={username}
+                    onChange={(e)=> setUsername(e.target.value)}
                   />
              </div>
              <div className="flex flex-col mb-5">
@@ -52,6 +124,7 @@ const LoanApproval = ({ show, onClose,amount }) => {
               </button>
               <button
                 type="button"
+                onClick={handleApproval}
                 className="px-4 w-full py-2 bg-card3 hover:opacity-75 font-bold text-white rounded"
               >
                 Approve
