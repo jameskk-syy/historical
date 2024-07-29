@@ -322,7 +322,7 @@ export default function CreateLoan() {
     datasets: [
       {
         data: [100, 70, 30],
-        backgroundColor: ["#e2f397", "#5aba8a","#01565b"],
+        backgroundColor: ["#e2f397", "#5aba8a", "#01565b"],
         hoverBackgroundColor: ["#5aba8a", "#e2f397"],
       },
     ],
@@ -347,7 +347,7 @@ export default function CreateLoan() {
     datasets: [
       {
         data: [100, 70, 30],
-        backgroundColor: ["#e2f397", "#5aba8a","#01565b"],
+        backgroundColor: ["#e2f397", "#5aba8a", "#01565b"],
         hoverBackgroundColor: ["#5aba8a", "#e2f397"],
       },
     ],
@@ -367,8 +367,13 @@ export default function CreateLoan() {
       </div>
     );
   };
-  
 
+  // conditional rendering steps
+  const [userRole, setUserRole] = useState(null);
+  useEffect(() => {
+    const role = localStorage.getItem('userRole');
+    setUserRole(role);
+  }, []);
   return (
     <div className=" min-h-screen md:h-[100%] sm:overflow-x-hidden">
       <LoanDecline show={showDecline} onClose={closeDeclineForm} />
@@ -379,40 +384,36 @@ export default function CreateLoan() {
         toggleSidebar={toggleSidebar}
       />
       <div
-        className={`flex-grow transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-4 me-3`}
+        className={`flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-4 me-3`}
       >
         <div className="mt-2 xb:ml-5">
           <TopCoop />
         </div>
       </div>
       <div
-        className={`flex-grow  transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-1 me-3`}
+        className={`flex-grow  transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-1 me-3`}
       >
         <div className="flex flex-grow  flex-col  pt-2">
           {/* Stepper Navigation */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <nav className="flex">
               <button
                 onClick={() => setActiveStep("insuaranstatement")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "insuaranstatement"
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuaranstatement"
                     ? "border-sky-10"
                     : "border-transparent"
-                } text-textcolor font-bold rounded-l`}
+                  } text-textcolor font-bold rounded-l`}
               >
                 Veterinary Dashboard
               </button>
               <button
                 onClick={() => setActiveStep("insuarancerequest")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "insuarancerequest"
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuarancerequest"
                     ? "border-sky-10"
                     : "border-transparent"
-                } text-textcolor font-bold rounded-l`}
+                  } text-textcolor font-bold rounded-l`}
               >
                 Veterinary Request
               </button>
@@ -420,25 +421,60 @@ export default function CreateLoan() {
               <button
                 disabled={memberinfo.length == 0}
                 onClick={() => setActiveStep("insuaranceinfo")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "insuaranceinfo"
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuaranceinfo"
                     ? "border-sky-10"
                     : "border-transparent"
-                } text-textcolor font-bold rounded-r`}
+                  } text-textcolor font-bold rounded-r`}
               >
                 Client Information
               </button>
 
               <button
                 onClick={() => setActiveStep("createinsuarance")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "createinsuarance"
+                className={`py-2 px-4 border-b-2 ${activeStep === "createinsuarance"
                     ? "border-sky-10"
                     : "border-transparent"
-                } text-textcolor font-bold rounded-l`}
+                  } text-textcolor font-bold rounded-l`}
               >
                 Create Service
               </button>
+            </nav>
+          </div> */}
+          <div className="mb-3">
+            <nav className="flex">
+              <button
+                onClick={() => setActiveStep("insuaranstatement")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuaranstatement" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Veterinary Dashboard
+              </button>
+              <button
+                onClick={() => setActiveStep("insuarancerequest")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuarancerequest" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Veterinary Request
+              </button>
+
+              <button
+                disabled={memberinfo.length === 0}
+                onClick={() => setActiveStep("insuaranceinfo")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuaranceinfo" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-r`}
+              >
+                Client Information
+              </button>
+
+              {userRole === 'cooperative' && (
+                <button
+                  onClick={() => setActiveStep("createinsuarance")}
+                  className={`py-2 px-4 border-b-2 ${activeStep === "createinsuarance" ? "border-sky-10" : "border-transparent"
+                    } text-textcolor font-bold rounded-l`}
+                >
+                  Create Service
+                </button>
+              )}
             </nav>
           </div>
 
@@ -633,7 +669,7 @@ export default function CreateLoan() {
                       </p>
                       <div className="flex flex-row mt-3 items-center">
                         <div className="w-1/4">
-                        <Doughnut
+                          <Doughnut
                             data={doughnutVeterinaryDistribution}
                             className="mt-10"
                             options={{

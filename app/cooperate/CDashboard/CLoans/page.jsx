@@ -68,7 +68,7 @@ export default function CreateLoan() {
   const [filtered, setFilter] = useState([]);
   const [search, setSearch] = useState("");
   const [showApproval, setApproval] = useState(false);
-  const [userRole,setUserRole] = useState("");
+  // const [userRoles,setUserRoles] = useState("");
   const [phoneNumber,setPhoneNumber] = useState("");
   const [uid,setUid] = useState("");
   const tableHeaderStyle = {
@@ -351,11 +351,11 @@ export default function CreateLoan() {
     );
   };
   const doughnutPopularLivestockData = {
-    labels: ["Crop", "Livestock","Equipment","Harvest","Insurance","Custom"],
+    labels: ["Crop", "Livestock", "Equipment", "Harvest", "Insurance", "Custom"],
     datasets: [
       {
-        data: [30000, 70000,10000,15000,12000,20000],
-        backgroundColor: ["#01565b", "#e2f397","#5aba8a","#e2f397","#01565b","#5aba8a"],
+        data: [30000, 70000, 10000, 15000, 12000, 20000],
+        backgroundColor: ["#01565b", "#e2f397", "#5aba8a", "#e2f397", "#01565b", "#5aba8a"],
         hoverBackgroundColor: [
           "#FF6384",
           "#36A2EB",
@@ -367,7 +367,7 @@ export default function CreateLoan() {
       },
     ],
   };
-  const  CustomLegenPopularLivestock = ({ labels, colors }) => {
+  const CustomLegenPopularLivestock = ({ labels, colors }) => {
     return (
       <div className="grid grid-cols-2 gap-2">
         {labels.map((label, index) => (
@@ -382,7 +382,16 @@ export default function CreateLoan() {
       </div>
     );
   };
-  
+
+  {/* conditional rendering */ }
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const role = localStorage.getItem('userRole');
+    setUserRole(role);
+
+  }, []);
+
   return (
     <div className=" min-h-screen md:h-[100%] overflow-x-hidden">
       <LoanDecline show={showDecline} onClose={closeDeclineForm} />
@@ -401,23 +410,59 @@ export default function CreateLoan() {
         toggleSidebar={toggleSidebar}
       />
       <div
-        className={`transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-4 md:me-3`}
+        className={`flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-4 me-3`}
       >
         <div className="mt-2">
           <TopCoop />
         </div>
       </div>
       <div
-        className={`flex w-full md:pr-14  transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-1 md:me-3 `}
+        className={`flex flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-1 me-3 `}
       >
         <div className="flex w-full flex-col pt-2">
           {/* Stepper Navigation */}
-          <div className="mb-3 hidden md:flex">
-            <nav className="flex ">
+
+          <div className="mb-3">
+            <nav className="flex">
+              <button
+                onClick={() => setActiveStep("loanstatements")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "loanstatements" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Loan Statements
+              </button>
+              <button
+                onClick={() => setActiveStep("loanrequest")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "loanrequest" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Loan requests
+              </button>
+
+              <button
+                disabled={memberinfo.length === 0}
+                onClick={() => setActiveStep("existingLoans")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "existingLoans" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-r`}
+              >
+                Member Info
+              </button>
+
+              {userRole !== 'secretary' && userRole !== 'treasurer' && userRole !== 'chairman' && (
+                <button
+                  onClick={() => setActiveStep("createLoan")}
+                  className={`py-2 px-4 border-b-2 ${activeStep === "createLoan" ? "border-sky-10" : "border-transparent"
+                    } text-textcolor font-bold rounded-l`}
+                >
+                  Create Loan
+                </button>
+              )}
+            </nav>
+          </div>
+          {/* <div className="mb-3">
+            <nav className="flex">
               <button
                 onClick={() => setActiveStep("loanstatements")}
                 className={`py-2 px-4 border-b-2 ${
@@ -462,7 +507,7 @@ export default function CreateLoan() {
                 Create Loan
               </button>
             </nav>
-          </div>
+          </div> */}
 
           {/* Create Loan Form */}
           {activeStep === "loanstatements" && (
@@ -622,13 +667,13 @@ export default function CreateLoan() {
                       Loan Appovals
                     </p>
                     <div className="flex flex-row mt-3 items-center">
-                     <div className="w-1/4">
-                     <Doughnut
+                      <div className="w-1/4">
+                        <Doughnut
                           data={doughnutPopularLivestockData}
                           className="mt-10"
                           options={{ plugins: { legend: { display: false } } }}
                         />
-                     </div>
+                      </div>
                       <div className="flex flex-col ml-10 mt-8">
                         <p className="text-gray-700 text-sm font-abc font-bold">
                           Popular Loan{" "}
@@ -637,7 +682,7 @@ export default function CreateLoan() {
                           </span>
                         </p>
                         <div className="flex flex-row mt-1">
-                        <CustomLegenPopularLivestock
+                          <CustomLegenPopularLivestock
                             labels={doughnutPopularLivestockData.labels}
                             colors={
                               doughnutPopularLivestockData.datasets[0]

@@ -2,17 +2,14 @@
 import React, { useState } from 'react'
 import { InfoOutlined } from "@mui/icons-material";
 import axios from 'axios';
-import { format } from 'date-fns';
 import toast from "react-hot-toast";
 const LoanApproval = ({ show, onClose,amount,role,uid,phoneNumber, }) => {
   const[username, setUsername] = useState("");
-  const now = new Date();
-  const formattedDate = format(now, 'MM/dd/yyyy');
-  const formattedTime = format(now, 'HH:mm:ss');
+
 
   const handleApproval = async(e) =>{
    e.preventDefault();
-   console.log("my phone number", phoneNumber,role,uid,username)
+  //  console.log("my phone number", phoneNumber,role,uid,username)
    if(role == "secretary"){
    try {
     const response =  await axios.post(`https://us-central1-farmfuzion.cloudfunctions.net/loan_approvals?role=${role}&username=${username}`,{

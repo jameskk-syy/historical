@@ -159,7 +159,7 @@ export default function CreateLoan() {
 
     Axios.get(`https://us-central1-farmfuzion.cloudfunctions.net/insurance_requests?registrationNumber=${registrationNumber}`)
       .then((response) => {
-        console.log("Response for insurance request:",response.data.payload);
+        console.log("Response for insurance request:", response.data.payload);
         setInsurancerequests(response.data.payload);
         setLoading(false);
       })
@@ -204,43 +204,43 @@ export default function CreateLoan() {
 
   const columns = [
     {
-        name: "Name",
-        selector: (row) => row.fullName
+      name: "Name",
+      selector: (row) => row.fullName
     },
     {
-        name: "Phone Number",
-        selector: (row) => row.phoneNumber
+      name: "Phone Number",
+      selector: (row) => row.phoneNumber
 
     },
-  
+
     {
-        name: "ID Number",
-        selector: (row) => row.idNumber
+      name: "ID Number",
+      selector: (row) => row.idNumber
     },
     {
-        name: "Monthly Income",
-        selector: (row) => row.monthlyIncome
+      name: "Monthly Income",
+      selector: (row) => row.monthlyIncome
     },
     {
-        name: "Insurance Category",
-        selector: (row) => row.policyName            
+      name: "Insurance Category",
+      selector: (row) => row.policyName
     },
     {
-        name: "Employment status",
-    
-        selector: (row) => row.employmentStatus
-                 
+      name: "Employment status",
+
+      selector: (row) => row.employmentStatus
+
     },
     {
-        name: "Coverage  Amount",
-        selector: (row) => row.coverageAmount  
+      name: "Coverage  Amount",
+      selector: (row) => row.coverageAmount
     },
     // {
     //     name: "Insurance status",
     //     selector: (row) => row.loanStatus
 
     // },
-];
+  ];
 
   console.log("Results Response", memberinfo);
 
@@ -271,7 +271,7 @@ export default function CreateLoan() {
         const response = await axios.post(
           "https://us-central1-farmfuzion.cloudfunctions.net/policies",
           {
-            registrationNumber:cooperativeId,
+            registrationNumber: cooperativeId,
             policyName,
             coverageType,
             premiumAmount,
@@ -314,6 +314,15 @@ export default function CreateLoan() {
     setApproval(false);
   };
 
+  // conditionly rendering steps
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const role = localStorage.getItem('userRole');
+    setUserRole(role);
+
+  }, []);
+
   return (
     <div className=" min-h-screen md:h-[100%] sm:overflow-x-hidden">
       <LoanDecline show={showDecline} onClose={closeDeclineForm} />
@@ -324,22 +333,20 @@ export default function CreateLoan() {
         toggleSidebar={toggleSidebar}
       />
       <div
-        className={`flex-grow transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-4 me-3`}
+        className={`flex-grow transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-4 me-3`}
       >
         <div className="mt-2 xb:ml-5">
           <TopCoop />
         </div>
       </div>
       <div
-        className={`flex-grow  transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-1 me-3`}
+        className={`flex-grow  transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-1 me-3`}
       >
         <div className="flex flex-grow  flex-col  pt-2">
           {/* Stepper Navigation */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <nav className="flex">
               <button
                 onClick={() => setActiveStep("insuaranstatement")}
@@ -384,6 +391,44 @@ export default function CreateLoan() {
               >
                 Create Insuarance
               </button>
+            </nav>
+          </div> */}
+
+          <div className="mb-3">
+            <nav className="flex">
+              <button
+                onClick={() => setActiveStep("insuaranstatement")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuaranstatement" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Insurance Statements
+              </button>
+              <button
+                onClick={() => setActiveStep("insuarancerequest")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuarancerequest" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Insurance Application
+              </button>
+
+              <button
+                disabled={memberinfo.length === 0}
+                onClick={() => setActiveStep("insuaranceinfo")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "insuaranceinfo" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-r`}
+              >
+                Insurance Information
+              </button>
+
+              {userRole === 'cooperative' && (
+                <button
+                  onClick={() => setActiveStep("createinsuarance")}
+                  className={`py-2 px-4 border-b-2 ${activeStep === "createinsuarance" ? "border-sky-10" : "border-transparent"
+                    } text-textcolor font-bold rounded-l`}
+                >
+                  Create Insurance
+                </button>
+              )}
             </nav>
           </div>
 
