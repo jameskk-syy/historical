@@ -45,11 +45,11 @@ export default function Cproduct_page() {
   const [itemPriceUpdate, setItemPriceUpdate] = useState("");
   const [totalPriceUpdate, setTotalPriceUpdate] = useState("");
   const [finalPriceUpdate, setFinalPriceUpdate] = useState("");
-  const [activeStep, setActiveStep] = useState("addproducts");
+  const [activeStep, setActiveStep] = useState("existingproducts");
   const [finalPrice, setFinalPrice] = useState("");
-  const [updatesProduct,setUpdatesProduct] = useState([]);
-  const [uidss,setUidss] = useState();
-  const [imageUrl,setImageUrl] = useState();
+  const [updatesProduct, setUpdatesProduct] = useState([]);
+  const [uidss, setUidss] = useState();
+  const [imageUrl, setImageUrl] = useState();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -64,12 +64,12 @@ export default function Cproduct_page() {
     e.preventDefault();
     const registrationNumber = window.localStorage.getItem("registrationNumber");
 
-    if(registrationNumber == ""){
+    if (registrationNumber == "") {
       toast.error("Missing registration Number");
       return;
     }
 
-    console.log("my data", title,productStatus,description,media,setItemPrice,productCategory,productType,itemPrice,totalPrice,finalPrice);
+    console.log("my data", title, productStatus, description, media, setItemPrice, productCategory, productType, itemPrice, totalPrice, finalPrice);
 
 
     const product_id = uuidv4();
@@ -208,6 +208,7 @@ export default function Cproduct_page() {
             border: "none",
           }}
           onClick={() => handleDelete(row.uid)}
+          disabled={userRole !== 'cooperative'}
         >
           View
         </button>
@@ -238,7 +239,7 @@ export default function Cproduct_page() {
     }
 
 
-    
+
   };
 
   const [filter, setFilters] = useState([]);
@@ -248,7 +249,7 @@ export default function Cproduct_page() {
 
   useEffect(() => {
     const registrationNumber = window.localStorage.getItem("registrationNumber");
-     console.log("Response Reg:", registrationNumber)
+    console.log("Response Reg:", registrationNumber)
 
     Axios.post(
       "https://us-central1-farmfuzion.cloudfunctions.net/fetch_products_by_registration_number",
@@ -286,9 +287,9 @@ export default function Cproduct_page() {
       },
     },
   };
-  const UpdateProduct = async()=>{
+  const UpdateProduct = async () => {
     setLoadings(true);
-   
+
     if (
       titleUpdate &&
       productStatusUpdate &&
@@ -301,43 +302,44 @@ export default function Cproduct_page() {
       totalPriceUpdate &&
       finalPriceUpdate
     ) {
-    const imageRef = ref(storage, `products/${mediaUpdate.name}`);
+      const imageRef = ref(storage, `products/${mediaUpdate.name}`);
 
-    uploadBytes(imageRef, mediaUpdate).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        try {
-          async function UpdateProduct(){
-            const response = await axios.post('https://us-central1-farmfuzion.cloudfunctions.net/update_product',{
-              title:titleUpdate,
-              productStatus:productStatusUpdate,
-              uid:uidss,
-              media: url,
-              description: descriptionUpdate,
-              itemQuantity: itemQuantityUpdate,
-              productCategory: productCategoryUpdate,
-              productType: productTypeUpdate,
-              itemPrice: itemPriceUpdate,
-              totalPrice: totalPriceUpdate,
-              finalPrice: finalPriceUpdate
-            });
-            if(response.data.success == "Product updated successfully"){
-              toast.success("Product updated successfully");
-              setLoadings(false);
-              setActiveStep("existingproducts");
+      uploadBytes(imageRef, mediaUpdate).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          try {
+            async function UpdateProduct() {
+              const response = await axios.post('https://us-central1-farmfuzion.cloudfunctions.net/update_product', {
+                title: titleUpdate,
+                productStatus: productStatusUpdate,
+                uid: uidss,
+                media: url,
+                description: descriptionUpdate,
+                itemQuantity: itemQuantityUpdate,
+                productCategory: productCategoryUpdate,
+                productType: productTypeUpdate,
+                itemPrice: itemPriceUpdate,
+                totalPrice: totalPriceUpdate,
+                finalPrice: finalPriceUpdate
+              });
+              if (response.data.success == "Product updated successfully") {
+                toast.success("Product updated successfully");
+                setLoadings(false);
+                setActiveStep("existingproducts");
+              }
             }
+            UpdateProduct();
+            console.log("how are you", url)
+          } catch (error) {
+            toast.error("An error occured");
+            setLoadings(false);
           }
-          UpdateProduct();
-          console.log("how are you", url)
-        } catch (error) {
-          toast.error("An error occured");
-          setLoadings(false);
-        }
+        });
       });
-    });}else{
+    } else {
       toast.error("All fields are required");
     }
   }
-  const handleImageChangeUpdate = (e) =>{
+  const handleImageChangeUpdate = (e) => {
     const file = e.target.files[0];
     setMediaUpdate(file);
     const imageRef = ref(storage, `products/${mediaUpdate.name}`);
@@ -345,8 +347,17 @@ export default function Cproduct_page() {
     uploadBytes(imageRef, mediaUpdate).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrl(url)
-      })});
+      })
+    });
   }
+
+  // conditionaly show steps based on roles
+  const [userRole, setUserRole] = useState(null);
+  useEffect(() => {
+    const role = localStorage.getItem('userRole');
+    setUserRole(role);
+  }, []);
+
   return (
     <div className=" min-h-screen md:h-[100%]  sm:overflow-x-hidden">
       <SB5
@@ -354,16 +365,15 @@ export default function Cproduct_page() {
         toggleSidebar={toggleSidebar}
       />
       <div
-        className={`flex-grow h-full transition-all duration-200 ease-out ${
-          isSidebarExpanded ? "md:ml-64" : "md:ml-24"
-        } mt-0 me-3`}
+        className={`flex-grow h-full transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
+          } mt-0 me-3`}
       >
         <div className="mt-2 xb:ml-5">
           <TopCoop />
         </div>
         <div className="flex flex-grow  flex-col pt-2">
           {/* Stepper Navigation */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <nav className="flex">
               <button
                 onClick={() => setActiveStep("addproducts")}
@@ -409,11 +419,48 @@ export default function Cproduct_page() {
               </button>
             
             </nav>
+          </div> */}
+          <div className="mb-3">
+            <nav className="flex">
+              {userRole === 'cooperative' && (
+                <>
+                  <button
+                    onClick={() => setActiveStep("addproducts")}
+                    className={`py-2 px-4 border-b-2 ${activeStep === "addproducts" ? "border-sky-10" : "border-transparent"
+                      } text-textcolor font-bold rounded-l`}
+                  >
+                    Add Products
+                  </button>
+                  <button
+                    onClick={() => setActiveStep("updateproduct")}
+                    className={`py-2 px-4 border-b-2 ${activeStep === "updateproduct" ? "border-sky-10" : "border-transparent"
+                      } text-textcolor font-bold rounded-r`}
+                    disabled={updatesProduct.length === 0}
+                  >
+                    Update Product
+                  </button>
+                  <button
+                    onClick={() => setActiveStep("inventory")}
+                    className={`py-2 px-4 border-b-2 ${activeStep === "inventory" ? "border-sky-10" : "border-transparent"
+                      } text-textcolor font-bold rounded-r`}
+                  >
+                    Inventory
+                  </button>
+                </>
+              )}
+              <button
+                onClick={() => setActiveStep("existingproducts")}
+                className={`py-2 px-4 border-b-2 ${activeStep === "existingproducts" ? "border-sky-10" : "border-transparent"
+                  } text-textcolor font-bold rounded-l`}
+              >
+                Existing Products
+              </button>
+            </nav>
           </div>
 
           {/* Create Loan Form */}
           {activeStep === "addproducts" && (
-            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-2 flex-grow mx-2 mr-3 md:mx-2 md:mr-0 md:grid-cols-4 md:mr-1 gap-10 shadow-md bg-card ld:grid-cols-3">
+            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-2 flex-grow mx-2 mr-3 md:mx-2 mmd:grid-cols-4 md:mr-1 gap-10 shadow-md bg-card ld:grid-cols-3">
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
                 <div className="mb-10">
                   <label className="block text-sm font-medium text-gray-700">
@@ -594,7 +641,7 @@ export default function Cproduct_page() {
                   </button>
                 </div>
               </div>
-              <div className=" transition-all duration-200 ease-out pl-2 md:pl-0 pr-4 md:pr-0 md:pr-2 lg:pr-2">
+              <div className=" transition-all duration-200 ease-out pl-2 md:pl-0 pr-4  md:pr-2 lg:pr-2">
                 {isloading ? (
                   <p className="text-xl text-center text-gray-900">
                     Loading...
@@ -617,9 +664,9 @@ export default function Cproduct_page() {
               </div>
             </>
           )}
-          {activeStep === "inventory" && <></>}
-          {activeStep === "updateproduct" && 
-              <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-2 mx-2 mr-3 md:mx-2 md:mr-0 flex-grow md:grid-cols-4 gap-10 shadow-md bg-card ld:grid-cols-3">
+          {/* {activeStep === "inventory" && <></>} */}
+          {activeStep === "updateproduct" &&
+            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-3 flex-grow md:grid-cols-4 mr-10 gap-10 shadow-md bg-card ld:grid-cols-3">
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
                 <div className="mb-10">
 
@@ -635,7 +682,7 @@ export default function Cproduct_page() {
                   />
                 </div>
                 <div className="mb-8">
-                <label className="block text-sm mb-1 font-medium text-gray-700">
+                  <label className="block text-sm mb-1 font-medium text-gray-700">
                     Item Image
                   </label>
                   <Image src={updatesProduct.media} className="rounded-md" width={80} height={80} alt={title} />
@@ -652,10 +699,10 @@ export default function Cproduct_page() {
                     style={styles}
                   />
                 </div>
-               
+
               </div>
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
-              <div className="mb-10">
+                <div className="mb-10">
                   <label className="block text-sm font-medium text-gray-700">
                     Availability Status
                   </label>
@@ -716,7 +763,7 @@ export default function Cproduct_page() {
                   </label>
                   <input
                     type="text"
-                     value={itemPriceUpdate}
+                    value={itemPriceUpdate}
                     onChange={(e) => setItemPriceUpdate(e.target.value)}
                     className="mt-1 p-2 py-3  w-full border rounded-lg shadow-md"
                     style={styles}

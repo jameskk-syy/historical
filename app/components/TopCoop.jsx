@@ -40,7 +40,7 @@ export default function TopCoop({cooperativeName}) {
             color: "#286d34",
           }}
         >
-          {cooperativeName} Cooperative
+          {cooperativeName} 
         </div>
       </div>
     </>

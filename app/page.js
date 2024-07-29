@@ -109,14 +109,13 @@ export default function Home() {
             router.push("/cooperate/CDashboard");
           }
           else if (userData.role === "treasurer") {
-            router.push("/cooperate/CDashboard");
-
+            router.push("/corporate/staffDashboard");
           }
           else if (userData.role === "secretary") {
-            router.push("/cooperate/CDashboard");
+            router.push("/corporate/staffDashboard");
           }
           else if (userData.role === "chairman") {
-            router.push("/cooperate/CDashboard");
+            router.push("/corporate/staffDashboard");
           }
           else {
             router.push("/");

@@ -15,7 +15,6 @@ import {
   AttachMoney,
   Logout,
   Agriculture,
-  Groups,
 } from "@mui/icons-material";
 import { Disclosure } from "@headlessui/react";
 import Image from "next/image";
@@ -45,14 +44,12 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
   const [isloansOpen, setUserLoanOpen] = useState(false);
   const [isaffiliateOpen, setUserAffOpen] = useState(false);
   const [isAgriOpen, setAgriOpen] = useState(false);
-  const [isProviderOpen, setProviderOpen] = useState(false);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
   const toggleUserDropdown = () => setUserIsOpen(!isUsersOpen);
   const toggleLoanDropdown = () => setUserLoanOpen(!isloansOpen);
   const toggleAffDropdown = () => setUserAffOpen(!isaffiliateOpen);
   const toggleAgriDropdown = () => setAgriOpen(!isAgriOpen);
-  const toggProviderDropdown = () => setProviderOpen(!isProviderOpen);
 
   const router = useRouter();
 
@@ -255,7 +252,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                         </Link>
                       )}
                     </div>
-                    <div className="mb-4">
+                    {/* <div className="mb-4">
                       <div
                         className="flex justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleDropdown}
@@ -271,7 +268,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                           </Link>
                         )}
                       </div>
-                    </div>
+                    </div> */}
                     <div className="mb-4">
                       <div
                         className="flex justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg"
@@ -434,88 +431,6 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                     <div className="mb-4">
                       <div
                         className="flex justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg"
-                        onClick={toggProviderDropdown}
-                      >
-                        <Groups  onClick={toggleSidebar} className="text-xl text-white group-hover:text-white transition-transform transform hover:scale-125" />
-                        {isSidebarExpanded && (
-                          <div className="flex items-center">
-                            <h3
-                              className="text-base text-white group-hover:text-white  transition duration-200 ease-in-out"
-                              style={txtStyles}
-                            >
-                              Supliers
-                            </h3>
-                            <span className="ml-1">
-                              {isAgriOpen ? (
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-5 w-5 text-white group-hover:text-white"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 8a1 1 0 01.707-.293l3 3a1 1 0 01-1.414 1.414L10 9.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 8z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              ) : (
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-5 w-5 text-white group-hover:text-white"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 12a1 1 0 01-.707-.293l-3-3a1 1 0 111.414-1.414L10 10.586l2.293-2.293a1 1 0 111.414 1.414l-3 3A1 1 0 0110 12z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              )}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      {isProviderOpen && isSidebarExpanded && (
-                        <div className=" w-4/5 ml-8 pl-1 font-abc">
-                          <Link
-                            href="/cooperate/CDashboard/Cproducts"
-                            className="block text-sm text-white hover:bg-green-400 p-2"
-                          >
-                            Insurance
-                          </Link>
-                          <Link
-                            href="/cooperate/CDashboard/CInsurance"
-                            className="block text-sm text-white hover:bg-green-400 p-2"
-                          >
-                            Veterinary
-                          </Link>
-                          <Link
-                            href="/corporate/veterinaryservives"
-                            className="block text-sm text-white hover:bg-green-400 p-2"
-                          >
-                            Agronomy
-                          </Link>
-                          <Link
-                            href="/corporate/agronomyservices"
-                            className="block text-sm text-white hover:bg-green-400 p-2"
-                          >
-                            Inventory
-                          </Link>
-{/* 
-                          <Link
-                            href="#"
-                            className="block text-sm text-white hover:bg-green-400 p-2"
-                          >
-                            Request Service
-                          </Link> */}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mb-4">
-                      <div
-                        className="flex justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleUserDropdown}
                       >
                         <RiNewsLine  onClick={toggleSidebar} className="text-xl text-white group-hover:text-white transition-transform transform hover:scale-125 " />
@@ -593,7 +508,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                         User Account
                       </h1>
                     )} */}
-                    <div className="flex mb-4 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto ">
+                    {/* <div className="flex mb-4 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto ">
                       <CgProfile  onClick={toggleSidebar} className="text-xl text-white group-hover:text-white transition-transform transform hover:scale-125" />
                       {isSidebarExpanded && (
                         <Link
@@ -604,8 +519,8 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                           My Profile
                         </Link>
                       )}
-                    </div>
-                    <div className="flex mb-4 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto ">
+                    </div> */}
+                    {/* <div className="flex mb-4 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto ">
                       <CgTrending  onClick={toggleSidebar} className="text-xl text-white group-hover:text-white transition-transform transform hover:scale-125" />
                       {isSidebarExpanded && (
                         <Link
@@ -616,7 +531,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                           FAQS
                         </Link>
                       )}
-                    </div>
+                    </div> */}
                     <div
                       onClick={handleLogout}
                       className="flex mb-4 mt-20 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto"
