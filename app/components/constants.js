@@ -1,2 +1,4 @@
 const apikeyCurrency = process.env.NEXT_PUBLIC_API_KEY_CURRENCY;
-export default { apikeyCurrency };
+const weatherkey = process.env.NEXT_PUBLIC_API_KEY_WEATHER; 
+
+export { apikeyCurrency, weatherkey };

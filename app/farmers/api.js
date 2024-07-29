@@ -1,9 +1,10 @@
 import axios from "axios";
-import config from "@/app/components/constants";
+import {  apikeyCurrency } from '../components/constants';
 
 
 
-const apiKey = config.apikeyCurrency;
+
+const apiKey = apikeyCurrency;
 
 
 

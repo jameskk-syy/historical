@@ -23,6 +23,9 @@ import { Doughnut } from "react-chartjs-2";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import { getCurrency } from "../api";
+import {  weatherkey } from '../../components/constants';
+import Loading from "@/app/components/loading";
+
 
 
 
@@ -39,10 +42,10 @@ function FDashboard() {
   const currencies = ['KES', 'UGX', 'TZS', 'RWF', 'BIF', 'ZMW'];
 
   useEffect(() => {
-    async function getConversionRates(){
-     const data = await getCurrency();
-     console.log("conversion rates", data)
-     setExchangeRates(data);
+    async function getConversionRates() {
+      const data = await getCurrency();
+      console.log("conversion rates", data)
+      setExchangeRates(data);
     }
     getConversionRates();
   }, []);
@@ -155,121 +158,186 @@ function FDashboard() {
     { country: 'Burundi', food_item: 'Sweet Potatoes', price: '55', date: '2024-07-17' },
     { country: 'Zambia', food_item: 'Groundnuts', price: '65', date: '2024-07-16' },
   ];
- 
 
-    const [foodPrices, setFoodPrices] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      // Simulate API call with hardcoded data
-      setTimeout(() => {
-        const filteredData = sampleData.filter(item => targetCountries.includes(item.country));
-        setFoodPrices(filteredData);
-        setLoading(false);
-      }, 1000); // Simulate a delay
-    }, []);
-  
 
-  
-    // Define columns for the DataTable
-    const columnsP = [
-      {
-        name: 'Country',
-        selector: row => row.country,
-        sortable: true,
-      },
-      {
-        name: 'Food Item',
-        selector: row => row.food_item,
-        sortable: true,
-      },
-      {
-        name: 'Price',
-        selector: row => row.price,
-        sortable: true,
-      },
-      {
-        name: 'Date',
-        selector: row => row.date,
-        sortable: true,
-      },
-    ];
-  
+  const [foodPrices, setFoodPrices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    // Transactions
-    const [phoneNumber, setPhoneNumber] = useState();
-    const [registrationNumber, setRegistrationNumber] = useState();
-    const [amount, setAmount] = useState();
-    const [datas, setData] = useState([]);
-    const [filter, setFilter] = useState([]);
-    const [search, setSearch] = useState("");
+  useEffect(() => {
+    // Simulate API call with hardcoded data
+    setTimeout(() => {
+      const filteredData = sampleData.filter(item => targetCountries.includes(item.country));
+      setFoodPrices(filteredData);
+      setLoading(false);
+    }, 1000); // Simulate a delay
+  }, []);
 
-    const tableHeaderStyle = {
-      headCells: {
-        style: {
-          backgroundColor: "white",
-          fontWeight: "bold",
-          fontSize: "14px",
-        },
-      },
-    };
-    const columnsTransacion = [
-      {
-        name: "Transaction Date",
-        selector: (row) => row.date_deposited,
-      },
-      {
-        name: "Transaction Status",
-        selector: (row) => row.status,
-      },
-      {
-        name: "Transaction Code",
-        selector: (row) => row?.['Transaction Code'],
-      },
-      {
-        name: "Amount",
-        selector: (row) => row.amount,
-      },
-    ];
 
-    useEffect(() => {
-      async function fetchData() {
-        const userPhone = localStorage.getItem("userPhone");
-        try {
-          const response = await axios.post(
-            "https://us-central1-farmfuzion.cloudfunctions.net/get_savings",
-            {
-              message: {
-                phoneNumber: userPhone,
-              },
-            }
-          );
-          // console.log("Savings Response",response.data.data)
-          const responseDataArray = Object.values(response.data);
-          setData(Object.values(responseDataArray[1]));
-          setFilter(Object.values(responseDataArray[1]));
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
-      fetchData();
-    }, []);
-  
-    useEffect(() => {
-      const filteredData = datas.filter((item) => {
-        if (!item) return false;
-        const { date_deposited, status, amount } = item;
-        return (
-          (date_deposited &&
-            date_deposited.toLowerCase().includes(search.toLowerCase())) ||
-          (status && status.toLowerCase().includes(search.toLowerCase())) ||
-          (amount &&
-            amount.toString().toLowerCase().includes(search.toLowerCase()))
+
+  // Define columns for the DataTable
+  const columnsP = [
+    {
+      name: 'Country',
+      selector: row => row.country,
+      sortable: true,
+    },
+    {
+      name: 'Food Item',
+      selector: row => row.food_item,
+      sortable: true,
+    },
+    {
+      name: 'Price',
+      selector: row => row.price,
+      sortable: true,
+    },
+    {
+      name: 'Date',
+      selector: row => row.date,
+      sortable: true,
+    },
+  ];
+
+
+  // Transactions
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [registrationNumber, setRegistrationNumber] = useState();
+  const [amount, setAmount] = useState();
+  const [datas, setData] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const tableHeaderStyle = {
+    headCells: {
+      style: {
+        backgroundColor: "white",
+        fontWeight: "bold",
+        fontSize: "14px",
+      },
+    },
+  };
+  const columnsTransacion = [
+    {
+      name: "Transaction Date",
+      selector: (row) => row.date_deposited,
+    },
+    {
+      name: "Transaction Status",
+      selector: (row) => row.status,
+    },
+    {
+      name: "Transaction Code",
+      selector: (row) => row?.['Transaction Code'],
+    },
+    {
+      name: "Amount",
+      selector: (row) => row.amount,
+    },
+  ];
+
+  useEffect(() => {
+    async function fetchData() {
+      const userPhone = localStorage.getItem("userPhone");
+      try {
+        const response = await axios.post(
+          "https://us-central1-farmfuzion.cloudfunctions.net/get_savings",
+          {
+            message: {
+              phoneNumber: userPhone,
+            },
+          }
         );
-      });
-      setFilter(filteredData);
-    }, [search, datas]);
-    console.log(data[1]);
+        // console.log("Savings Response",response.data.data)
+        const responseDataArray = Object.values(response.data);
+        setData(Object.values(responseDataArray[1]));
+        setFilter(Object.values(responseDataArray[1]));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const filteredData = datas.filter((item) => {
+      if (!item) return false;
+      const { date_deposited, status, amount } = item;
+      return (
+        (date_deposited &&
+          date_deposited.toLowerCase().includes(search.toLowerCase())) ||
+        (status && status.toLowerCase().includes(search.toLowerCase())) ||
+        (amount &&
+          amount.toString().toLowerCase().includes(search.toLowerCase()))
+      );
+    });
+    setFilter(filteredData);
+  }, [search, datas]);
+  console.log(data[1]);
+
+  // weatherdata
+  const [weatherData, setWeatherData] = useState(null);
+  const [location, setLocation] = useState('Nyeri'); 
+  const apiKey = weatherkey;
+
+  useEffect(() => {
+    const fetchWeatherData = async (lat, lon) => {
+      console.log('Fetching weather data for coordinates:', lat, lon);
+      axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+      )
+        .then(response => {
+          console.log('Weather data fetched successfully:', response.data);
+          setWeatherData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching weather data:', error);
+        });
+    };
+
+    const fetchWeatherDataByCity = async (city) => {
+      console.log('Fetching weather data for city:', city);
+      axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+      )
+        .then(response => {
+          console.log('Weather data fetched successfully:', response.data);
+          setWeatherData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching weather data:', error);
+        });
+    };
+
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log('User location obtained:', position.coords.latitude, position.coords.longitude);
+          fetchWeatherData(position.coords.latitude, position.coords.longitude);
+        }, (error) => {
+          console.error('Error getting location:', error);
+          fetchWeatherDataByCity(location); // Fallback to default location
+        });
+      } else {
+        console.error('Geolocation not supported by this browser');
+        fetchWeatherDataByCity(location); // Fallback to default location
+      }
+    };
+
+    getLocation();
+  }, [location]);
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
+
+  if (!weatherData) {
+    return
+     <div>
+        <Loading />
+    </div>;
+  }
+
+  const { wind, main, weather, clouds, sys, name } = weatherData;
 
   return (
     <div className="flex flex-col  min-h-screen">
@@ -277,7 +345,7 @@ function FDashboard() {
         isSidebarExpanded={isSidebarExpanded}
         toggleSidebar={toggleSidebar}
       />
-    
+
       <div
         className={`flex flex-col md:flex-row transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } sm:ml-3 mt-4 me-3`}
@@ -334,24 +402,24 @@ function FDashboard() {
           </div>
         </div>
         <div className="flex flex-col md:w-5/12 w-full">
-         
-  
+
+
           <div className="flex flex-col m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md">
-          <h1 className="text-2xl text-card3 font-abc p-1">Food Prices</h1>
-          <DataTable
-            columns={columnsP}
-            data={foodPrices}
-            // pagination
-            // highlightOnHover
-            // striped
-            responsive
-          />
-        
-        </div>
-        <div className="flex flex-col m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md">
-          <h1 className="text-2xl font-abc text-card3  p-1">Transactions</h1>
-          <DataTable
-            customStyles={tableHeaderStyle}
+            <h1 className="text-2xl text-card3 font-abc p-1">Food Prices</h1>
+            <DataTable
+              columns={columnsP}
+              data={foodPrices}
+              // pagination
+              // highlightOnHover
+              // striped
+              responsive
+            />
+
+          </div>
+          <div className="flex flex-col m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md">
+            <h1 className="text-2xl font-abc text-card3  p-1">Transactions</h1>
+            <DataTable
+              customStyles={tableHeaderStyle}
               columns={columnsTransacion}
               data={filter}
               pagination
@@ -360,87 +428,83 @@ function FDashboard() {
               selectableRowsHighlight
               highlightOnHover
             />
-        </div>
+          </div>
         </div>
         {/* Weather Column */}
-        <div className="flex flex-col md:w-4/12 w-full m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md bg-card3">
+        <div className="flex flex-col md:w-4/12 w-full m-3 p-3 items-center text-textcolor font-abc flex-grow shadow-md rounded-md ">
           {/* <p className="font-abc text-4xl text-white justify-start">Forecast</p> */}
-          <div className="flex flex-row w-full justify-between p-3">
-            <div className="flex flex-col">
-              <p className="font-abc text-3xl text-white">Farmer Location</p>
-              <p className="font-abc text-xl text-white">{formattedDate}</p>
+          <div className="bg-card3 w-full">
+            <div className="flex flex-row w-full justify-between p-3 bg-card3">
+              <div className="flex flex-col">
+                <p className="font-abc text-3xl text-white">{name}, {sys.country}</p>
+                <p className="font-abc text-xl text-white">{formattedDate}</p>
+              </div>
+              <p className="font-abc text-xl text-white">{formattedTime}</p>
             </div>
-            <p className="font-abc text-xl text-white">{formattedTime}</p>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3 ">
-            <GiWindsock className="text-white text-3xl" />
-            <p className="font-abc  text-white">Wind Speed</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">3Km/h</p>
+            <div className="flex flex-row w-full justify-between p-3 bg-card3">
+              <GiWindsock className="text-white text-3xl" />
+              <p className="font-abc text-white">Wind Speed</p>
+              <div className="flex flex-col">
+                <p className="font-abc text-xl text-white">{wind.speed} Km/h</p>
+                <p className="font-abc text-xl text-white">Wind Direction: {wind.deg}°</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3 ">
-            <GiRaining className="text-white text-3xl" />
-            <p className="font-abc  text-white">Rain Chance</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">40%</p>
+            <div className="flex flex-row w-full justify-between p-3 bg-card3">
+              <GiRaining className="text-white text-3xl" />
+              <p className="font-abc text-white">Humidity</p>
+              <div className="flex flex-col">
+                <p className="font-abc text-xl text-white">{main.humidity}%</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3 ">
-            <Air className="text-white text-3xl" />
-            <p className="font-abc  text-white">Pressure</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">720hpa</p>
+            <div className="flex flex-row w-full justify-between p-3 bg-card3">
+              <Air className="text-white text-3xl" />
+              <p className="font-abc text-white">Pressure</p>
+              <div className="flex flex-col">
+                <p className="font-abc text-xl text-white">{main.pressure} hPa</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3 border-b-2">
-            <PiSunLight className="text-white text-3xl" />
-            <p className="font-abc  text-white">UV Index</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">2,3</p>
+            <div className="flex flex-row w-full justify-between p-3 border-b-2 bg-card3">
+              <PiSunLight className="text-white text-3xl" />
+              <p className="font-abc text-white">Cloudiness</p>
+              <div className="flex flex-col">
+                <p className="font-abc text-xl text-white">{clouds.all}%</p>
+              </div>
             </div>
-          </div>
-          <p className="font-abc text-4xl text-white justify-start">Forecast</p>
-          <div className="flex flex-row w-full justify-between p-3">
-            <TiWeatherPartlySunny className="text-white text-3xl" />
-            <p className="font-abc  text-white">Sunny</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">{formattedDate}</p>
+            <p className="font-abc text-4xl text-white justify-start">Forecast</p>
+            <div className="flex flex-row w-full justify-between p-3 bg-card3">
+              <TiWeatherPartlySunny className="text-white text-3xl" />
+              <p className="font-abc text-white">{weather[0].description}</p>
+              <div className="flex flex-col">
+                <p className="font-abc text-xl text-white">{formattedDate}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3">
-            <GiRaining className="text-white text-3xl" />
-            <p className="font-abc  text-white">Rainy</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">{formattedDate}</p>
+            <div className="flex flex-row w-full justify-between p-3 bg-card3">
+              <MdSunny className="text-white text-3xl" />
+              <p className="font-abc text-white">Temperature</p>
+              <div className="flex flex-col">
+                <p className="font-abc text-xl text-white">{main.temp}°C</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3">
-            <MdSunny className="text-white text-3xl" />
-            <p className="font-abc  text-white">Sunny</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">{formattedDate}</p>
-            </div>
-          </div>
-          <div className="flex flex-row w-full justify-between p-3 border-b-2">
-            <TiWeatherPartlySunny className="text-white text-3xl" />
-            <p className="font-abc  text-white">Sunny</p>
-            <div className="flex flex-col">
-              <p className="font-abc text-xl text-white">{formattedDate}</p>
-            </div>
+            {/* <input
+              type="text"
+              value={location}
+              onChange={handleLocationChange}
+              placeholder="Enter location"
+              className="p-2 m-3 border rounded"
+            /> */}
           </div>
           <div className="flex flex-col w-full justify-between p-3">
-          <h1 className="text-2xl font-abc text-white p-1">Exchange Rates</h1>
-          <div className="flex flex-col text-textcolor font-abc p-2 items-center justify-between flex-grow  rounded-md h-96">
-          <DataTable
-            columns={columns}
-            data={data}
-            responsive
-          />
+            <h1 className="text-2xl font-abc text-card3">Exchange Rates</h1>
+            <div className="flex flex-col text-textcolor font-abc p-2 items-center justify-between flex-grow  rounded-md h-96">
+              <DataTable
+                columns={columns}
+                data={data}
+                responsive
+              />
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-        
+
       </div>
     </div>
   );

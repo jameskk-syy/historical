@@ -375,6 +375,14 @@ export default function CreateLoan() {
     );
   };
 
+  
+  // conditional rendering steps
+  const [userRole, setUserRole] = useState(null);
+  useEffect(() => {
+    const role = localStorage.getItem('userRole');
+    setUserRole(role);
+  }, []);
+
   return (
     <div className=" min-h-screen md:h-[100%] sm:overflow-x-hidden">
       <LoanDecline show={showDecline} onClose={closeDeclineForm} />
@@ -400,7 +408,7 @@ export default function CreateLoan() {
       >
         <div className="flex flex-grow  flex-col  pt-2">
           {/* Stepper Navigation */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <nav className="flex">
               <button
                 onClick={() => setActiveStep("insuaranstatement")}
@@ -446,7 +454,49 @@ export default function CreateLoan() {
                 Create Service
               </button>
             </nav>
-          </div>
+          </div> */}
+            <div className="mb-3">
+      <nav className="flex">
+        <button
+          onClick={() => setActiveStep("insuaranstatement")}
+          className={`py-2 px-4 border-b-2 ${
+            activeStep === "insuaranstatement" ? "border-sky-10" : "border-transparent"
+          } text-textcolor font-bold rounded-l`}
+        >
+          Agronomy Dashboard
+        </button>
+        <button
+          onClick={() => setActiveStep("insuarancerequest")}
+          className={`py-2 px-4 border-b-2 ${
+            activeStep === "insuarancerequest" ? "border-sky-10" : "border-transparent"
+          } text-textcolor font-bold rounded-l`}
+        >
+          Agronomy Request
+        </button>
+
+        <button
+          disabled={memberinfo.length === 0}
+          onClick={() => setActiveStep("insuaranceinfo")}
+          className={`py-2 px-4 border-b-2 ${
+            activeStep === "insuaranceinfo" ? "border-sky-10" : "border-transparent"
+          } text-textcolor font-bold rounded-r`}
+        >
+          Client Information
+        </button>
+
+        {userRole === 'cooperative' && (
+          <button
+            onClick={() => setActiveStep("createinsuarance")}
+            className={`py-2 px-4 border-b-2 ${
+              activeStep === "createinsuarance" ? "border-sky-10" : "border-transparent"
+            } text-textcolor font-bold rounded-l`}
+          >
+            Create Service
+          </button>
+        )}
+      </nav>
+    </div>
+
 
           {/* Create Loan Form */}
           {activeStep === "insuaranstatement" && (

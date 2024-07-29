@@ -1,109 +1,142 @@
-"use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { storage } from "@/app/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { v4 as uuidv4 } from "uuid";
-import Swal from "sweetalert2";
-import Axios from "axios";
+"use client"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { GiWindsock, GiRaining } from 'react-icons/gi';
+import { MdSunny } from 'react-icons/md';
+import { Air } from '@mui/icons-material';
+import { PiSunLight } from 'react-icons/pi';
+import { TiWeatherPartlySunny } from 'react-icons/ti';
 
-export default function RegistrationPage() {
-  const [Loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [kraPin, setKraPin] = useState(null);
-  const [idCard, setIdCard] = useState(null);
-  const [additionalDoc1, setAdditionalDoc1] = useState(null);
-  const [additionalDoc2, setAdditionalDoc2] = useState(null);
-  const [additionalDoc3, setAdditionalDoc3] = useState(null);
 
-  const handleFileChange = (setter) => (e) => {
-    const file = e.target.files[0];
-    setter(file);
-  };
+const WeatherComponent = () => {
+  const [weatherData, setWeatherData] = useState(null);
+  const [location, setLocation] = useState('Nairobi'); // Default location
+  const apiKey = '330c928ed94727b71d2d64d458827faf';
 
-  const uploadFile = async (file, path) => {
-    const fileRef = ref(storage, path);
-    await uploadBytes(fileRef, file);
-    return await getDownloadURL(fileRef);
-  };
-
-  const registerUser = async (e) => {
-    e.preventDefault();
-
-    if (name && email && password && kraPin && idCard) {
-      setLoading(true);
-
-      try {
-        const userId = uuidv4(); // Generate a unique user ID
-
-        const kraPinUrl = await uploadFile(kraPin, `kyc_documents/${userId}/kra_pin`);
-        const idCardUrl = await uploadFile(idCard, `kyc_documents/${userId}/id_card`); regCerticate
-        const additionalDoc1Url = additionalDoc1 ? await uploadFile(additionalDoc1, `kyc_documents/${userId}/additional_doc1`) : null;
-        const additionalDoc2Url = additionalDoc2 ? await uploadFile(additionalDoc2, `kyc_documents/${userId}/additional_doc2`) : null;
-        const additionalDoc3Url = additionalDoc3 ? await uploadFile(additionalDoc3, `kyc_documents/${userId}/additional_doc3`) : null;
-
-        const userData = {
-          name,
-          email,
-          password, // In a real application, ensure you hash the password before storing
-          kycDocuments: {
-            kraPin: kraPinUrl,
-            idCard: idCardUrl,
-            additionalDoc1: additionalDoc1Url,
-            additionalDoc2: additionalDoc2Url,
-            additionalDoc3: additionalDoc3Url,
-          },
-        };
-        
-
-        console.log("kraPinUrl,",kraPinUrl);
-        await Axios.post("https://your-api-endpoint.com/register", userData);
-
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User Registered Successfully",
-          text: "User registration and KYC documents upload completed",
-        });
-
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        Swal.fire({
-          title: "Error",
-          text: "There was an error uploading the files or registering the user",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-        setLoading(false);
-      }
-    } else {
-      Swal.fire({
-        title: "Required Fields Missing!",
-        text: "Please fill all fields and upload both KRA PIN and ID Card",
-        icon: "error",
-        confirmButtonText: "Ok",
+  useEffect(() => {
+    const fetchWeatherData = async (lat, lon) => {
+      console.log('Fetching weather data for coordinates:', lat, lon);
+      axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+      )
+      .then(response => {
+        console.log('Weather data fetched successfully:', response.data);
+        setWeatherData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
       });
-    }
+    };
+
+    const fetchWeatherDataByCity = async (city) => {
+      console.log('Fetching weather data for city:', city);
+      axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+      )
+      .then(response => {
+        console.log('Weather data fetched successfully:', response.data);
+        setWeatherData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
+      });
+    };
+
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log('User location obtained:', position.coords.latitude, position.coords.longitude);
+          fetchWeatherData(position.coords.latitude, position.coords.longitude);
+        }, (error) => {
+          console.error('Error getting location:', error);
+          fetchWeatherDataByCity(location); // Fallback to default location
+        });
+      } else {
+        console.error('Geolocation not supported by this browser');
+        fetchWeatherDataByCity(location); // Fallback to default location
+      }
+    };
+
+    getLocation();
+  }, [location]);
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
   };
+
+  if (!weatherData) {
+    return <p>Loading...</p>;
+  }
+
+  const { wind, main, weather, clouds, sys, name } = weatherData;
+ 
 
   return (
-    <div>
-      <form onSubmit={registerUser}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <input type="file" onChange={handleFileChange(setKraPin)} required />
-        <input type="file" onChange={handleFileChange(setIdCard)} required />
-        <input type="file" onChange={handleFileChange(setAdditionalDoc1)} />
-        <input type="file" onChange={handleFileChange(setAdditionalDoc2)} />
-        <input type="file" onChange={handleFileChange(setAdditionalDoc3)} />
-        <button type="submit" disabled={Loading}>
-          {Loading ? "Registering..." : "Register"}
-        </button>
-      </form>
+    <div className="bg-card3 w-full">
+      <div className="flex flex-row w-full justify-between p-3 bg-card3">
+        <div className="flex flex-col">
+          <p className="font-abc text-3xl text-white">Farmer Location: {name}, {sys.country}</p>
+          <p className="font-abc text-xl text-white">{formattedDate}</p>
+        </div>
+        <p className="font-abc text-xl text-white">{formattedTime}</p>
+      </div>
+      <div className="flex flex-row w-full justify-between p-3 bg-card3">
+        <GiWindsock className="text-white text-3xl" />
+        <p className="font-abc text-white">Wind Speed</p>
+        <div className="flex flex-col">
+          <p className="font-abc text-xl text-white">{wind.speed} Km/h</p>
+          <p className="font-abc text-xl text-white">Wind Direction: {wind.deg}°</p>
+        </div>
+      </div>
+      <div className="flex flex-row w-full justify-between p-3 bg-card3">
+        <GiRaining className="text-white text-3xl" />
+        <p className="font-abc text-white">Humidity</p>
+        <div className="flex flex-col">
+          <p className="font-abc text-xl text-white">{main.humidity}%</p>
+        </div>
+      </div>
+      <div className="flex flex-row w-full justify-between p-3 bg-card3">
+        <Air className="text-white text-3xl" />
+        <p className="font-abc text-white">Pressure</p>
+        <div className="flex flex-col">
+          <p className="font-abc text-xl text-white">{main.pressure} hPa</p>
+        </div>
+      </div>
+      <div className="flex flex-row w-full justify-between p-3 border-b-2 bg-card3">
+        <PiSunLight className="text-white text-3xl" />
+        <p className="font-abc text-white">Cloudiness</p>
+        <div className="flex flex-col">
+          <p className="font-abc text-xl text-white">{clouds.all}%</p>
+        </div>
+      </div>
+      <p className="font-abc text-4xl text-white justify-start">Forecast</p>
+      <div className="flex flex-row w-full justify-between p-3 bg-card3">
+        <TiWeatherPartlySunny className="text-white text-3xl" />
+        <p className="font-abc text-white">{weather[0].description}</p>
+        <div className="flex flex-col">
+          <p className="font-abc text-xl text-white">{formattedDate}</p>
+        </div>
+      </div>
+      <div className="flex flex-row w-full justify-between p-3 bg-card3">
+        <MdSunny className="text-white text-3xl" />
+        <p className="font-abc text-white">Temperature</p>
+        <div className="flex flex-col">
+          <p className="font-abc text-xl text-white">Current: {main.temp}°C</p>
+          <p className="font-abc text-xl text-white">Feels like: {main.feels_like}°C</p>
+          <p className="font-abc text-xl text-white">Min: {main.temp_min}°C</p>
+          <p className="font-abc text-xl text-white">Max: {main.temp_max}°C</p>
+        </div>
+      </div>
+      <input
+        type="text"
+        value={location}
+        onChange={handleLocationChange}
+        placeholder="Enter location"
+        className="p-2 m-3 border rounded"
+      />
     </div>
   );
-}
+};
+
+export default WeatherComponent;
+
