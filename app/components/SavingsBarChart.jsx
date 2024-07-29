@@ -54,7 +54,7 @@ export default function SavingsBarCharts() {
     }
 
     return () => {
-      if (newChart) {
+      if (newChart) { 
         newChart.destroy();
       }
     };
