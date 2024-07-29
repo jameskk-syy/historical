@@ -20,12 +20,46 @@ import SB5 from "@/app/components/SB5";
 import BarCharts from "@/app/components/BarCharts";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
+import ModalForm from "@/app/components/MobileModal";
+import BankPaymentForm from "@/app/components/BankModal";
+import Image from "next/image";
+
 
 export default function SavingsStatments() {
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [amount, setAmount] = useState();
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
+
+
+  const [showCardDetails, setShowCardDetails] = useState(false);
+  const [registrationNumber, setRegistrationNumber] = useState();
+  const handleCheckboxChange = () => {
+    setShowCardDetails(!showCardDetails);
+  };
+  useEffect(() => {
+    const registration= window.localStorage.getItem("registrationNumber");
+    setRegistrationNumber(registration);
+    // alert(registration)
+    
+  })
+
+  const handleImageClick = () => {
+    setShowCardDetails(true);
+  };
+
+  const [showMobileDetails, setShowMobileDetails] = useState(false);
+
+  const handleMobileCheckboxChange = () => {
+    setShowMobileDetails(!showMobileDetails);
+  };
+
+  const handleMobileImageClick = () => {
+    setShowMobileDetails(true);
+  };
+  
   // loan statements
 
   const columns = [
@@ -221,9 +255,58 @@ export default function SavingsStatments() {
   const handleFormSubmit = (e) =>{
     e.preventDefault();
   }
+  
+  const handlePayment = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://us-central1-farmfuzion.cloudfunctions.net/create_savings",
+        {
+          amount: amount,
+          phoneNumber: phoneNumber,
+          registrationNumber:registrationNumber
+        }
+      )
+      .then((response) => {
+        console.log("Payment Response", response);
+        Swal.fire({
+          title: "Payment Initiated!",
+          text: "Please enter your M-PESA PIN on your phone to complete the payment.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Payment Failed",
+          text: "An error occurred while processing the payment.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+  };
 
   return (
     <div className="min-h-screen md:h-[100%] sm:overflow-x-hidden">
+       <ModalForm
+        show={showMobileDetails}
+        onClose={() => setShowMobileDetails(false)}
+        handlePayment={handlePayment}
+        phoneNumber={phoneNumber}
+        setPhoneNumber={setPhoneNumber}
+        amount={amount}
+        setAmount={setAmount}
+      />
+      <BankPaymentForm
+        show={showCardDetails}
+        onClose={() => setShowCardDetails(false)}
+        handlePayment={handlePayment}
+        phoneNumber={phoneNumber}
+        setPhoneNumber={setPhoneNumber}
+        amount={amount}
+        setAmount={setAmount}
+      />
       <SB5
         isSidebarExpanded={isSidebarExpanded}
         toggleSidebar={toggleSidebar}
@@ -338,85 +421,103 @@ export default function SavingsStatments() {
         </div>
             
             </div>
-            <div className="w-full lg:w-3/12 p-3 shadow bg-card rounded-md flex-grow flex flex-col">
-              <div className="flex flex-row w-full mb-2 justify-center">
-                <p className="tex-card3 font-abc font-semibold">
-                  Quick Payment
-                </p>
-              </div>
-              <form onSubmit={handleFormSubmit}>
-                <div className="flex flex-col sm:px-2 w-full">
-                  <label className="m-1">select Payment Method</label>
-                  <select
-                    style={styles}
-                    className="w-full sm:mx-2 md:m-2 p-2 border-blue-200 border rounded-md"
-                    //   onChange={handleInputChange}
-                    //   value={userData.modeOfPayment}
-                  >
-                    <option value="" disabled>
-                      select payment method
-                    </option>
-                    <option value="bank">BANK</option>
-                    <option value="mpesa">MPESA</option>
-                    <option value="airtel">AIRTEL</option>
-                    <option value="momo">MOMO</option>
-                  </select>
-                </div>
-                <div className="flex flex-col sm:px-2 w-full">
-                  <label className="m-1">Payment</label>
-                  <input
-                    type="text"
-                    style={styles}
-                    className="w-full sm:mx-2 md:m-2 p-2 border-blue-200 border rounded-md"
-                    //   onChange={(e)=}
-                    //   value={agronomyFetch.serviceFrequency}
-                  />
-                </div>
-                <div className="flex flex-row sm:px-2 w-full justify-between gap-5">
-                  <div className="flex flex-col">
-                    <label className="m-1">Input</label>
-                    <input
-                      type="text"
-                      style={styles}
-                      className="w-full sm:mx-2 md:m-2 p-2 border-blue-200 border rounded-md"
-                      //   onChange={(e)=}
-                      //   value={agronomyFetch.serviceFrequency}
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <label className="m-1">Recipient</label>
-                    <input
-                      type="text"
-                      style={styles}
-                      className="w-full sm:mx-2 md:m-2 p-2 border-blue-200 border rounded-md"
-                      //   onChange={(e)=}
-                      //   value={agronomyFetch.serviceFrequency}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col sm:px-2 w-full">
-                  <label className="m-1">Amount</label>
-                  <input
-                    type="text"
-                    style={styles}
-                    className="w-full sm:mx-2 md:m-2 p-2 border-blue-200 border rounded-md"
-                    //   onChange={(e)=}
-                    //   value={agronomyFetch.serviceFrequency}
-                  />
-                </div>
-                <div className="flex flex-col sm:px-2 w-full">
-                  <button
-                    type="submit"
-                    className="w-full sm:mx-2 md:m-2 bg-card3 hover:bg-card3-200 text-white font-bold py-2  rounded mt-1"
-                  >
-                    Quick Pay
-                  </button>
-                </div>
-                <div className="flex flex-row justify-center">
-                <p className="text-card3 font-abc">Apply for overdarft</p>
-                </div>
-              </form>
+            <div className="flex flex-col bg-card text-textcolor font-abc m-2 p-2 items-center justify-between flex-grow shadow-md rounded-md basis-1/2">
+          <div className="flex flex-col w-full h-full">
+            <div className="ms-4 text-center">
+              <p className="font-semibold">Quick Payment</p>
             </div>
+            <div className="flex flex-col shadow p-3 m-3 ">
+              <p className="font-abc">CHOOSE A PAYMENT METHOD</p>
+              <div>
+                <div className="flex flex-col sm:flex-col mt-6 rounded-md shadow-md p-2 m-2">
+                  <div className="flex flex-col sm:flex-col md:flex-row justify-between">
+                    <div className="flex sm:flex-row mb-4  md:flex-row items-center">
+                      <input
+                        type="checkbox"
+                        onChange={handleMobileCheckboxChange}
+                        checked={showMobileDetails}
+                      />
+                      <p className="font-abc  ml-4">Mobile Money</p>
+                    </div>
+                    <div className="flex sm:flex-row md:flex-row">
+                      <div
+                        className="relative mx-2 p-2 w-20 shadow bg-card h-12 me-8 sm:w-auto sm:h-auto md:w-20 md:h-12"
+                        onClick={handleMobileImageClick}
+                      >
+                        <Image
+                          src="/airtel.png"
+                          alt="Airtel"
+                          layout="fill"
+                          className="rounded-md mx-auto object-cover"
+                        />
+                      </div>
+                      <div
+                        className="relative w-20 mr-2 shadow bg-cardh-12 me-8 sm:w-auto sm:h-auto md:w-20 md:h-12"
+                        onClick={handleMobileImageClick}
+                      >
+                        <Image
+                          src="/mpesa.png"
+                          alt="M-Pesa"
+                          layout="fill"
+                          className="rounded-md mx-auto object-cover"
+                        />
+                      </div>
+                      <div
+                        className="relative w-20  shadow bg-card h-12 me-8 sm:w-auto sm:h-auto md:w-20 md:h-12"
+                        onClick={handleMobileImageClick}
+                      >
+                        <Image
+                          src="/equitel.webp"
+                          alt="Equitel"
+                          layout="fill"
+                          className="rounded-md mx-auto object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex flex-col sm:flex-col mt-6 rounded-md shadow-md p-2 m-2">
+                    <div className="flex flex-col sm:flex-col md:flex-row justify-between">
+                      <div className="flex  sm:flex-row mb-4 md:flex-row items-center">
+                        <input
+                          type="checkbox"
+                          onChange={handleCheckboxChange}
+                          checked={showCardDetails}
+                        />
+                        <p className="font-abc ml-4">Bank Cards</p>
+                      </div>
+                      <div className="flex  sm:flex-row md:flex-row items-center">
+                        <div
+                          className="relative w-20 mx-2 shadow bg-card h-12 me-8 sm:w-full sm:mb-4 md:w-20 md:h-12"
+                          onClick={handleImageClick}
+                        >
+                          <Image
+                            src="/visa.png"
+                            alt="Visa"
+                            layout="fill"
+                            className="rounded-md mx-auto object-cover"
+                          />
+                        </div>
+                        <div
+                          className="relative w-20 mx-2 shadow bg-card h-12 me-8 sm:w-full sm:mb-4 md:w-20 md:h-12"
+                          onClick={handleImageClick}
+                        >
+                          <Image
+                            src="/mastercard.png"
+                            alt="Mastercard"
+                            layout="fill"
+                            className="rounded-md mx-auto object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>

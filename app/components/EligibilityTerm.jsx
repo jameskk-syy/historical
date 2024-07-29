@@ -8,7 +8,7 @@ const EligibilityTerm = ({ show ,onClose }) => {
     <div className="fixed z-10 inset-0">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="fixed inset-0 bg-black opacity-50"></div>
-        <div className="relative bg-white rounded-lg shadow-md overflow-hidden max-w-md w-full">
+        <div className="relative bg-white rounded-lg shadow-md overflow-hidden w-full lg:w-3/4">
           <div className="text-white bg-lavender py-4 px-6 flex justify-end items-center">
             {/* <InfoOutlined className="justify-center mr-20 text-red-700 text-3xl"/> */}
             <button
@@ -26,9 +26,9 @@ const EligibilityTerm = ({ show ,onClose }) => {
               </svg>
             </button>
           </div>
-          <div className="p-6 bg-card z-index-10 h-96 overflow-y-auto">
-            <form>
-              <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <div className="p-6 bg-card z-index-10 px-10  w-full  overflow-y-auto " style={{height:"400px"}}>
+            <form className='w-full'>
+              <div className="w-full mx-auto bg-white p-8 rounded-lg shadow-lg">
                 <h1 className="text-xl text-card3 font-semibold text-left  mb-6">
                   Loan Eligibility Requirements
                 </h1>

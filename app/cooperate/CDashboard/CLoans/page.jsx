@@ -68,6 +68,9 @@ export default function CreateLoan() {
   const [filtered, setFilter] = useState([]);
   const [search, setSearch] = useState("");
   const [showApproval, setApproval] = useState(false);
+  const [userRole,setUserRole] = useState("");
+  const [phoneNumber,setPhoneNumber] = useState("");
+  const [uid,setUid] = useState("");
   const tableHeaderStyle = {
     headCells: {
       style: {
@@ -92,10 +95,11 @@ export default function CreateLoan() {
     },
   ];
   useEffect(() => {
-    setCooperativeId(localStorage.getItem("registrationNumber"));
+    setCooperativeId(window.localStorage.getItem("registrationNumber"));
+    setUserRole(window.localStorage.getItem("role"))
+    setPhoneNumber(window.localStorage.getItem("phoneNumber"))
     // console.log(localStorage.getItem("registrationNumber"));
   });
-
   const handleSubmit = async (e) => {
     setIsLoading(true);
 
@@ -260,6 +264,7 @@ export default function CreateLoan() {
     if (result.length > 0) {
       setActiveStep("existingLoans");
       setMemberInfo(result[0]);
+      setUid(result[0].uid);
     } else {
       alert("No details to view");
     }
@@ -384,6 +389,9 @@ export default function CreateLoan() {
       <LoanApproval
         show={showApproval}
         onClose={closeApproval}
+        role={userRole}
+        uid={uid}
+        phoneNumber={phoneNumber}
         amount={memberinfo.desiredLoanAmount}
       />
       <EligibilityTerm show={showEligibility} onClose={closeEligibilityForm} />
