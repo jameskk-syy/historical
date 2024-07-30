@@ -63,8 +63,7 @@ export default function CreateLoan() {
     setIsExpanded(!isExpanded);
   };
   const router = useRouter();
-
-  const [activeStep, setActiveStep] = useState("Supplierdashboard");
+  const [activeStep, setActiveStep] = useState("marketsupply");
   const [fetchedLoans, setFetchedLoans] = useState([]);
   const [documentation, setDocumentation] = useState("");
   const [registrationNumber, setCooperativeId] = useState();
@@ -470,7 +469,7 @@ export default function CreateLoan() {
           {/* Stepper Navigation */}
           <div className="mb-3">
             <nav className="flex">
-              <button
+              {/* <button
                 onClick={() => setActiveStep("Supplierdashboard")}
                 className={`py-2 px-4 border-b-2 ${
                   activeStep === "Supplierdashboard"
@@ -479,8 +478,8 @@ export default function CreateLoan() {
                 } text-textcolor font-bold rounded-l`}
               >
                 Supplier Dashboard
-              </button>
-              {/* <button
+              </button> */}
+               <button
                 onClick={() => setActiveStep("marketsupply")}
                 className={`py-2 px-4 border-b-2 ${
                   activeStep === "marketsupply"
@@ -492,15 +491,16 @@ export default function CreateLoan() {
               </button>
 
               <button
-                onClick={() => setActiveStep("insurancesupply")}
+                onClick={() => setActiveStep("inventory")}
                 className={`py-2 px-4 border-b-2 ${
-                  activeStep === "insurancesupply"
+                  activeStep === "inventory"
                     ? "border-sky-10"
                     : "border-transparent"
                 } text-textcolor font-bold rounded-r`}
               >
-                Insurance Supply
+                Inventory
               </button>
+              {/*
               <button
                 onClick={() => setActiveStep("agronomyvet")}
                 className={`py-2 px-4 border-b-2 ${
@@ -534,9 +534,7 @@ export default function CreateLoan() {
               </button> */}
             </nav>
           </div>
-
-          {/* Create Loan Form */}
-          {activeStep === "Supplierdashboard" && (
+          {activeStep === "marketsupply" && (
             <div className="mt-4 flex flex-col w-full">
               <div className="flex flex-row ml-10 w-full">
                 <div className="flex flex-col w-8/12 md:mr-5 lg:mr-5">
@@ -687,7 +685,7 @@ export default function CreateLoan() {
                   <div>
                     <p className="text-lg font-semibold text-card3 font-abc">
                       {" "}
-                      Suppliers Data
+                      Market Supply Data
                     </p>
                   </div>
                   <div>
@@ -734,7 +732,12 @@ export default function CreateLoan() {
                 </div>
               </div>
             </div>
-          )}        
+          )}
+           {activeStep === "inventory" && (
+            <div className="mt-4 flex flex-col w-full">
+              inventory
+            </div>
+           )}
         </div>
       </div>
     </div>
