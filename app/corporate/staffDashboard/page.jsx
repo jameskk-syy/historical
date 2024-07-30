@@ -21,10 +21,11 @@ export default function Cooperative_Dashboard() {
   useEffect(() => {
     // setCooperativeName(window.localStorage.getItem("cooperativeName"));
   }, []);
+  const [userRole, setUserRole] = useState("");
   const [farmers, setFarmers] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const columns = [
     {
       name: "Phone Number",
@@ -74,6 +75,7 @@ export default function Cooperative_Dashboard() {
   ];
 
   useEffect(() => {
+    setUserRole(window.localStorage.getItem("role"));
     setLoading(true);
     Axios.post(
       "https://us-central1-farmfuzion.cloudfunctions.net/getallmembersbyrole",
@@ -137,14 +139,15 @@ export default function Cooperative_Dashboard() {
   const tableHeaderStyle = {
     headCells: {
       style: {
-        backgroundColor: '#f3f4ff',
-        fontWeight: 'bold',
-        fontSize: '14px',
-        color: '#01565b',
-        fontFamily: 'abc'
-      }
-    }
+        backgroundColor: "#f3f4ff",
+        fontWeight: "bold",
+        fontSize: "14px",
+        color: "#01565b",
+        fontFamily: "abc",
+      },
+    },
   };
+  // console.log("role logged in", userRole);
   return (
     <>
       <StaffNav
@@ -179,7 +182,9 @@ export default function Cooperative_Dashboard() {
               <div className="shadow-md rounded-md lg:w-4/12 w-full p-4 bg-card2">
                 <div className="flex flex-row justify-between items-center">
                   <div>
-                    <p className="text-2xl font-abc text-card3">Total Service</p>
+                    <p className="text-2xl font-abc text-card3">
+                      Total Service
+                    </p>
                     <p className="text-3xl font-abc text-card3 mt-4">25</p>
                   </div>
                   <div>
@@ -190,9 +195,7 @@ export default function Cooperative_Dashboard() {
               <div className="shadow-md rounded-md lg:w-4/12 w-full p-4 bg-card3">
                 <div className="flex flex-row justify-between items-center">
                   <div>
-                    <p className="text-2xl font-abc text-white">
-                      Total Loans
-                    </p>
+                    <p className="text-2xl font-abc text-white">Total Loans</p>
                     <p className="text-3xl font-abc text-white mt-4">2</p>
                   </div>
                   <div>
@@ -201,61 +204,61 @@ export default function Cooperative_Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="w-full shadow mt-14 h-96" >
+            <div className="w-full shadow mt-14 h-96">
               <BarCharts />
               <div className="flex md:flex-row lg:flex-row mt-4 justify-between p-2 flex-col ">
-            <div></div>
-            <div className="">
-              <input
-                type="text"
-                placeholder="Search by Phone Number ..."
-                style={{
-                  padding: '10px',
-                  borderRadius: '5px',
-                  border: '1px solid #ccc',
-                  // marginBottom: '3px'
-                }}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <button
-                onClick={downloadExcel}
-                className="bg-card3 text-white py-3 rounded-md p-4 ml-6"
-              >
-                Download Farmers List
-              </button>
-            </div>
-          </div>
-          {loading ? (
-            <p className="text-xl text-center font-abc mt-24">Loading</p>
-          ) : (
-            <DataTable
-              customStyles={tableHeaderStyle}
-              columns={columns}
-              data={filteredFarmers}
-              pagination
-              paginationPerPage={3}
-              paginationRowsPerPageOptions={[3]}
-              highlightOnHover
-              fixedHeader
-              selectableRowsHighlight
-              subHeader
-              // subHeaderComponent={
-              //   // <input
-              //   //   type="text"
-              //   //   placeholder="Search by Phone Number ..."
-              //   //   style={{
-              //   //     padding: '10px',
-              //   //     borderRadius: '5px',
-              //   //     border: '1px solid #ccc',
-              //   //     marginBottom: '3px'
-              //   //   }}
-              //   //   value={search}
-              //   //   onChange={(e) => setSearch(e.target.value)}
-              //   // />
-              // }
-            />
-          )}
+                <div></div>
+                <div className="">
+                  <input
+                    type="text"
+                    placeholder="Search by Phone Number ..."
+                    style={{
+                      padding: "10px",
+                      borderRadius: "5px",
+                      border: "1px solid #ccc",
+                      // marginBottom: '3px'
+                    }}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                  <button
+                    onClick={downloadExcel}
+                    className="bg-card3 text-white py-3 rounded-md p-4 ml-6"
+                  >
+                    Download Farmers List
+                  </button>
+                </div>
+              </div>
+              {loading ? (
+                <p className="text-xl text-center font-abc mt-24">Loading</p>
+              ) : (
+                <DataTable
+                  customStyles={tableHeaderStyle}
+                  columns={columns}
+                  data={filteredFarmers}
+                  pagination
+                  paginationPerPage={3}
+                  paginationRowsPerPageOptions={[3]}
+                  highlightOnHover
+                  fixedHeader
+                  selectableRowsHighlight
+                  subHeader
+                  // subHeaderComponent={
+                  //   // <input
+                  //   //   type="text"
+                  //   //   placeholder="Search by Phone Number ..."
+                  //   //   style={{
+                  //   //     padding: '10px',
+                  //   //     borderRadius: '5px',
+                  //   //     border: '1px solid #ccc',
+                  //   //     marginBottom: '3px'
+                  //   //   }}
+                  //   //   value={search}
+                  //   //   onChange={(e) => setSearch(e.target.value)}
+                  //   // />
+                  // }
+                />
+              )}
             </div>
           </div>
           <div className="shadow-md rounded-md lg:w-1/4 w-full bg-card">
@@ -299,12 +302,23 @@ export default function Cooperative_Dashboard() {
               </div>
             </div>
             <div className="flex flex-row mt-2 p-2 gap-4 border-b-2">
-              <button className="w-full py-2 bg-card3 hover:bg-opacity-75 font-bold text-white rounded-md">
-                <Link href="/corporate/registerstaff">Add Staff</Link>
-              </button>
-              <button className="w-full py-2 bg-card3 hover:bg-opacity-75 font-bold text-white rounded-md">
-                <Link href="/cooperate/register">Register member</Link>
-              </button>
+              {userRole == "secretary" ? (
+                <button className="w-full py-2 bg-card3 hover:bg-opacity-75 font-bold text-white rounded-md">
+                  <Link href="/corporate/registerstaff">Add Staff</Link>
+                </button>
+              ) : (
+                <></>
+              )}
+              {userRole == "secretary" ? (
+                <button
+                  disabled={userRole === "chairman"}
+                  className="w-full py-2 bg-card3 hover:bg-opacity-75 font-bold text-white rounded-md"
+                >
+                  <Link href="/cooperate/register">Register member</Link>
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
             <p className="p-2">Manage Claims</p>
             <div className="flex flex-row mt-2 p-2">

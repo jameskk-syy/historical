@@ -346,7 +346,7 @@ export default function CreateLoan() {
       >
         <div className="flex flex-grow  flex-col  pt-2">
           {/* Stepper Navigation */}
-          {/* <div className="mb-3">
+          <div className="mb-3">
             <nav className="flex">
               <button
                 onClick={() => setActiveStep("insuaranstatement")}
@@ -392,9 +392,9 @@ export default function CreateLoan() {
                 Create Insuarance
               </button>
             </nav>
-          </div> */}
+          </div>
 
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <nav className="flex">
               <button
                 onClick={() => setActiveStep("insuaranstatement")}
@@ -430,7 +430,7 @@ export default function CreateLoan() {
                 </button>
               )}
             </nav>
-          </div>
+          </div> */}
 
           {/* Create Loan Form */}
           {activeStep === "insuaranstatement" && (
