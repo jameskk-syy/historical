@@ -255,7 +255,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                         </Link>
                       )}
                     </div>
-                    <div className="mb-4">
+                    {/* <div className="mb-4">
                       <div
                         className="flex justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg"
                         onClick={toggleDropdown}
@@ -271,7 +271,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                           </Link>
                         )}
                       </div>
-                    </div>
+                    </div> */}
                     <div className="mb-4">
                       <div
                         className="flex justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg"
