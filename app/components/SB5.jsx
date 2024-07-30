@@ -487,7 +487,7 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                             Insurance
                           </Link>
                           <Link
-                            href="/cooperate/veterinarysupliers"
+                            href="/corporate/veterinarysupliers"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
                             Veterinary
