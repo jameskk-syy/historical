@@ -480,29 +480,36 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                       {isProviderOpen && isSidebarExpanded && (
                         <div className=" w-4/5 ml-8 pl-1 font-abc">
                           <Link
-                            href="/cooperate/CDashboard/Cproducts"
+                            href="/cooperate/CDashboard/InsuranceSupplier"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
                             Insurance
                           </Link>
                           <Link
-                            href="/cooperate/CDashboard/CInsurance"
+                            href="/cooperate/CDashboard/VeterinarySupply"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
                             Veterinary
                           </Link>
                           <Link
-                            href="/corporate/veterinaryservives"
+                            href="/cooperate/CDashboard/AgronomySuppliers"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
                             Agronomy
                           </Link>
                           <Link
-                            href="/corporate/agronomyservices"
+                            href="/cooperate/CDashboard/MarketSupply"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
-                            Inventory
+                            Market
                           </Link>
+                          <Link
+                            href="/cooperate/CDashboard/suppliers"
+                            className="block text-sm text-white hover:bg-green-400 p-2"
+                          >
+                            Suppliers
+                          </Link>
+                        
 {/* 
                           <Link
                             href="#"
