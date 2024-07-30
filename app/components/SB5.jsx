@@ -16,6 +16,7 @@ import {
   Logout,
   Agriculture,
   Groups,
+  Event,
 } from "@mui/icons-material";
 import { Disclosure } from "@headlessui/react";
 import Image from "next/image";
@@ -486,13 +487,13 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                             Insurance
                           </Link>
                           <Link
-                            href="/cooperate/CDashboard/CInsurance"
+                            href="/cooperate/veterinarysupliers"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
                             Veterinary
                           </Link>
                           <Link
-                            href="/corporate/veterinaryservives"
+                            href="/corporate/agrosupliers"
                             className="block text-sm text-white hover:bg-green-400 p-2"
                           >
                             Agronomy
@@ -511,6 +512,18 @@ export default function SB5({ isSidebarExpanded, toggleSidebar }) {
                             Request Service
                           </Link> */}
                         </div>
+                      )}
+                    </div>
+                    <div className="flex mb-4 justify-start items-center gap-4 pl-2 hover:bg-green-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto ">
+                      <Event  onClick={toggleSidebar} className="text-xl text-white group-hover:text-white transition-transform transform hover:scale-125" />
+                      {isSidebarExpanded && (
+                        <Link
+                          href="/corporate/apointmentdashboard"
+                          className="text-base text-white group-hover:text-white "
+                          style={txtStyles}
+                        >
+                          Appointments
+                        </Link>
                       )}
                     </div>
                     <div className="mb-4">
