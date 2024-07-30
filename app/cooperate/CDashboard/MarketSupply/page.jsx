@@ -734,7 +734,9 @@ export default function CreateLoan() {
             </div>
           )}
            {activeStep === "inventory" && (
-            <>inventory</>
+            <div className="mt-4 flex flex-col w-full">
+              inventory
+            </div>
            )}
         </div>
       </div>
