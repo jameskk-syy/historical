@@ -522,9 +522,9 @@ export default function CreateLoan() {
                 Agronomy Service Providers
               </button>
               <button
-                onClick={() => setActiveStep("createvetprovider")}
+                onClick={() => setActiveStep("createagroprovider")}
                 className={`py-2 px-4 border-b-2 ${
-                  activeStep === "createvetprovider"
+                  activeStep === "createagroprovider"
                     ? "border-sky-10"
                     : "border-transparent"
                 } text-textcolor font-bold rounded-r`}
@@ -987,7 +987,7 @@ export default function CreateLoan() {
             </div>
           )}
 
-          {activeStep === "createvetprovider" && (
+          {activeStep === "createagroprovider" && (
             <div className="flex flex-wrap  md:mx-2 justify-center">
               <div className="w-full lg:w-11/12 px-10 bg-card text-textcolor font-abc p-8 rounded shadow-lg me-5">
                 <div className="flex justify-between mb-4">
