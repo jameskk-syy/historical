@@ -78,7 +78,19 @@ export default function CreateLoan() {
     const [serviceProcess, setserviceProcess] = useState("");
     const [additionalConsideration, setadditionalConsideration] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-  
+
+
+    const [idNumber, setIdNumber] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [location, setLocation] = useState("");
+    const [businessName, setBusinessName] = useState("");
+    const [taxIdentificationNumber, setTaxIdentificationNumber] = useState("");
+    const [permitNumber, setPermitNumber] = useState("");
+    const [operatingDays, setOperatingDays] = useState("");
+    const [operatingHours, setOperatingHours] = useState("");
+    const [email, setEmail] = useState("");
+
+
     // Additional state values
     const [fetchedLoans, setFetchedLoans] = useState([]);
     const [documentation, setDocumentation] = useState("");
@@ -90,7 +102,6 @@ export default function CreateLoan() {
     const [insuranceOffered, setInsuranceOffered] = useState("");
     const [companyLocation, setCompanyLocation] = useState("");
     const [premiumAmount, setPremiumAmount] = useState("");
-    const [email, setEmail] = useState("");
     const [coverageDetails, setCoverageDetails] = useState("");
     const [claimDetails, setClaimDetails] = useState("");
     const [minimumPremiumAmount, setMinimumPremiumAmount] = useState("");
@@ -484,8 +495,8 @@ export default function CreateLoan() {
                             <button
                                 onClick={() => setActiveStep("VeterinarySupply")}
                                 className={`py-2 px-4 border-b-2 ${activeStep === "VeterinarySupply"
-                                        ? "border-sky-10"
-                                        : "border-transparent"
+                                    ? "border-sky-10"
+                                    : "border-transparent"
                                     } text-textcolor font-bold rounded-l`}
                             >
                                 Veterinary Supply
@@ -493,8 +504,8 @@ export default function CreateLoan() {
                             <button
                                 onClick={() => setActiveStep("marketsupply")}
                                 className={`py-2 px-4 border-b-2 ${activeStep === "marketsupply"
-                                        ? "border-sky-10"
-                                        : "border-transparent"
+                                    ? "border-sky-10"
+                                    : "border-transparent"
                                     } text-textcolor font-bold rounded-l`}
                             >
                                 Veterinary Requests
@@ -503,8 +514,8 @@ export default function CreateLoan() {
                             <button
                                 onClick={() => setActiveStep("insurancesupply")}
                                 className={`py-2 px-4 border-b-2 ${activeStep === "insurancesupply"
-                                        ? "border-sky-10"
-                                        : "border-transparent"
+                                    ? "border-sky-10"
+                                    : "border-transparent"
                                     } text-textcolor font-bold rounded-r`}
                             >
                                 Veterinary info
@@ -512,8 +523,8 @@ export default function CreateLoan() {
                             <button
                                 onClick={() => setActiveStep("createvetprovider")}
                                 className={`py-2 px-4 border-b-2 ${activeStep === "createvetprovider"
-                                        ? "border-sky-10"
-                                        : "border-transparent"
+                                    ? "border-sky-10"
+                                    : "border-transparent"
                                     } text-textcolor font-bold rounded-r`}
                             >
                                 Create veterinery service providers
@@ -997,36 +1008,103 @@ export default function CreateLoan() {
                                     <div className="flex flex-wrap -mx-3 mb-4">
                                         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                             <label className="block text-sm font-medium text-gray-700">
-                                                Service Name
-                                            </label>
-                                            <select
-                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                                                value={serviceName}
-                                                onChange={(e) => setserviceName(e.target.value)}
-                                                style={styles}
-                                            >
-                                                <option value="Routine Check-ups">Routine Check-ups</option>
-                                                <option value="Vaccinations">Vaccinations</option>
-                                                <option value="Surgery">Surgery</option>
-                                                <option value="Dental Care">Dental Care</option>
-                                                <option value="Emergency Services">Emergency Services</option>
-                                                <option value="Pet Grooming">Pet Grooming</option>
-                                                <option value="Nutritional Advice">Nutritional Advice</option>
-                                                <option value="Microchipping">Microchipping</option>
-                                                <option value="Behavioral Consultation">Behavioral Consultation</option>
-                                                <option value="Specialist Referrals">Specialist Referrals</option>
-                                                <option value="Pet Boarding">Pet Boarding</option>
-                                            </select>
-                                        </div>
-                                        <div className="w-full md:w-1/2 px-3">
-                                            <label className="block text-sm font-medium text-gray-700">
-                                                Service Frequency
+                                                Provider Name
                                             </label>
                                             <input
                                                 type="text"
-                                                value={serviceFrequency}
-                                                onChange={(e) => setServiceFrequency(e.target.value)}
                                                 className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={providerName}
+                                                onChange={(e) => setProviderName(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                        <div className="w-full md:w-1/2 px-3">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                ID Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={idNumber}
+                                                onChange={(e) => setIdNumber(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-wrap -mx-3 mb-4">
+                                        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Phone Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={phoneNumber}
+                                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                        <div className="w-full md:w-1/2 px-3">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Email
+                                            </label>
+                                            <input
+                                                type="email"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-wrap -mx-3 mb-4">
+                                        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Location
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={location}
+                                                onChange={(e) => setLocation(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                        <div className="w-full md:w-1/2 px-3">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Business Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={businessName}
+                                                onChange={(e) => setBusinessName(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-wrap -mx-3 mb-4">
+                                        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Tax Identification Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={taxIdentificationNumber}
+                                                onChange={(e) => setTaxIdentificationNumber(e.target.value)}
+                                                style={styles}
+                                            />
+                                        </div>
+                                        <div className="w-full md:w-1/2 px-3">
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Permit Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={permitNumber}
+                                                onChange={(e) => setPermitNumber(e.target.value)}
                                                 style={styles}
                                             />
                                         </div>
@@ -1036,23 +1114,22 @@ export default function CreateLoan() {
                                             <label className="block text-sm font-medium text-gray-700">
                                                 Service Description
                                             </label>
-                                            <input
-                                                type="text"
-                                                value={serviceDescription}
-                                                onChange={(e) => setserviceDescription(e.target.value)}
+                                            <textarea
                                                 className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={serviceDescription}
+                                                onChange={(e) => setServiceDescription(e.target.value)}
                                                 style={styles}
-                                            />
+                                            ></textarea>
                                         </div>
                                         <div className="w-full md:w-1/2 px-3">
                                             <label className="block text-sm font-medium text-gray-700">
-                                                Service Coverage
+                                                Service Fee
                                             </label>
                                             <input
                                                 type="text"
-                                                value={serviceCoverage}
-                                                onChange={(e) => setserviceCoverage(e.target.value)}
                                                 className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={serviceFee}
+                                                onChange={(e) => setServiceFee(e.target.value)}
                                                 style={styles}
                                             />
                                         </div>
@@ -1060,83 +1137,31 @@ export default function CreateLoan() {
                                     <div className="flex flex-wrap -mx-3 mb-4">
                                         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                             <label className="block text-sm font-medium text-gray-700">
-                                                Service Amount
+                                                Operating Days
                                             </label>
                                             <input
                                                 type="text"
                                                 className="mt-1 p-2 block w-full border rounded-lg shadow-md"
+                                                value={operatingDays}
+                                                onChange={(e) => setOperatingDays(e.target.value)}
                                                 style={styles}
-                                                value={serviceAmount}
-                                                onChange={(e) => setserviceAmount(e.target.value)}
                                             />
                                         </div>
                                         <div className="w-full md:w-1/2 px-3">
                                             <label className="block text-sm font-medium text-gray-700">
-                                                Payment Method
+                                                Operating Hours
                                             </label>
-                                            <select
+                                            <input
+                                                type="text"
                                                 className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                                                value={paymentMethod}
-                                                onChange={(e) => setpaymentMethod(e.target.value)}
+                                                value={operatingHours}
+                                                onChange={(e) => setOperatingHours(e.target.value)}
                                                 style={styles}
-                                            >
-                                                <option>Select Payment Method</option>
-                                                <option value="Mpesa">Mpesa</option>
-                                                <option value="Airtel">Airtel</option>
-                                                <option value="Equitel">Equitel</option>
-                                                <option value="Bank">Bank</option>
-                                            </select>
-                                        </div>
-                                        <div className="w-full md:w-1/2 mt-2 px-3">
-                                            <label className="block text-sm font-medium text-gray-700">
-                                                Service Duration
-                                            </label>
-                                            <textarea
-                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                                                style={styles}
-                                                value={serviceDuration}
-                                                onChange={(e) => setserviceDuration(e.target.value)}
-                                                required
-                                            ></textarea>
-                                        </div>
-                                        <div className="w-full md:w-1/2 mt-2 px-3">
-                                            <label className="block text-sm font-medium text-gray-700">
-                                                Service Package
-                                            </label>
-                                            <textarea
-                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                                                style={styles}
-                                                value={servicePackage}
-                                                onChange={(e) => setservicePackage(e.target.value)}
-                                                required
-                                            ></textarea>
-                                        </div>
-                                        <div className="w-full md:w-1/2 mt-2 px-3">
-                                            <label className="block text-sm font-medium text-gray-700">
-                                                Service Application Fee
-                                            </label>
-                                            <textarea
-                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                                                style={styles}
-                                                value={serviceFee}
-                                                onChange={(e) => setserviceFee(e.target.value)}
-                                                required
-                                            ></textarea>
-                                        </div>
-                                        <div className="w-full md:w-1/2 mt-2 px-3">
-                                            <label className="block text-sm font-medium text-gray-700">
-                                                Special Instructions
-                                            </label>
-                                            <textarea
-                                                className="mt-1 p-2 block w-full border rounded-lg shadow-md"
-                                                style={styles}
-                                                value={specialInstructions}
-                                                onChange={(e) => setspecialInstructions(e.target.value)}
-                                                required
-                                            ></textarea>
+                                            />
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                             <div className="w-full md:w-4/12 bg-card text-textcolor font-abc p-3 rounded mx-2">
                                 <div className="flex justify-between mb-6">
