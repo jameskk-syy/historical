@@ -104,11 +104,11 @@ function Cart() {
       );
 
       // Handle response if needed
-      console.log("Cart saved to database:", response.data.uid);
+      // console.log("Cart saved to database:", response.data.uid);
 
-      console.log("Cart saved to database:", response.data);
+      // console.log("Cart saved to database:", response.data);
       const { uid } = response.data;
-      console.log("uid:", uid);
+      // console.log("uid:", uid);
       setUid(uid);
 
       const newUrl = `/farmers/cart/${uid}/`;
@@ -116,7 +116,7 @@ function Cart() {
       // Navigate to the new URL
       router.push(newUrl);
     } catch (error) {
-      console.error("Error saving cart to database:", error);
+      // console.error("Error saving cart to database:", error);
     }
   };
 
@@ -255,7 +255,7 @@ function Cart() {
                   onClick={
                     cartItems.length > 0 ? saveCartToDatabase : undefined
                   }
-                  className="bg-card3 text-white font-abc py-2 px-10 md:px-28 rounded-lg font-abc mt-5 mb-2"
+                  className="bg-card3 text-white font-abc py-2 px-10 md:px-28 rounded-lg mt-5 mb-2"
                 >
                   CheckOut Ksh {Total}
                 </button>

@@ -7,12 +7,12 @@ import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import DataTable from "react-data-table-component";
 import Axios from "axios";
-import SB5 from "@/app/components/SB5";
 import TopCoop from "@/app/components/TopCoop";
 import { saveAs } from "file-saver";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import axios from "axios";
+import SideNav from "@/app/components/SideNav";
 
 export default function Cproduct_page() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -62,14 +62,14 @@ export default function Cproduct_page() {
 
   const createProduct = (e) => {
     e.preventDefault();
-    const registrationNumber = window.localStorage.getItem("registrationNumber");
+    const phoneNumber = window.localStorage.getItem("phoneNumber");
 
-    if (registrationNumber == "") {
-      toast.error("Missing registration Number");
+    if (phoneNumber == "") {
+      toast.error("Missing phoneNumber Number");
       return;
     }
 
-    console.log("my data", title, productStatus, description, media, setItemPrice, productCategory, productType, itemPrice, totalPrice, finalPrice);
+    // console.log("products data", title, productStatus, description, media, productCategory, productType, itemPrice, totalPrice, finalPrice);
 
 
     const product_id = uuidv4();
@@ -93,9 +93,9 @@ export default function Cproduct_page() {
       uploadBytes(imageRef, media).then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {
           Axios.post(
-            "https://us-central1-farmfuzion.cloudfunctions.net/addproduct",
+            "https://us-central1-farmfuzion.cloudfunctions.net/addproduct-farmer",
             {
-              registrationNumber,
+              phoneNumber,
               title: title,
               productStatus: productStatus,
               description: description,
@@ -109,7 +109,7 @@ export default function Cproduct_page() {
             }
           )
             .then((response) => {
-              console.log("Response data:", response.data);
+            //   console.log("Response data:", response.data);
               setLoadings(false);
               Swal.fire({
                 position: "center",
@@ -119,7 +119,7 @@ export default function Cproduct_page() {
               });
             })
             .catch((err) => {
-              console.log(err.message);
+            //   console.log(err.message);
               setLoadings(false);
             });
         });
@@ -249,7 +249,7 @@ export default function Cproduct_page() {
 
   useEffect(() => {
     const registrationNumber = window.localStorage.getItem("registrationNumber");
-    console.log("Response Reg:", registrationNumber)
+    // console.log("Response Reg:", registrationNumber)
 
     Axios.post(
       "https://us-central1-farmfuzion.cloudfunctions.net/fetch_products_by_registration_number",
@@ -258,13 +258,13 @@ export default function Cproduct_page() {
       }
     )
       .then((response) => {
-        console.log("Response:", response.data.products);
+        // console.log("Response:", response.data.products);
         setloanrequests(response.data);
-        console.log("existing products", response.data)
+        // console.log("existing products", response.data)
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching loanrequests:", error);
+        // console.error("Error fetching loanrequests:", error);
       });
   });
 
@@ -273,7 +273,7 @@ export default function Cproduct_page() {
       return item.title.match(searchs);
     });
     setFilters(result);
-    console.log("Result", result);
+    // console.log("Result", result);
   }, [searchs, loanrequests]);
 
   const tableHeaderStyles = {
@@ -360,7 +360,7 @@ export default function Cproduct_page() {
 
   return (
     <div className=" min-h-screen md:h-[100%]  sm:overflow-x-hidden">
-      <SB5
+      <SideNav
         isSidebarExpanded={isSidebarExpanded}
         toggleSidebar={toggleSidebar}
       />
@@ -368,61 +368,14 @@ export default function Cproduct_page() {
         className={`flex-grow h-full transition-all duration-200 ease-out ${isSidebarExpanded ? "md:ml-64" : "md:ml-24"
           } mt-0 me-3`}
       >
-        <div className="mt-2 xb:ml-5">
-          <TopCoop />
+        <div className="mt-2">
+          <p className="font-abc text-2xl font-semibold text-card3 ">Add Products</p>
         </div>
         <div className="flex flex-grow  flex-col pt-2">
-          {/* Stepper Navigation */}
-          {/* <div className="mb-3">
-            <nav className="flex">
-              <button
-                onClick={() => setActiveStep("addproducts")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "addproducts"
-                    ? "border-sky-10"
-                    : "border-transparent"
-                } text-textcolor font-bold rounded-l`}
-              >
-                Add Products
-              </button>
-              <button
-                onClick={() => setActiveStep("existingproducts")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "existingproducts"
-                    ? "border-sky-10"
-                    : "border-transparent"
-                } text-textcolor font-bold rounded-l`}
-              >
-                Existing Products
-              </button>
-              <button
-                onClick={() => setActiveStep("updateproduct")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "updateproduct"
-                    ? "border-sky-10"
-                    : "border-transparent"
-                } text-textcolor font-bold rounded-r`}
-                disabled={updatesProduct.length == 0}
-              >
-                Update Product
-              </button>
-
-              <button
-                onClick={() => setActiveStep("inventory")}
-                className={`py-2 px-4 border-b-2 ${
-                  activeStep === "inventory"
-                    ? "border-sky-10"
-                    : "border-transparent"
-                } text-textcolor font-bold rounded-r`}
-              >
-                Inventory
-              </button>
-            
-            </nav>
-          </div> */}
+         
           <div className="mb-3">
             <nav className="flex">
-              {userRole === 'cooperative' && (
+              {userRole === 'farmer' && (
                 <>
                   <button
                     onClick={() => setActiveStep("addproducts")}
@@ -451,7 +404,7 @@ export default function Cproduct_page() {
             </nav>
           </div>
 
-          {/* Create Loan Form */}
+          {/* Create Product Form */}
           {activeStep === "addproducts" && (
             <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-2 flex-grow mx-2 mr-3 md:mx-2 md:grid-cols-4 md:mr-1 gap-10 shadow-md bg-card lg:grid-cols-4">
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
@@ -659,7 +612,7 @@ export default function Cproduct_page() {
           )}
           {/* {activeStep === "inventory" && <></>} */}
           {activeStep === "updateproduct" &&
-            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-3 flex-grow md:grid-cols-4 mr-10 gap-10 shadow-md bg-card lg:grid-cols-3">
+            <div className="grid grid-cols-1 md:p-5 py-5 h-3/4  px-3 flex-grow md:grid-cols-4 mr-10 gap-10 shadow-md bg-card ld:grid-cols-3">
               <div className="flex w-full flex-grow flex-col mr-10 mb-10">
                 <div className="mb-10">
 
