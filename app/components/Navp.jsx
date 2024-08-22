@@ -1,5 +1,5 @@
 "use client"
-import { Agriculture, AgricultureOutlined, AgricultureSharp, AgricultureTwoTone, Close, Dashboard, DashboardOutlined, Home, House, HouseOutlined, Menu, Person, PersonOffOutlined, Search, ShoppingCart } from '@mui/icons-material';
+import { Agriculture, AgricultureOutlined, AgricultureSharp, AgricultureTwoTone, Close, Dashboard, DashboardOutlined, Home, House, HouseOutlined, Menu, Payment, Person, PersonOffOutlined, Search, ShoppingCart } from '@mui/icons-material';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -32,19 +32,19 @@ export default function Navp() {
             <div className='md:flex justify-between md:mx-20 lg:mx-20 items-center border-b  py-4'>
                 <div >
                     <ul className={`md:flex md:items-center md:pb-0 ${open ? 'block' : 'hidden md:block'} transition-all duration-500 ease-in ml-auto`}>
-                        <li className='text-card-3'><Agriculture /></li>
+                        {/* <li className='text-card-3'><Payment /></li> */}
                         <li className='md:ml-8  md:my-0 my-7'>
-                            <Link href="" className='   hover:bg-card3 hover:text-white rounded-full px-5 py-2 hover:rounded-full duration-200'>Home</Link>
+                            <Link href="/farmers" className='   hover:bg-card3 hover:text-white rounded-full px-5 py-2 hover:rounded-full duration-200'>Home</Link>
                         </li>
-                        <li className='md:ml-8  md:my-0 my-7'>
+                        {/* <li className='md:ml-8  md:my-0 my-7'>
                             <Link href="" className='   hover:bg-card3 hover:text-white  rounded-full px-5 py-2 hover:rounded-full duration-200'>Dashboard</Link>
-                        </li>
+                        </li> */}
                         <li className='md:ml-8  md:my-0 my-7'>
                             <Link href="" className='   hover:bg-card3 hover:text-white  rounded-full px-5 py-2 hover:rounded-full duration-200'>Market</Link>
                         </li>
-                        <li className='md:ml-8  md:my-0 my-7'>
+                        {/* <li className='md:ml-8  md:my-0 my-7'>
                             <Link href="" className='   hover:bg-card3 hover:text-white  rounded-full px-5 py-2 hover:rounded-full duration-200'>Payment</Link>
-                        </li>
+                        </li> */}
                         <li className='md:ml-8  md:my-0 my-7'>
                             <Link href="" className='   hover:bg-card3 hover:text-white  rounded-full px-5 py-2 hover:rounded-full duration-200'>Tracking</Link>
                         </li>
