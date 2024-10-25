@@ -16,6 +16,20 @@ module.exports = {
   // },
   theme: {
     extend: {
+      keyframes: {
+        slideInLeft: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        slideInLeft: 'slideInLeft 1s ease-out',
+        slideInRight: 'slideInRight 1s ease-out',
+      },
       fontFamily:{
         abc:["Poppins","sans-serif"]
       },
@@ -156,6 +170,10 @@ module.exports = {
       colors: {
         customGreen: '#57EB98',
         darkerGreen: "#286d34",
+        homeText:"#efbe34",
+        cardfa:'#52db5a',
+        footer:'#195a63',
+        oranges:'#fedeb0',
         newBg:"#004953",
         lavender: '',
         card :'#f3f4ff',

@@ -8,6 +8,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/farmers',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

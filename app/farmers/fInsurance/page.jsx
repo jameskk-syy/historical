@@ -5,7 +5,7 @@ import React from "react";
 
 // Icons
 import { BiSolidShieldPlus } from "react-icons/bi";
-import { FaSeedling } from "react-icons/fa";
+import { FaSeedling,FaAngleDoubleRight } from "react-icons/fa";
 import { PiCowDuotone } from "react-icons/pi";
 import { FaTractor } from "react-icons/fa";
 import { FaUserInjured } from "react-icons/fa";
