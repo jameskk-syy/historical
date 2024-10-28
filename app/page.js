@@ -25,7 +25,7 @@ export default function Home() {
             data-aos-easing="linear"
             data-aos-duration="1500"
           >
-            <h2 className="text-white mb-6 text-2xl lg:text-6xl">
+            <h2 className="text-white mb-6 text-2xl lg:text-4xl">
               Special Interest Tourism
             </h2>
             <h2 className="text-white mb-6 lg:text-6xl text-2xl font-bold">
