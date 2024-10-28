@@ -1,14 +1,14 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/redux/Providers";
-import {  Toaster } from "react-hot-toast";
-
+import { Toaster } from "react-hot-toast";
+import AOSInitializer from "./components/aos";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Farm Fuzion",
-  description: "Farm Fuzion Sustainable Agri-bussiness",
+  title: "Historical Heritage Tourism",
+  description: "Historical Heritage Tourism",
 };
 
 export default function RootLayout({ children }) {
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
             position="top-center"
             reverseOrder={false}
           />
+          <AOSInitializer /> 
           {children}
         </Providers>
       </body>

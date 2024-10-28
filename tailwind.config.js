@@ -175,6 +175,7 @@ module.exports = {
         footer:'#195a63',
         oranges:'#fedeb0',
         newBg:"#004953",
+        greenColors:'#00D47E',
         lavender: '',
         card :'#f3f4ff',
         card1 :'#e2f397',
