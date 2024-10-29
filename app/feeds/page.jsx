@@ -155,7 +155,7 @@ export default function Home() {
                   Shaping the Future of Heritage Tourism in AlUla, Saudi Arabia
                 </Link>
                 <p className="mt-2 text-sm">
-                  AlUla's "Forever Revitalizing" campaign promotes global
+                  AlUla&apos;s Forever Revitalizing campaign promotes global
                   interest in heritage tourism while ensuring sustainability and
                   conservation of its historical sites, such as Hegra and Dadan,
                   through responsible visitor limits.
@@ -223,7 +223,7 @@ export default function Home() {
         Facebook: UNESCO World Heritage
       </Link>
       <p className="mt-2 text-sm">
-        Follow UNESCO's official page for updates on global heritage sites, conservation projects, and cultural tourism news.
+        Follow UNESCO&apos;s official page for updates on global heritage sites, conservation projects, and cultural tourism news.
       </p>
     </div>
 
