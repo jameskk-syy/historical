@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 export default function FarmerNav() {
   let Links = [
-    { name: "Editorial", link: "#editorial" },
-    { name: "New Feeds", link: "#feeds" },
-    { name: "Forum", link: "#forum" }
+    { name: "Editorial", link: "/" },
+    { name: "New Feeds", link: "/feeds" },
+    { name: "Forum", link: "/forum" }
   ];
   const [open, setOpen] = useState(false);
 
