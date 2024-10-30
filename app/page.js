@@ -157,7 +157,7 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-text-red-600 mt-2 text-center">
+                <p className="text-red-600 mt-2 text-center">
                   Explore ancient landmarks, ruins, and monuments that highlight
                   the history of different cultures.
                 </p>
