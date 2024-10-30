@@ -120,6 +120,7 @@ export default function Home() {
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
+                
                 className=" text-red-600 text-4xl mb-8"
               >
                 Special Interest Tourism (SIT)
@@ -128,7 +129,7 @@ export default function Home() {
                 data-aos="flip-down"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="text-gray-7"
+                className="text-red-600"
               >
                 Special Interest Tourism (SIT) refers to travel that is
                 motivated by a specific interest or activity that goes beyond
@@ -156,7 +157,7 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-gray-600 mt-2 text-center">
+                <p className="text-text-red-600 mt-2 text-center">
                   Explore ancient landmarks, ruins, and monuments that highlight
                   the history of different cultures.
                 </p>
@@ -168,7 +169,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 h-72 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold">Dark Tourism</h3>
-                <p className="text-gray-600 mt-2 text-center">
+                <p className="text-red-600 mt-2 text-center">
                   Visit sites associated with historical tragedies, such as
                   battlefields, memorials, and museums.
                 </p>
@@ -180,7 +181,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 h-72 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold">Ecotourism</h3>
-                <p className="text-gray-600 mt-2 text-center">
+                <p className="text-red-600 mt-2 text-center">
                   Experience nature and wildlife conservation efforts while
                   respecting local ecosystems.
                 </p>
@@ -208,16 +209,16 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold mb-6">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Target Market:</span> History
                   buffs, cultural enthusiasts, and educational travelers.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Trend:</span> Increasing
                   interest in preserving and experiencing historical sites for
                   educational and cultural enrichment.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Demand:</span> Growing
                   appreciation for heritage preservation and the promotion of
                   local historical narratives.
@@ -232,17 +233,17 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-80 h-96  bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold  mb-6">Dark Tourism</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Target Market:</span>{" "}
                   Travelers interested in history, human resilience, and
                   reflective experiences.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Trend:</span> Visitors are
                   increasingly drawn to sites associated with historical events,
                   such as battlefields and memorials.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Demand:</span> Desire for
                   deeper, thought-provoking travel experiences that acknowledge
                   historical tragedies and lessons.
@@ -257,16 +258,16 @@ export default function Home() {
                 className="flex flex-col items-center p-5  md:h-80 h-96  bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold  mb-6">Ecotourism</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Target Market:</span> Nature
                   enthusiasts and eco-conscious travelers.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Trend:</span> Travelers
                   seeking to explore natural environments while minimizing their
                   impact on the ecosystem.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">Demand:</span> Increasing
                   awareness of environmental issues and eco-friendly
                   accommodations and activities.
@@ -302,7 +303,7 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold mb-6">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   This type of tourism focuses on exploring ancient landmarks,
                   ruins, and monuments that highlight the history of different
                   cultures. (Denzon, 2023).
@@ -317,7 +318,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Dark Tourism</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   This form of tourism involves visiting sites associated with
                   historical tragedies, such as battlefields, memorials, and
                   museums. (Foley & Lennon, 1996).
@@ -332,7 +333,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Ecotourism</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   This type of tourism emphasizes responsible travel to natural
                   areas, conserving the environment and improving the well-being
                   of local people. (The International Ecotourism Society, 2015).
@@ -349,7 +350,7 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold mb-6">
                   Culinary Tourism
                 </h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   This type of tourism involves exploring different cultures
                   through their cuisine, including cooking classes, food
                   festivals, and local dining experiences. (Hjalager, 2002).
@@ -378,16 +379,16 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold mb-6">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Niche Targeting: Focuses on history enthusiasts who value
                   cultural heritage, attracting a loyal customer base.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Authentic Experiences: Offers an authentic dive into ancient
                   landmarks and historical sites, creating strong emotional
                   connections.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Knowledgeable Guides: Guided tours are often led by history
                   experts, enhancing the educational value of the experience.
                 </p>
@@ -401,17 +402,17 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-96 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Dark Tourism</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Reflective Experiences: Provides visitors with
                   thought-provoking experiences that acknowledge historical
                   tragedies.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Targeted Audience: Appeals to travelers interested in
                   resilience and human history, creating a unique customer
                   niche.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Preservation Support: By raising awareness of tragic events,
                   it encourages preservation and memorial efforts.
                 </p>
@@ -425,16 +426,16 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-96 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Ecotourism</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Sustainability Focus: Appeals to eco-conscious travelers by
                   promoting environmental awareness and preservation.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Local Impact: Supports local economies and helps in the
                   conservation of ecosystems, providing economic benefits to
                   communities.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Educative Guides: Led by environmental experts who educate
                   tourists on ecological conservation and respect for nature.
                 </p>
@@ -450,15 +451,15 @@ export default function Home() {
                 <h3 className="text-xl mt-4 font-bold mb-6">
                   Culinary Tourism
                 </h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Authentic Taste of Culture: Immerses travelers in local
                   cuisine, deepening cultural appreciation.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Unique Experiences: Offers cooking classes and food festivals
                   that attract both locals and international travelers.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Partnership with Locals: Supports local chefs and food
                   markets, promoting sustainable tourism and economic growth.
                 </p>
@@ -591,7 +592,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Target Market</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">
                     Historical Heritage Tourists:
                   </span>{" "}
@@ -600,7 +601,7 @@ export default function Home() {
                   enthusiasts, academics, and tourists seeking meaningful
                   connections to the past.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   Many within this target group are drawn to authentic and
                   educational travel experiences, where they can explore
                   preserved architecture, participate in reenactments, and learn
@@ -616,7 +617,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Trend</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">
                     Growing Interest in Cultural Preservation:
                   </span>{" "}
@@ -624,7 +625,7 @@ export default function Home() {
                   preserving cultural heritage sites, making historical tourism
                   popular among travelers of all ages.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   This trend is supported by initiatives that aim to protect
                   historical landmarks and traditions. Many tourists now seek
                   destinations that offer not only relaxation but also
@@ -641,7 +642,7 @@ export default function Home() {
                 className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
                 <h3 className="text-xl mt-4 font-bold mb-6">Demand</h3>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   <span className="font-semibold">
                     Enhanced Interest in Heritage Preservation:
                   </span>{" "}
@@ -649,7 +650,7 @@ export default function Home() {
                   seek to understand and celebrate cultural and historical
                   identities.
                 </p>
-                <p className="text-gray-600 mt-2 text-center mb-6">
+                <p className="text-red-600 mt-2 text-center mb-6">
                   This demand is fueled by the educational appeal and the unique
                   opportunity to experience living history through preserved
                   sites, museums, and cultural practices. Local communities are
