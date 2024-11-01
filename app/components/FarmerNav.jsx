@@ -30,7 +30,7 @@ export default function FarmerNav() {
   }, []);
 
   return (
-    <div className="border-b-0 w-full  bg-black bg-opacity-50  fixed top-0 left-0 z-50">
+    <div className="border-b-0 w-full shadow-xl py-8 bg-white fixed top-0 left-0 z-50">
       <div className="md:flex justify-between items-center md:mx-auto py-3 md:px-10 px-7">
         <div className="flex flex-row items-center ">
           <p className="md:text-3xl text-lg md:ml-6 font-semibold capitalize text-customGreen mt-2 font-abc">
@@ -55,7 +55,7 @@ export default function FarmerNav() {
             >
               <Link
                 href={link.link}
-                className={`text-white opacity-75 hover:text-customGreen font-semibold hover:border-b-2 hover:border-green-400 duration-1000 font-abc ${
+                className={`text-black opacity-75 hover:text-customGreen font-semibold hover:border-b-2 hover:border-green-400 duration-1000 font-abc ${
                   link.name === "Sign In"
                     ? "text-customGreen border-2 p-2 px-8 border-customGreen rounded-full"
                     : ""

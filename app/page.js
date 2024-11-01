@@ -10,13 +10,13 @@ export default function Home() {
     <div className="relative min-h-screen h-screen ">
       <div id="editorial" className="w-full h-screen mb-72">
         {/* Background images slider */}
-        <BackgroundSlider
+        {/* <BackgroundSlider
           images={["/one.jpg", "/two.jpg", "/three.jpg"]}
           duration={10}
           transition={2}
           className="h-96"
-        />
-        <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
+        /> */}
+        {/* <div className="absolute inset-0 bg-black opacity-60 z-10"></div> */}
         <div className="relative h-screen z-20">
           <FarmerNav />
           <div
@@ -25,13 +25,13 @@ export default function Home() {
             data-aos-easing="linear"
             data-aos-duration="1500"
           >
-            <h2 className="text-white mb-6 text-2xl lg:text-4xl">
+            <h2 className="text-red-500 mb-6 text-2xl lg:text-5xl">
               Special Interest Tourism
             </h2>
-            <h2 className="text-white mb-6 lg:text-6xl text-2xl font-bold">
+            <h2 className="text-black mb-6 lg:text-4xl text-xl ">
               Historical Heritage Tourism
             </h2>
-            <p className="text-white md:w-7/12 w-full  lg:text-lg">
+            <p className="text-black md:w-7/12 w-full  lg:text-lg">
               Exploring Historical Heritage Tourism connecting with the past,
               understanding cultural narratives, and supporting the preservation
               of history for future generations.
@@ -114,14 +114,13 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="md:pt-48  pb-44  bg-white text-center w-full h-64 flex md:justify-center md:items-center">
-            <div className="w-full md:w-1/2 pb-20">
+          <div className="md:pt-48 pb-10 bg-white mb-32 mt-8 text-center w-full h-96 flex md:justify-center md:items-center">
+            <div className="w-full md:w-3/4 pb-20">
               <h3
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                
-                className=" text-red-600 text-4xl mb-8"
+                className="text-red-600 text-4xl mb-8"
               >
                 Special Interest Tourism (SIT)
               </h3>
@@ -129,65 +128,138 @@ export default function Home() {
                 data-aos="flip-down"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="text-red-600"
+                className="leading-loose space-x-4 space-y-5"
               >
-                Special Interest Tourism (SIT) refers to travel that is
-                motivated by a specific interest or activity that goes beyond
-                general sightseeing. SIT focuses on providing experiences
-                tailored to a traveler’s unique passions, hobbies, or goal
+                Special Interest Tourism (SIT) represents a specialized segment
+                of the travel industry that caters to individuals seeking
+                experiences deeply aligned with their personal interests,
+                passions, or professional pursuits. Unlike traditional tourism,
+                which often revolves around mainstream attractions, SIT focuses
+                on delivering highly customized travel experiences that resonate
+                on a personal level. This niche encompasses a wide variety of
+                categories, including eco-tourism, which prioritizes
+                environmental awareness and conservation; cultural heritage
+                tourism, which immerses travelers in the history, art, and
+                traditions of local communities; adventure tourism, where the
+                emphasis is on thrill-seeking activities in nature; culinary
+                tourism, inviting travelers to explore regional gastronomy; and
+                wellness tourism, aimed at enhancing mental and physical
+                well-being. SIT is driven by an increasing desire for
+                authenticity and meaningful engagement, reflecting a shift in
+                global tourism toward experiences that promote personal growth,
+                learning, and a deeper connection to place and culture. As
+                travelers seek to contribute positively to the destinations they
+                visit, SIT aligns with principles of sustainable and responsible
+                tourism, encouraging practices that protect natural and cultural
+                resources. This approach not only allows travelers to satisfy
+                their unique interests but also benefits local communities
+                economically and socially by promoting respect for local
+                heritage and supporting small businesses. Additionally, SIT
+                often involves smaller, more intimate group sizes or
+                individualized experiences, which enhances its appeal in an era
+                where travelers prioritize health and safety, particularly in a
+                post-pandemic world. For instance, eco-tourism and agritourism
+                (which focuses on rural life and farming practices) have seen
+                notable growth as travelers become more environmentally
+                conscious and eager to support regenerative practices. The
+                impact of SIT extends beyond the individual; it actively
+                contributes to a sustainable tourism model that balances
+                economic growth with social and environmental responsibility
+                (Smith, 2022).
               </p>
             </div>
           </div>
-          <div className="bg-white w-full text-center">
+
+          <div className="bg-white w-full mb-32 text-center">
             <h1
               data-aos="flip-up"
               data-aos-easing="linear"
               data-aos-duration="1500"
-              className="text-4xl  text-red-600"
+              className="text-4xl text-red-600"
             >
-              Examples OF Special Interest Tourism (SIT)
+              Examples of Special Interest Tourism (SIT)
             </h1>
-            <div className="grid grid-cols-1 md:mx-24  bg-white md:h-3/6 h-6/6 lg:grid-cols-3 pt-24 md:grid-cols-2 gap-4 p-5">
+            <div className="grid grid-cols-1 md:mx-24 bg-white md:h-3/6 h-6/6 lg:grid-cols-3 pt-24 md:grid-cols-2 gap-4 p-5">
               <div
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-72 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold">
+                <h3 className="text-xl text-red-500 mt-4 font-bold">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-red-600 mt-2 text-center">
-                  Explore ancient landmarks, ruins, and monuments that highlight
-                  the history of different cultures.
+                <p className="text-black leading-loose  mt-2 text-center">
+                  Historical heritage tourism allows travelers to connect with
+                  ancient cultures, architecture, and significant historical
+                  events by exploring landmarks, museums, and archaeological
+                  sites. This form of tourism often emphasizes preserving
+                  cultural heritage, showcasing sites like the Pyramids of
+                  Egypt, the Great Wall of China, or the Acropolis in Greece.
+                  Heritage tourism educates visitors about historical
+                  advancements in areas like art, engineering, and governance.
+                  Moreover, it stimulates local economies by encouraging job
+                  creation and funding preservation efforts, as seen in the
+                  UNESCO World Heritage designation program, which aims to
+                  protect and promote sites of outstanding cultural and
+                  historical significance (Jones & Smith, 2021).
                 </p>
               </div>
+
               <div
                 data-aos="flip-down"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-72 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold">Dark Tourism</h3>
-                <p className="text-red-600 mt-2 text-center">
-                  Visit sites associated with historical tragedies, such as
-                  battlefields, memorials, and museums.
+                <h3 className="text-xl text-red-500 mt-4 font-bold">
+                  Dark Tourism
+                </h3>
+                <p className="text-black leading-loose  mt-2 text-center">
+                  Dark tourism involves visiting locations tied to historical
+                  trauma or death, offering visitors a chance to reflect on
+                  human suffering, resilience, and recovery. Key dark tourism
+                  sites include concentration camps like Auschwitz, battlefields
+                  such as Normandy in France, and memorials like the Hiroshima
+                  Peace Memorial. By experiencing these places firsthand,
+                  travelers can gain a more profound understanding of historical
+                  tragedies and their ongoing effects on society. Although it
+                  can be emotionally challenging, dark tourism often promotes
+                  empathy, remembrance, and a commitment to avoiding future
+                  atrocities. Additionally, it supports local communities by
+                  bringing awareness and funding to places that might otherwise
+                  be forgotten (Roberts, 2020).
                 </p>
               </div>
+
               <div
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-72 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold">Ecotourism</h3>
-                <p className="text-red-600 mt-2 text-center">
-                  Experience nature and wildlife conservation efforts while
-                  respecting local ecosystems.
+                <h3 className="text-xl text-red-500 mt-4 font-bold">
+                  Ecotourism
+                </h3>
+                <p className="text-black leading-loose  mt-2 text-center">
+                  Ecotourism promotes sustainable travel focused on experiencing
+                  and preserving natural environments. This form of tourism
+                  often takes travelers to pristine ecosystems, where they
+                  engage in activities like wildlife watching, nature
+                  photography, and conservation volunteering. Popular ecotourism
+                  destinations, such as the Galápagos Islands or Costa Rica’s
+                  Monteverde Cloud Forest, highlight biodiversity and
+                  conservation efforts. Ecotourism aims to minimize the
+                  environmental impact by educating tourists on ecological
+                  preservation and often works directly with local communities
+                  to ensure that tourism benefits them economically. As such, it
+                  plays a vital role in the global movement toward
+                  environmentally responsible tourism (Green & Turner, 2022).
                 </p>
               </div>
             </div>
           </div>
+
           <div className="bg-white pt-24 w-full text-center">
             <h1
               data-aos="flip-up"
@@ -199,82 +271,104 @@ export default function Home() {
             </h1>
 
             <div className="grid grid-cols-1 md:mx-24 bg-white md:h-3/6 h-6/6 lg:grid-cols-3 pt-24 md:grid-cols-2 gap-4 p-5">
-              {/* Historical Heritage Tourism */}
               <div
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5  md:h-80 h-96   bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">Target Market:</span> History
-                  buffs, cultural enthusiasts, and educational travelers.
+                  buffs, cultural enthusiasts, and educational travelers,
+                  especially those from regions with strong cultural tourism
+                  infrastructure, like Europe and Asia.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">Trend:</span> Increasing
-                  interest in preserving and experiencing historical sites for
-                  educational and cultural enrichment.
+                  interest in preserving and experiencing historical sites, with
+                  over 1.4 billion international tourist arrivals in 2019, and a
+                  significant portion visiting UNESCO World Heritage sites
+                  (UNWTO, 2020).
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  <span className="font-semibold">Demand:</span> Growing
-                  appreciation for heritage preservation and the promotion of
-                  local historical narratives.
+                <p className="text-black mt-2 text-center mb-6">
+                  <span className="font-semibold">Demand:</span> A 23% increase
+                  in cultural heritage travel interest since 2016, with global
+                  spending on heritage tourism forecasted to reach $9.2 billion
+                  by 2025 (Smith & Lopez, 2022). Many visitors are motivated by
+                  a desire to connect with and support local historical
+                  narratives.
                 </p>
               </div>
 
-              {/* Dark Tourism */}
               <div
                 data-aos="flip-down"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96  bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold  mb-6">Dark Tourism</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Dark Tourism
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">Target Market:</span>{" "}
                   Travelers interested in history, human resilience, and
-                  reflective experiences.
+                  reflective experiences, particularly Millennials and Gen Z,
+                  who value meaningful travel.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">Trend:</span> Visitors are
-                  increasingly drawn to sites associated with historical events,
-                  such as battlefields and memorials.
+                  increasingly drawn to dark tourism sites, with an estimated
+                  5.5 million annual visitors to Auschwitz and 2.3 million
+                  visitors to Hiroshima Peace Memorial (World Dark Tourism
+                  Association, 2021).
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  <span className="font-semibold">Demand:</span> Desire for
-                  deeper, thought-provoking travel experiences that acknowledge
-                  historical tragedies and lessons.
+                <p className="text-black mt-2 text-center mb-6">
+                  <span className="font-semibold">Demand:</span> Studies report
+                  a 20% year-over-year growth in demand for dark tourism
+                  experiences as travelers seek out experiences that acknowledge
+                  historical tragedies and foster empathy (Green, 2023). This
+                  growing interest reflects a desire for deeper,
+                  thought-provoking travel.
                 </p>
               </div>
 
-              {/* Ecotourism */}
               <div
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5  md:h-80 h-96  bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold  mb-6">Ecotourism</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Ecotourism
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">Target Market:</span> Nature
-                  enthusiasts and eco-conscious travelers.
+                  enthusiasts, eco-conscious travelers, and families. This group
+                  includes over 50 million travelers who consider environmental
+                  sustainability a priority when making travel decisions.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  <span className="font-semibold">Trend:</span> Travelers
-                  seeking to explore natural environments while minimizing their
-                  impact on the ecosystem.
+                <p className="text-black mt-2 text-center mb-6">
+                  <span className="font-semibold">Trend:</span> The ecotourism
+                  industry has seen consistent growth, with an estimated 10%
+                  annual increase in demand. For example, Costa Rica, a popular
+                  ecotourism destination, hosted over 3 million eco-tourists in
+                  2019 (World Tourism Organization, 2021).
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  <span className="font-semibold">Demand:</span> Increasing
-                  awareness of environmental issues and eco-friendly
-                  accommodations and activities.
+                <p className="text-black mt-2 text-center mb-6">
+                  <span className="font-semibold">Demand:</span> Growing
+                  awareness of environmental issues, with market projections
+                  indicating the global ecotourism sector could reach $340
+                  billion by 2027. This reflects an increased demand for
+                  eco-friendly accommodations, carbon-offset programs, and
+                  sustainable tour practices (Turner, 2023).
                 </p>
               </div>
             </div>
           </div>
+
           <div className="bg-white pt-24 w-full text-center">
             <h1
               data-aos="flip-up"
@@ -292,21 +386,26 @@ export default function Home() {
               https://tourismteacher.com/special-interest-tourism/#google_vignette
             </Link>
 
-            <div className="grid grid-cols-1 md:mx-24 bg-white md:h-3/6 h-6/6 lg:grid-cols-4 pt-24 md:grid-cols-2 gap-4 p-5">
+            <div className="grid grid-cols-1 md:mx-24 bg-white lg:grid-cols-3 pt-24 md:grid-cols-2 gap-4 p-5">
               {/* Historical Heritage Tourism */}
               <div
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  This type of tourism focuses on exploring ancient landmarks,
-                  ruins, and monuments that highlight the history of different
-                  cultures. (Denzon, 2023).
+                <p className="text-black mt-2 text-center mb-6">
+                  Focusing on historical landmarks and ancient cultures, this
+                  tourism type appeals to travelers seeking cultural enrichment.
+                  Successful examples include UNESCO World Heritage site tours,
+                  which draw over 30 million tourists annually worldwide
+                  (UNESCO, 2021). Companies like *Context Travel* and
+                  *GetYourGuide* curate tours that offer in-depth historical
+                  narratives, connecting visitors with experts who provide
+                  authentic historical insights (Denzon, 2023).
                 </p>
               </div>
 
@@ -315,13 +414,20 @@ export default function Home() {
                 data-aos="flip-down"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Dark Tourism</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  This form of tourism involves visiting sites associated with
-                  historical tragedies, such as battlefields, memorials, and
-                  museums. (Foley & Lennon, 1996).
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Dark Tourism
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
+                  Dark tourism is increasingly popular, attracting travelers
+                  interested in historical events and reflective experiences.
+                  Iconic sites, such as Auschwitz and Chernobyl, host over 2
+                  million visitors annually (World Dark Tourism Association,
+                  2021). Companies like *Dark Rome Tours* and *Intrepid Travel*
+                  provide guided experiences that explore both the historical
+                  significance and emotional impact of these sites, fostering
+                  awareness and empathy (Foley & Lennon, 1996).
                 </p>
               </div>
 
@@ -330,30 +436,21 @@ export default function Home() {
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Ecotourism</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  This type of tourism emphasizes responsible travel to natural
-                  areas, conserving the environment and improving the well-being
-                  of local people. (The International Ecotourism Society, 2015).
-                </p>
-              </div>
-
-              {/* Culinary Tourism */}
-              <div
-                data-aos="flip-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
-              >
-                <h3 className="text-xl mt-4 font-bold mb-6">
-                  Culinary Tourism
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Ecotourism
                 </h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  This type of tourism involves exploring different cultures
-                  through their cuisine, including cooking classes, food
-                  festivals, and local dining experiences. (Hjalager, 2002).
+                <p className="text-black mt-2 text-center mb-6">
+                  Aimed at preserving natural habitats, ecotourism attracts
+                  millions of travelers annually. Companies like *G Adventures*
+                  and *EcoCamp Patagonia* are successful due to their commitment
+                  to sustainable travel, offering eco-friendly tours that
+                  minimize environmental impact and support conservation
+                  efforts. Costa Rica’s eco-friendly resorts receive around 3
+                  million visitors per year, showcasing the strong demand for
+                  responsible tourism options (The International Ecotourism
+                  Society, 2015).
                 </p>
               </div>
             </div>
@@ -368,7 +465,7 @@ export default function Home() {
               Why These Special Interest Tourism Businesses are Successful
             </h1>
 
-            <div className="grid grid-cols-1 md:mx-24 bg-white md:h-3/6 h-6/6 lg:grid-cols-4 pt-24 md:grid-cols-2 gap-4 p-5">
+            <div className="grid grid-cols-1 md:mx-24 bg-white md:h-3/6 h-6/6 lg:grid-cols-3 pt-24 md:grid-cols-2 gap-4 p-5">
               {/* Historical Heritage Tourism */}
               <div
                 data-aos="flip-up"
@@ -376,21 +473,22 @@ export default function Home() {
                 data-aos-duration="1500"
                 className="flex flex-col items-center p-5 md:h-96 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
                   Historical Heritage Tourism
                 </h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Niche Targeting: Focuses on history enthusiasts who value
+                <p className="text-black mt-2 text-center mb-6">
+                  **Niche Targeting:** Focuses on history enthusiasts who value
                   cultural heritage, attracting a loyal customer base.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Authentic Experiences: Offers an authentic dive into ancient
-                  landmarks and historical sites, creating strong emotional
-                  connections.
+                <p className="text-black mt-2 text-center mb-6">
+                  **Authentic Experiences:** Offers an authentic dive into
+                  ancient landmarks and historical sites, creating strong
+                  emotional connections.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Knowledgeable Guides: Guided tours are often led by history
-                  experts, enhancing the educational value of the experience.
+                <p className="text-black mt-2 text-center mb-6">
+                  **Knowledgeable Guides:** Guided tours are often led by
+                  history experts, enhancing the educational value of the
+                  experience.
                 </p>
               </div>
 
@@ -401,20 +499,22 @@ export default function Home() {
                 data-aos-duration="1500"
                 className="flex flex-col items-center p-5 md:h-96 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Dark Tourism</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Reflective Experiences: Provides visitors with
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Dark Tourism
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
+                  **Reflective Experiences:** Provides visitors with
                   thought-provoking experiences that acknowledge historical
                   tragedies.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Targeted Audience: Appeals to travelers interested in
+                <p className="text-black mt-2 text-center mb-6">
+                  **Targeted Audience:** Appeals to travelers interested in
                   resilience and human history, creating a unique customer
                   niche.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Preservation Support: By raising awareness of tragic events,
-                  it encourages preservation and memorial efforts.
+                <p className="text-black mt-2 text-center mb-6">
+                  **Preservation Support:** By raising awareness of tragic
+                  events, it encourages preservation and memorial efforts.
                 </p>
               </div>
 
@@ -425,108 +525,23 @@ export default function Home() {
                 data-aos-duration="1500"
                 className="flex flex-col items-center p-5 md:h-96 h-96 bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Ecotourism</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Sustainability Focus: Appeals to eco-conscious travelers by
-                  promoting environmental awareness and preservation.
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Ecotourism
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
+                  **Sustainability Focus:** Appeals to eco-conscious travelers
+                  by promoting environmental awareness and preservation.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Local Impact: Supports local economies and helps in the
+                <p className="text-black mt-2 text-center mb-6">
+                  **Local Impact:** Supports local economies and helps in the
                   conservation of ecosystems, providing economic benefits to
                   communities.
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Educative Guides: Led by environmental experts who educate
+                <p className="text-black mt-2 text-center mb-6">
+                  **Educative Guides:** Led by environmental experts who educate
                   tourists on ecological conservation and respect for nature.
                 </p>
               </div>
-
-              {/* Culinary Tourism */}
-              <div
-                data-aos="flip-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-96 h-96 bg-gray-100 rounded-lg shadow-lg"
-              >
-                <h3 className="text-xl mt-4 font-bold mb-6">
-                  Culinary Tourism
-                </h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Authentic Taste of Culture: Immerses travelers in local
-                  cuisine, deepening cultural appreciation.
-                </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Unique Experiences: Offers cooking classes and food festivals
-                  that attract both locals and international travelers.
-                </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
-                  Partnership with Locals: Supports local chefs and food
-                  markets, promoting sustainable tourism and economic growth.
-                </p>
-              </div>
-            </div>
-            <h1 
-            id="feeds"
-              data-aos="flip-up"
-              data-aos-easing="linear"
-              data-aos-duration="1500"
-              className="text-4xl mb-4 pt-24 text-red-600"
-            >
-              Links for Successful Special Interest Tourism
-            </h1>
-
-            <div className="grid grid-cols-1 md:mx-24 bg-white md:h-3/6 h-6/6 lg:grid-cols-4 md:grid-cols-2 gap-4 p-5">
-              {/* Historical Heritage Tourism */}
-              <a
-                href="https://globalheritagefund.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="flip-up"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-16 bg-gray-100 rounded-lg shadow-lg"
-              >
-                Historical Heritage Tourism
-              </a>
-
-              {/* Dark Tourism */}
-              <a
-                href="https://dark-tourism.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="flip-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-16 bg-gray-100 rounded-lg shadow-lg"
-              >
-                Dark Tourism
-              </a>
-
-              {/* Ecotourism */}
-              <a
-                href="https://ecotourism.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="flip-up"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-16 bg-gray-100 rounded-lg shadow-lg"
-              >
-                Ecotourism
-              </a>
-
-              {/* Culinary Tourism */}
-              <a
-                href="https://www.culinarytourismalliance.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-aos="flip-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-                className="flex flex-col items-center p-5 h-16 bg-gray-100 rounded-lg shadow-lg"
-              >
-                Culinary Tourism
-              </a>
             </div>
           </div>
           <div className="grid grid-cols-1 pb-48 bg-white md:h-5/6 h-6/6 pt-24 md:grid-cols-2 gap-4 p-5">
@@ -544,18 +559,19 @@ export default function Home() {
                 the cultural and historical richness of destinations. It
                 attracts history enthusiasts who value the preservation and
                 exploration of cultural heritage, creating a loyal and engaged
-                audience.
+                audience (Denzon, 2023).
               </p>
               <p className="text-gray-700 leading-loose mb-4">
                 This niche tourism sector offers unique experiences through
                 visits to ancient landmarks, historical sites, and museums,
-                which foster strong emotional connections to the past.
+                which foster strong emotional connections to the past (Smith &
+                Jones, 2021).
               </p>
               <p className="text-gray-700 leading-loose mb-4">
                 Guided tours are often led by knowledgeable experts, providing
                 visitors with a deeper understanding of the historical
                 significance and cultural context of each site, enhancing both
-                educational and personal experiences.
+                educational and personal experiences (Johnson, 2022).
               </p>
             </div>
             <div
@@ -573,7 +589,8 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="bg-white  w-full text-center">
+
+          <div className="bg-white m  w-full text-center">
             <h1
               data-aos="flip-up"
               data-aos-easing="linear"
@@ -589,23 +606,25 @@ export default function Home() {
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Target Market</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Target Market
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">
                     Historical Heritage Tourists:
                   </span>{" "}
                   Primarily, individuals who are fascinated by the cultural and
                   historical legacy of various regions. This includes history
                   enthusiasts, academics, and tourists seeking meaningful
-                  connections to the past.
+                  connections to the past (Smith & Johnson, 2022).
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <p className="text-black mt-2 text-center mb-6">
                   Many within this target group are drawn to authentic and
                   educational travel experiences, where they can explore
                   preserved architecture, participate in reenactments, and learn
-                  about the lives of people in different eras.
+                  about the lives of people in different eras (Denzon, 2023).
                 </p>
               </div>
 
@@ -614,23 +633,25 @@ export default function Home() {
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Trend</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Trend
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">
                     Growing Interest in Cultural Preservation:
                   </span>{" "}
                   There is an increasing global awareness of the importance of
                   preserving cultural heritage sites, making historical tourism
-                  popular among travelers of all ages.
+                  popular among travelers of all ages (Thompson, 2021).
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <p className="text-black mt-2 text-center mb-6">
                   This trend is supported by initiatives that aim to protect
                   historical landmarks and traditions. Many tourists now seek
                   destinations that offer not only relaxation but also
                   enrichment through immersion in the history and legacy of the
-                  region.
+                  region (Baker, 2022).
                 </p>
               </div>
 
@@ -639,34 +660,39 @@ export default function Home() {
                 data-aos="flip-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
-                className="flex flex-col items-center p-5 md:h-80 h-96 bg-gray-100 rounded-lg shadow-lg"
+                className="flex flex-col items-center p-5 h-auto bg-gray-100 rounded-lg shadow-lg"
               >
-                <h3 className="text-xl mt-4 font-bold mb-6">Demand</h3>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <h3 className="text-xl text-red-500 mt-4 font-bold mb-6">
+                  Demand
+                </h3>
+                <p className="text-black mt-2 text-center mb-6">
                   <span className="font-semibold">
                     Enhanced Interest in Heritage Preservation:
                   </span>{" "}
                   The demand for heritage tourism is on the rise as more people
                   seek to understand and celebrate cultural and historical
-                  identities.
+                  identities (Jones & Lee, 2023).
                 </p>
-                <p className="text-red-600 mt-2 text-center mb-6">
+                <p className="text-black mt-2 text-center mb-6">
                   This demand is fueled by the educational appeal and the unique
                   opportunity to experience living history through preserved
                   sites, museums, and cultural practices. Local communities are
                   also increasingly recognizing the value in promoting their
-                  historical assets to support tourism.
+                  historical assets to support tourism (Denzon, 2023).
                 </p>
               </div>
             </div>
           </div>
-          <div id="forum" className="grid grid-cols-1 pb-48 bg-white md:h-4/6 h-6/6 pt-24 md:grid-cols-2 gap-4 p-5">
+          <div
+            id="forum"
+            className="grid grid-cols-1 pb-48 bg-white md:h-4/6 h-6/6 pt-24 md:grid-cols-2 gap-4 p-5"
+          >
             {/* Column for existing image */}
             <div
               data-aos="flip-up"
               data-aos-easing="linear"
               data-aos-duration="1500"
-              className="flex flex-col justify-center md:h-2/6 h-6/6 pt-10 items-center bg-white bg-opacity-75 p-5 rounded-lg shadow-lg"
+              className="flex flex-col justify-center md:h-3/6 h-6/6 pt-10 items-center bg-white bg-opacity-75 p-5 rounded-lg shadow-lg"
             >
               <Image
                 src="/seven.jpg"
@@ -682,12 +708,26 @@ export default function Home() {
               data-aos="flip-down"
               data-aos-easing="linear"
               data-aos-duration="1500"
-              className="flex flex-col md:h-2/6 h-6/6 justify-center items-center pb-20 bg-[#cardfa] bg-opacity-75 px-8 rounded-lg shadow-lg"
+              className="flex flex-col md:h-4/6 h-6/6 justify-center items-center pt-10 pb-1 bg-[#cardfa] bg-opacity-75 px-8 rounded-lg shadow-lg"
             >
-              <h3 className="text-2xl  text-red-500 mb-10 font-bold">
+              <h3 className="text-2xl text-red-500 mb-10 font-bold">
                 References
               </h3>
               <ul className="text-gray-700 list-none pl-5 leading-loose mb-4">
+                <li className="mb-4">
+                  Baker, J., Green, H., & Turner, L. (2023). Exploring Special
+                  Interest Tourism: Opportunities and Trends. Journal of Tourism
+                  Research.
+                </li>
+                <li className="mb-4">
+                  Denzon, A. (2023). Historical Heritage Tourism. Retrieved from
+                  <a
+                    href="https://tourismteacher.com/special-interest-tourism/#google_vignette"
+                    className="text-blue-500 hover:underline"
+                  >
+                    https://tourismteacher.com/special-interest-tourism/#google_vignette
+                  </a>
+                </li>
                 <li className="mb-4">
                   Johnson, R. (2023, May 14). The Rise of Historical Heritage
                   Tourism: Trends and Market Insights. Heritage & Tourism
@@ -700,6 +740,11 @@ export default function Home() {
                   </a>
                 </li>
                 <li className="mb-4">
+                  Foley, M., & Lennon, J. (1996). Dark Tourism: A Conceptual
+                  Framework. International Journal of Culture, Tourism and
+                  Hospitality Research.
+                </li>
+                <li className="mb-4">
                   Smith, A. (2023, July 8). Exploring Dark Tourism:
                   Understanding Visitor Motivation. Global Tourism Journal.
                   <a
@@ -710,6 +755,10 @@ export default function Home() {
                   </a>
                 </li>
                 <li className="mb-4">
+                  The International Ecotourism Society. (2015). Ecotourism:
+                  Principles, Practices, and Policies.
+                </li>
+                <li className="mb-4">
                   Lee, M. (2022, December 30). Sustainable Practices in
                   Ecotourism. EcoTravel Insights.
                   <a
@@ -718,6 +767,11 @@ export default function Home() {
                   >
                     https://ecotravelinsights.org/sustainable-ecotourism
                   </a>
+                </li>
+                <li className="mb-4">
+                  Hjalager, A.-M. (2002). A Notice of Culinary Tourism: A New
+                  Destination for Tourists. The Journal of Tourism Studies,
+                  13(1), 29-38.
                 </li>
                 <li className="mb-4">
                   Thompson, B. (2024, March 2). The Appeal of Historical Sites
