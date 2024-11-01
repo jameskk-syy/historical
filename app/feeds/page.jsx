@@ -10,13 +10,13 @@ export default function Home() {
     <div className="relative min-h-screen h-screen ">
       <div id="editorial" className="w-full h-screen mb-72">
         {/* Background images slider */}
-        <BackgroundSlider
+        {/* <BackgroundSlider
           images={["/one.jpg", "/two.jpg", "/three.jpg"]}
           duration={10}
           transition={2}
           className="h-96"
-        />
-        <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
+        /> */}
+        {/* <div className="absolute inset-0 bg-black opacity-60 z-10"></div> */}
         <div className="relative h-screen z-20">
           <FarmerNav />
           <div
@@ -25,13 +25,13 @@ export default function Home() {
             data-aos-easing="linear"
             data-aos-duration="1500"
           >
-            <h2 className="text-white mb-6 text-2xl lg:text-4xl">
+            <h2 className="text-black mb-6 text-2xl lg:text-4xl">
               Videos and short
             </h2>
-            <h2 className="text-white mb-6 text-2xl lg:text-4xl">
+            <h2 className="text-black mb-6 text-2xl lg:text-4xl">
               documentaries discuss the
             </h2>
-            <h2 className="text-white mb-6 lg:text-6xl text-2xl font-bold">
+            <h2 className="text-red-500 mb-6 lg:text-6xl text-2xl font-bold">
               Historical Heritage Tourism
             </h2>
           </div>

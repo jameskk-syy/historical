@@ -167,7 +167,7 @@ const ForumPage = () => {
 
       {/* Header with Categories and Search Bar */}
       <div className="w-full flex flex-col justify-center items-center">
-        <div className="flex lg:flex-row flex-col justify-between mt-28 lg:w-1/2 w-full px-6 p-4 bg-white shadow">
+        <div className="flex lg:flex-row flex-col justify-between mt-44 lg:w-1/2 w-full px-6 p-4 bg-white shadow">
           <div className="relative inline-block">
           <button className="py-2 px-4">All Posts</button>
             <button className="py-2 px-4">My Posts</button>
