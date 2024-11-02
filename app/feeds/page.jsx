@@ -354,7 +354,7 @@ export default function Home() {
                   TikTok: UNESCO
                 </Link>
                 <p className="mt-2 text-sm">
-                  Discover short videos about UNESCO's heritage initiatives and
+                  Discover short videos about UNESCO&apos;s heritage initiatives and
                   cultural sites on TikTok.
                 </p>
               </div>
@@ -368,7 +368,7 @@ export default function Home() {
                   Pinterest: UNESCO
                 </Link>
                 <p className="mt-2 text-sm">
-                  Explore UNESCO's boards for inspiration on cultural heritage,
+                  Explore UNESCO&apos;s boards for inspiration on cultural heritage,
                   architecture, and conservation.
                 </p>
               </div>
