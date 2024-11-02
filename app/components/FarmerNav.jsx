@@ -39,9 +39,9 @@ export default function FarmerNav() {
         </div>
         <div
           onClick={() => setOpen(!open)}
-          className="text-3xl  absolute right-8 top-4 cursor-pointer md:hidden"
+          className="text-3xl  absolute right-8 top-8 cursor-pointer md:hidden"
         >
-          {open ? <Close className="text-white" /> : <Menu className="text-white" />}
+          {open ? <Close className="text-black" /> : <Menu className="text-black" />}
         </div>
         <ul
           className={`md:flex md:items-center hidden  md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
